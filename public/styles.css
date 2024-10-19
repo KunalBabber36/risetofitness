@@ -2328,10 +2328,16 @@ button:hover {
   }
   
   .about-us-img-wrapper img {
-    width: 100%;
+  /* width: 100%; */
     object-fit: cover;
     mix-blend-mode: color-burn;
-    margin-top: 7rem;
+    /* margin-top: 7rem; */
+    height: 34px;
+    width: 452px;
+    /* text-align: center; */
+    overflow: visible;
+    margin: auto;
+    margin-bottom: -70px;
   }
   .trainer{
     margin-left: 0;
