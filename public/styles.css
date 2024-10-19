@@ -2041,6 +2041,7 @@ button:hover {
 
   .nav__logo img {
     margin-bottom: 7px;
+    margin-left: 0;
   }
 
   .nav__logo a{
@@ -2096,7 +2097,7 @@ button:hover {
     font-family: "Lobster", sans-serif;
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: 1rem;
+    font-size: 2.5rem;
     font-weight: 600;
     color: var(--secondary-color);
   }
