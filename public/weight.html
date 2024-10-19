@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise To Fitness</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+  <!-- <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  /> -->
+
+  <link rel="stylesheet" href="styles.css" />
+
+
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Boxicons CSS -->
+  <link
+    href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        .header {
+            padding: 20px;
+            text-align: center;
+            color: var(--text-light);
+        }
+        .header__container{
+          margin-top: 30px;
+        }
+
+        navbar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        navbar ul li a:hover {
+            color: #ff0000b0;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .details {
+            color: var(--text-light);
+        }
+
+        .exercise {
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .exercise h2 {
+            color: #ff0000f6;
+        }
+
+        .info-btn {
+            background-color: #ff0000f6;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .info-btn:hover {
+            background-color: #ff0000b0;
+        }
+
+        .details {
+            margin-top: 10px;
+        }
+
+        .details img {
+            height: 300px;
+            width: 300px;
+            margin: auto;
+        }
+
+        @media (max-width: 768px) {
+            navbar ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .exercise {
+                padding: 15px;
+            }
+
+            .exercise h2 {
+                font-size: 1.5em;
+            }
+
+            .info-btn {
+                width: 100%;
+                padding: 12px;
+            }
+
+            .details img {
+                height: 200px;
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px;
+            }
+
+            navbar ul li {
+                margin: 5px 0;
+            }
+
+            .exercise h2 {
+                font-size: 1.2em;
+            }
+
+            .info-btn {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav__bar" id="navbar">
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#"><img src="assets/logo.jpg" alt="logo" />Rise To Fitness</a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="trainers.html">TRAINER</a></li>
+        <li><a>CLASSES <i class="fas fa-angle-down"></i> </a>
+          <div class="hover">
+              <ul>      
+                <li class="dropdown">
+                  <a href="cardio.html">CARDIO</a>
+                  </li>
+                <li><a href="power.html">POWER LIFTING</a>
+              </li>
+              <li><a href="personal.html">PERSONAL TRAINING</a>
+            </li>
+            <li><a href="crossfit.html">CROSS FIT</a>
+          </li>
+          <li><a href="yoga.html">YOGA</a>
+        </li>
+        <li><a href="#weight">WEIGHT TRAINING</a>
+      </li>
+                </ul>
+                </div> 
+      </li> 
+        <li><a href="review.html">REVIEWS</a></li>
+        <li><a href="blog.html">GYM UPDATES</a></li>
+        <li><a href="contact.html"><button class="btnn">CONTACT US</button></a></li>
+      </ul>
+    </div>
+  </nav>
+    <header class="section__container header__container">
+        <div class="header__content">
+            <span class="bg__blur"></span>
+            <span class="bg__blur header__blur"></span>
+            <h1><span>WEIGHT</span> TRAINING</h1>
+            <p class="p">
+              Weight training focuses on building muscle strength and endurance through resistance exercises. Whether you're using free weights, machines, or bodyweight, our weight training programs cater to all fitness levels. Our knowledgeable trainers will guide you in proper techniques, helping you achieve your goals, improve your physique, and boost your overall health. Get ready to lift and see results!
+            </p>
+            <a href="contact.html"><button class="btnn">JOIN NOW</button></a>
+        </div>
+    </header>
+    <div class="bg_blur1"></div>
+    <header class="header">
+        <h1>Weight Training</h1>
+        <navbar>
+            <ul>
+                <li><a href="#squat">Squat</a></li>
+                <li><a href="#deadlift">Deadlift</a></li>
+                <li><a href="#bench-press">Bench Press</a></li>
+                <li><a href="#overhead-press">Overhead Press</a></li>
+                <li><a href="#lunges">Lunges</a></li>
+                <li><a href="#barbell-row">Barbell Row</a></li>
+                <li><a href="#dumbbell-flyes">Dumbbell Flyes</a></li>
+                <li><a href="#tricep-dips">Tricep Dips</a></li>
+                <li><a href="#bicep-curls">Bicep Curls</a></li>
+                <li><a href="#leg-press">Leg Press</a></li>
+                <li><a href="#shoulder-press">Shoulder Press</a></li>
+                <li><a href="#dead-bug">Dead Bug</a></li>
+            </ul>
+        </navbar>
+    </header>
+
+    <main>
+        <section id="squat" class="exercise">
+            <h2>Squat</h2>
+            <p class="details">
+                <img src="assets/squatsweight.jpg" alt="">
+                Squats are a fundamental weight training exercise that primarily targets the muscles of the lower body,
+                including the quadriceps, hamstrings, glutes, and calves. This compound movement also engages the core
+                and back muscles, promoting overall strength and stability.
+            </p>
+        </section>
+
+        <section id="deadlift" class="exercise">
+            <h2>Deadlift</h2>
+            <p class="details">
+                <img src="assets/deadflift.jpg" alt="">
+                Deadlifts are a powerful weight training exercise that targets multiple muscle groups, including the
+                glutes, hamstrings, back, and core. They enhance strength, stability, and overall fitness. Proper form
+                is crucial to prevent injury and maximize benefits during training.
+            </p>
+        </section>
+
+        <section id="bench-press" class="exercise">
+            <h2>Bench Press</h2>
+            <p class="details">
+                <img src="assets/benchpress.jpg" alt="">
+                The bench press is a popular exercise for targeting the chest, shoulders, and triceps. It promotes upper
+                body strength and can be performed with a barbell or dumbbells on a flat, incline, or decline bench.
+            </p>
+        </section>
+
+        <section id="overhead-press" class="exercise">
+            <h2>Overhead Press</h2>
+            <p class="details">
+                <img src="assets/overhead.jpg" alt="">
+                The overhead press, also known as the military press, targets the shoulders, triceps, and upper chest.
+                It can be performed standing or seated and helps build shoulder stability and strength.
+            </p>
+        </section>
+
+        <section id="lunges" class="exercise">
+            <h2>Lunges</h2>
+            <p class="details">
+                <img src="assets/lunges.jpg" alt="">
+                Lunges are a versatile exercise targeting the quadriceps, hamstrings, and glutes. They improve balance,
+                coordination, and lower body strength. Variations include forward, reverse, and lateral lunges.
+            </p>
+        </section>
+
+        <section id="barbell-row" class="exercise">
+            <h2>Barbell Row</h2>
+            <p class="details">
+                <img src="assets/barbellrow.jpg" alt="">
+                The barbell row is a compound exercise that primarily targets the back muscles, including the lats,
+                traps, and rhomboids. It also engages the biceps and core, promoting upper body strength and stability.
+            </p>
+        </section>
+
+        <section id="dumbbell-flyes" class="exercise">
+            <h2>Dumbbell Flyes</h2>
+            <p class="details">
+                <img src="assets/dumbbellflyes.jpg" alt="">
+                Dumbbell flyes isolate the chest muscles, promoting hypertrophy and flexibility. They can be performed on
+                a flat or incline bench to target different parts of the pectoral muscles.
+            </p>
+        </section>
+
+        <section id="tricep-dips" class="exercise">
+            <h2>Tricep Dips</h2>
+            <p class="details">
+                <img src="assets/tricepdips.jpg" alt="">
+                Tricep dips effectively target the triceps and can be performed on parallel bars or a sturdy bench.
+                They promote upper body strength and can be adjusted for difficulty by altering leg position.
+            </p>
+        </section>
+
+        <section id="bicep-curls" class="exercise">
+            <h2>Bicep Curls</h2>
+            <p class="details">
+                <img src="assets/bicepscurls.jpg" alt="">
+                Bicep curls are a classic exercise targeting the biceps. They can be performed with dumbbells, a barbell,
+                or cable machines, promoting muscle growth and strength in the upper arms.
+            </p>
+        </section>
+
+        <section id="leg-press" class="exercise">
+            <h2>Leg Press</h2>
+            <p class="details">
+                <img src="assets/legpress.webp" alt="">
+                The leg press machine targets the quadriceps, hamstrings, and glutes, providing a controlled environment
+                for lower body training. It is a great alternative for those who may struggle with squats.
+            </p>
+        </section>
+
+        <section id="shoulder-press" class="exercise">
+            <h2>Shoulder Press</h2>
+            <p class="details">
+                <img src="assets/shoulderpre.jpg" alt="">
+                The shoulder press targets the deltoid muscles and triceps, promoting upper body strength. It can be
+                performed seated or standing with dumbbells or a barbell.
+            </p>
+        </section>
+
+        <section id="dead-bug" class="exercise">
+            <h2>Dead Bug</h2>
+            <p class="details">
+                <img src="assets/deadbug.jpg" alt="">
+                The dead bug is an effective core exercise that promotes stability and coordination. It engages the
+                abdominal muscles and helps improve overall core strength and posture.
+            </p>
+        </section>
+        <!-- <section id="dead-bug" class="exercise">
+          <h2>Dead Bug</h2>
+          <button class="info-btn">Show Details</button>
+          <p class="details" style="display: none;">
+              <img src="assets/deadbug.jpg" alt="">
+              The dead bug is an effective core exercise that promotes stability and coordination. It engages the
+              abdominal muscles and helps improve overall core strength and posture.
+          </p>
+      </section> -->
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <div class="footer__logo">
+            <a href="#"><img src="assets/logo.jpg" alt="logo" /></a>
+          </div>
+          <p>
+            Welcome to Rise To fitness! We’re excited to help you embark on your fitness journey!
+          </p>
+          <ul class="footer__links">
+            <li>
+              <a
+                href="https://www.google.com/maps/dir/Rise+To+Fitness,+Besides+Krishna+Mandir,+Punjabi+Refugee+Colony,+Golmuri,+Jamshedpur,+Jharkhand/Besides+Krishna+Mandir,+1st+floor,+Shree+Krishna+Mandir+Bhawan,+Punjabi+Refugee+Colony,+Jamshedpur,+Jharkhand+831003/@22.7972919,86.171417,13z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x39f5e34eb6a03c15:0xc6112b30e302ac7b!2m2!1d86.2126096!2d22.7972433!1m5!1m1!1s0x39f5e34eb6a03c15:0xc6112b30e302ac7b!2m2!1d86.2126096!2d22.7972433?entry=ttu&g_ep=EgoyMDI0MTAwNy4xIKXMDSoASAFQAw%3D%3D">
+                <span><i class="ri-map-pin-2-fill"></i></span>
+                Besides Krishna Mandir, 1st floor, Shree Krishna Mandir Bhawan, Punjabi Refugee Colony, Jamshedpur,
+                Jharkhand 831009 </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-phone-fill"></i></span>
+                <a href="tel:+91 87097 82478">+91 8709782478</a>
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="openGmail()"><span><i class="ri-mail-fill"></i></span>
+                   prami72rao@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col footer__company">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Gym Updates</a></li>
+            <li><a href="termandcondition.html">Terms and Condtions</a></li>
+            <div>
+            <h4 class="hr">Hours:</h4>
+            <li><a href="about.html">Sunday Closed</a></li>
+            <li><a href="about.html"> Mon - Sat: 6 am–9 pm</a></li>
+          </div>
+          </ul>
+        </div>  
+  
+        <div class="footer__col">
+          <h4>SOCIAL LINKS</h4>
+          <p>
+            Follow us for the latest fitness tips, workout challenges, and exclusive offers! Stay motivated and connected with our fitness community!
+          </p>
+          <!-- <form action="/">
+                <input type="text" placeholder="Enter Email" />
+                <button class="btnn">SEND</button>
+              </form> -->
+          <div class="footer__socials">
+            <a href="https://www.facebook.com/profile.php?id=100063924465595"><i class="ri-facebook-fill"></i></a>
+            <a href="https://www.youtube.com/@risetofitnessr2f679"><i class="ri-youtube-fill"></i></a>
+            <a href="https://www.instagram.com/rise2fitness/"><i class="ri-instagram-fill"></i></a>
+            <a href="https://wa.me/+918709782478?text=Hello%20there!" target="_blank"><i class="ri-whatsapp-fill"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2024 Rise To Fitness. All rights reserved.
+      </div>
+    </footer>
+      <div class="bg_blur1"></div>
+      <script>
+        let lastScrollTop = 0;
+  const header = document.getElementById("navbar");
+  
+  window.addEventListener("scroll", function() {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  
+  if (currentScroll > lastScrollTop) {
+    // Scroll Down
+    header.classList.add("hidden");
+  } else {
+    // Scroll Up
+    header.classList.remove("hidden");
+  }
+  
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
+  });
+  
+  document.getElementById('menu-btn').addEventListener('click', function() {
+  const navLinks = document.getElementById('nav-links');
+  navLinks.classList.toggle('active'); // Toggle active class
+  });
+  
+        const typed = new Typed('.multiple-text', {
+          strings: ['CARDIO', 'POWER LIFTING', 'PERSONAL TRAINING', 'CROSS FIT', 'YOGA', 'WEIGHT TRAINING'],
+          typeSpeed: 60,
+          backSpeed: 60,
+          backDelay: 1000,
+          loop: true,
+        });
+      </script>
+          <script src="script.js"></script>
+  
+  
+      <!-- <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script> -->
+      <script src="https://unpkg.com/scrollreveal"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+      <!-- Swiper JS -->
+      <script src="js/swiper-bundle.min.js"></script>
+      
+      <!-- JavaScript -->
+      <script src="js/script.js"></script>
+      <!-- <script>
+        // Extract the image filename from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageName = urlParams.get('image');
+  
+        if (imageName) {
+            document.getElementById("uploadedImage").src = "/uploads/" + imageName;
+        } else {
+            document.body.innerHTML = "<h1>No image to display</h1>";
+        }
+    </script> -->
+    <script src="script.js"></script>
+    <script src="main.js"></script>
+  
+
+    <script>
+        const buttons = document.querySelectorAll('.info-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const details = button.nextElementSibling;
+                details.style.display = details.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise To Fitness</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+    <!-- <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  /> -->
+
+    <link rel="stylesheet" href="styles.css" />
+
+
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+.header {
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-light);
+}
+.header__container{
+      margin-top: 60px;
+    }
+
+h1 {
+    font-size: 3em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+main {
+    padding: 20px;
+}
+
+.yoga-poses {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    color: var(--text-light);
+}
+
+.pose {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    height: min-content;
+}
+
+.pose img {
+    width: 100%;
+    border-radius: 10px;
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    h1 {
+        font-size: 2.5em; /* Reduce size for medium screens */
+    }
+
+    p {
+        font-size: 1.1em; /* Slightly smaller text */
+    }
+}
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 2em; /* Further reduce size for smaller screens */
+    }
+
+    p {
+        font-size: 1em; /* Adjust paragraph size */
+    }
+
+    .yoga-poses {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Allow smaller grid items */
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        padding: 30px; /* Less padding on smaller screens */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Further reduce size for mobile */
+    }
+
+    p {
+        font-size: 0.9em; /* Adjust paragraph size */
+    }
+
+    .pose {
+        padding: 10px; /* Less padding for poses */
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav__bar" id="navbar">
+            <div class="nav__header">
+                <div class="nav__logo">
+                    <a href="#"><img src="assets/logo.jpg" alt="logo" />Rise To Fitness</a>
+                </div>
+                <div class="nav__menu__btn" id="menu-btn">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+            <ul class="nav__links" id="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="trainers.html">TRAINER</a></li>
+                <li><a>CLASSES <i class="fas fa-angle-down"></i> </a>
+                    <div class="hover">
+                        <ul>      
+                          <li class="dropdown">
+                            <a href="cardio.html">CARDIO</a>
+                            </li>
+                          <li><a href="power.html">POWER LIFTING</a>
+                        </li>
+                        <li><a href="personal.html">PERSONAL TRAINING</a>
+                      </li>
+                      <li><a href="crossfit.html">CROSS FIT</a>
+                    </li>
+                    <li><a href="#yoga">YOGA</a>
+                  </li>
+                  <li><a href="weight.html">WEIGHT TRAINING</a>
+                </li>
+                          </ul>
+                          </div>
+                </li>
+                <li><a href="review.html">REVIEWS</a></li>
+                <li><a href="blog.html">GYM UPDATES</a></li>
+                <li><a href="contact.html"><button class="btnn">CONTACT US</button></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="section__container header__container">
+        <div class="header__content">
+            <span class="bg__blur"></span>
+            <span class="bg__blur header__blur"></span>
+            <h1><span>YOGA</span>:</h1>
+            <p class="p">
+                Yoga is a holistic practice that combines physical postures, breathing exercises, and mindfulness to enhance flexibility, strength, and mental clarity. Our classes cater to all skill levels, promoting relaxation and stress relief while fostering a deeper connection between mind and body. Join us on the mat to experience the transformative benefits of yoga for your overall well-being!
+            </p>
+            <a href="contact.html"><button class="btnn">JOIN NOW</button></a>
+        </div>
+    </header>
+    <div class="bg_blur1"></div>
+    <header class="header">
+        <h1>Yoga Poses</h1>
+        <p>Embrace the journey of yoga and wellness</p>
+    </header>
+<div class="bg__blur"></div>
+    <main>
+        <section class="yoga-poses">
+            <div class="pose">
+                <img src="assets/downwarddog.jpg" alt="Pose 1">
+                <h2>Downward Dog</h2>
+                <p>A great pose to stretch the body and calm the mind.</p>
+            </div>
+            <div class="pose">
+                <img src="assets/warrior1.jpg" alt="Pose 2">
+                <h2>Warrior I</h2>
+                <p>Strengthens the legs and opens the hips and chest.</p>
+            </div>
+            <div class="pose">
+                <img src="assets/tree.jpg" alt="Pose 3">
+                <h2>Tree Pose</h2>
+                <p>Improves balance and stability.</p>
+            </div>
+            <div class="pose">
+                <img src="assets/cobra.jpg" alt="Pose 4">
+                <h2>Cobra Pose</h2>
+                <p>Opens the heart and strengthens the spine.</p>
+            </div>
+            <div class="pose">
+                <img src="assets/child.jpg" alt="Pose 5">
+                <h2>Child’s Pose</h2>
+                <p>A resting pose that helps with relaxation.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="contact">
+        <div class="section__container footer__container">
+          <div class="footer__col">
+            <div class="footer__logo">
+              <a href="#"><img src="assets/logo.jpg" alt="logo" /></a>
+            </div>
+            <p>
+              Welcome to Rise To fitness! We’re excited to help you embark on your fitness journey!
+            </p>
+            <ul class="footer__links">
+              <li>
+                <a
+                  href="https://www.google.com/maps/dir/Rise+To+Fitness,+Besides+Krishna+Mandir,+Punjabi+Refugee+Colony,+Golmuri,+Jamshedpur,+Jharkhand/Besides+Krishna+Mandir,+1st+floor,+Shree+Krishna+Mandir+Bhawan,+Punjabi+Refugee+Colony,+Jamshedpur,+Jharkhand+831003/@22.7972919,86.171417,13z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x39f5e34eb6a03c15:0xc6112b30e302ac7b!2m2!1d86.2126096!2d22.7972433!1m5!1m1!1s0x39f5e34eb6a03c15:0xc6112b30e302ac7b!2m2!1d86.2126096!2d22.7972433?entry=ttu&g_ep=EgoyMDI0MTAwNy4xIKXMDSoASAFQAw%3D%3D">
+                  <span><i class="ri-map-pin-2-fill"></i></span>
+                  Besides Krishna Mandir, 1st floor, Shree Krishna Mandir Bhawan, Punjabi Refugee Colony, Jamshedpur,
+                  Jharkhand 831009 </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span><i class="ri-phone-fill"></i></span>
+                  <a href="tel:+91 87097 82478">+91 8709782478</a>
+                </a>
+              </li>
+              <li>
+                <a href="#" onclick="openGmail()"><span><i class="ri-mail-fill"></i></span>
+                     prami72rao@gmail.com</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__col footer__company">
+            <h4>COMPANY</h4>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="blog.html">Gym Updates</a></li>
+              <li><a href="termandcondition.html">Terms and Condtions</a></li>
+              <div>
+              <h4 class="hr">Hours:</h4>
+              <li><a href="about.html">Sunday Closed</a></li>
+              <li><a href="about.html"> Mon - Sat: 6 am–9 pm</a></li>
+            </div>
+            </ul>
+          </div>  
+    
+          <div class="footer__col">
+            <h4>SOCIAL LINKS</h4>
+            <p>
+              Follow us for the latest fitness tips, workout challenges, and exclusive offers! Stay motivated and connected with our fitness community!
+            </p>
+            <!-- <form action="/">
+                  <input type="text" placeholder="Enter Email" />
+                  <button class="btnn">SEND</button>
+                </form> -->
+            <div class="footer__socials">
+              <a href="https://www.facebook.com/profile.php?id=100063924465595"><i class="ri-facebook-fill"></i></a>
+              <a href="https://www.youtube.com/@risetofitnessr2f679"><i class="ri-youtube-fill"></i></a>
+              <a href="https://www.instagram.com/rise2fitness/"><i class="ri-instagram-fill"></i></a>
+              <a href="https://wa.me/+918709782478?text=Hello%20there!" target="_blank"><i class="ri-whatsapp-fill"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bar">
+          Copyright © 2024 Rise To Fitness. All rights reserved.
+        </div>
+      </footer>
+    <div class="bg_blur1"></div>
+    <script>
+        let lastScrollTop = 0;
+        const header = document.getElementById("navbar");
+
+        window.addEventListener("scroll", function () {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                // Scroll Down
+                header.classList.add("hidden");
+            } else {
+                // Scroll Up
+                header.classList.remove("hidden");
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
+        });
+
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active'); // Toggle active class
+        });
+
+        const typed = new Typed('.multiple-text', {
+            strings: ['CARDIO', 'POWER LIFTING', 'PERSONAL TRAINING', 'CROSS FIT', 'YOGA', 'WEIGHT TRAINING'],
+            typeSpeed: 60,
+            backSpeed: 60,
+            backDelay: 1000,
+            loop: true,
+        });
+    </script>
+    <script src="script.js"></script>
+    <!-- <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script> -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+    <!-- Swiper JS -->
+    <script src="js/swiper-bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <!-- <script>
+    // Extract the image filename from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const imageName = urlParams.get('image');
+
+    if (imageName) {
+        document.getElementById("uploadedImage").src = "/uploads/" + imageName;
+    } else {
+        document.body.innerHTML = "<h1>No image to display</h1>";
+    }
+</script> -->
+    <script src="script.js"></script>
+    <script src="main.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const readMoreButtons = document.querySelectorAll('.read-more-btn');
+
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const workoutItem = button.parentElement;
+                    const moreText = workoutItem.querySelector('.more-text');
+                    const paragraph = workoutItem.querySelector('p');
+
+                    if (moreText.style.display === 'none' || moreText.style.display === '') {
+                        moreText.style.display = 'inline';
+                        paragraph.style.maxHeight = 'none';
+                        button.textContent = 'Read Less';
+                    } else {
+                        moreText.style.display = 'none';
+                        paragraph.style.maxHeight = '60px';
+                        button.textContent = 'Read More';
+                    }
+                });
+            });
+        });
+
+    </script>
+    <script src="scripts.js"></script>
+
+</body>
+</html>
