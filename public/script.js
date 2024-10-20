@@ -31,29 +31,6 @@ function displayImages() {
     });
 }
 
-// Upload an image
-// function uploadImage() {
-//     const imageInput = document.getElementById('imageInput');
-//     // const statementInput = document.getElementById('imageStatement');
-
-//     if (imageInput.files.length === 0) {
-//         alert("Please provide an image");
-//         return;
-//     }
-
-//     const file = imageInput.files[0];
-//     const reader = new FileReader();
-    
-//     reader.onload = function(e) {
-//         const images = JSON.parse(localStorage.getItem('images')) || [];
-//         images.push({ url: e.target.result});
-//         localStorage.setItem('images', JSON.stringify(images));
-//         alert("Image uploaded successfully!");
-//         displayUploadedImages();
-//     };
-
-//     reader.readAsDataURL(file);
-// }
 
 function uploadImage() {
     const imageInput = document.getElementById('imageInput');
