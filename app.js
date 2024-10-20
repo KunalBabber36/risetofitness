@@ -1,12 +1,52 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const twilio = require('twilio');
+// const twilio = require('twilio');
 const path = require('path');
+const fs = require('fs');
+const cors = require('cors');
 const app = express();
 
-const accountSid = 'AC1c5b02253722c3d78da0c50da7ed05db'; // Replace with your Twilio Account SID
-const authToken = 'b6697cf47f7d8f9b89f35e4791a98015';   // Replace with your Twilio Auth Token
-const client = new twilio(accountSid, authToken);
+app.use(cors());
+app.use(bodyParser.json());
+
+// Path to your comments JSON file
+const commentsFilePath = './comments.json';
+// Load comments from JSON file
+function loadComments() {
+  if (fs.existsSync(commentsFilePath)) {
+    const data = fs.readFileSync(commentsFilePath);
+    return JSON.parse(data);
+  }
+  return [];
+}
+
+// Save comments to JSON file
+function saveComments(comments) {
+  fs.writeFileSync(commentsFilePath, JSON.stringify(comments, null, 2));
+}
+
+// API route to get all comments
+app.get('/api/comments', (req, res) => {
+  const comments = loadComments();
+  res.json(comments);
+});
+
+// API route to post a comment
+app.post('/api/comments', (req, res) => {
+  const { user, comment } = req.body;
+  const comments = loadComments();
+
+  // Add new comment
+  comments.push({ user, comment, createdAt: new Date() });
+  saveComments(comments);
+  res.json({ user, comment, createdAt: new Date() });
+});
+
+
+
+// const accountSid = 'AC1c5b02253722c3d78da0c50da7ed05db'; // Replace with your Twilio Account SID
+// const authToken = 'b6697cf47f7d8f9b89f35e4791a98015';   // Replace with your Twilio Auth Token
+// const client = new twilio(accountSid, authToken);
 
 // Middleware to parse form data
 
@@ -94,8 +134,36 @@ app.post('/contact', (req, res) => {
 });
 
 
+// // Connect to MongoDB (replace with your MongoDB URI)
+// mongoose.connect('mongodb://localhost:27017/commentsDB', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// // Create a schema for comments
+// const commentSchema = new mongoose.Schema({
+//   user: String,
+//   comment: String,
+//   createdAt: { type: Date, default: Date.now }
+// });
+
+// const Comment = mongoose.model('Comment', commentSchema);
+
+// // API route to get all comments
+// app.get('/api/comments', async (req, res) => {
+//   const comments = await Comment.find().sort({ createdAt: -1 });
+//   res.json(comments);
+// });
+
+// // API route to post a comment
+// app.post('/api/comments', async (req, res) => {
+//   const { user, comment } = req.body;
+//   const newComment = new Comment({ user, comment });
+//   await newComment.save();
+//   res.json(newComment);
+// });
+
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+

@@ -82,7 +82,7 @@
       <h4 class="area">WELCOME TO RISE TO FITNESS</h4>
       <h1><span>STRONGER</span> EVERY SINGLE DAY</h1>
       <span class="multiple-text"></span>
-      <p class="multiple-text2"></p><br>
+      <p class="multiple-text2"></p>
       <a href="contact.html"><button class="btnn">JOIN NOW</button></a>
     </div>
     <!-- <div class="header__image">
@@ -622,7 +622,7 @@
       typeSpeed: 60,
       backSpeed: 60,
       backDelay: 11000,
-      loop: true,
+      loop: false,
 
     });
     const typed2 = new Typed('.multiple-text2', {
@@ -630,98 +630,75 @@
       typeSpeed: 60,
       backSpeed: 60,
       backDelay: 1000,
-      loop: true,
+      loop: false,
 
     });
 
     // const ADMIN_USER = "admin"; // Define the admin user name
 
-    // Function to load comments from localStorage
-    function loadComments() {
-      const comments = JSON.parse(localStorage.getItem('comments')) || [];
-      const commentsList = document.getElementById('commentsList');
-      const currentUser = localStorage.getItem('currentUser'); // Get current user from localStorage
+// Function to load comments from the server
+async function loadComments() {
+  const response = await fetch('http://localhost:3000/api/comments'); // Replace with your server URL
+  const comments = await response.json();
+  const commentsList = document.getElementById('commentsList');
 
-      // Clear the comment list
-      commentsList.innerHTML = '<h3>Comments:</h3>';
+  // Clear the comment list
+  commentsList.innerHTML = '<h3>Comments:</h3>';
 
-      // Loop through comments and display them
-      comments.forEach((commentData, index) => {
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
+  // Loop through comments and display them
+  comments.forEach(commentData => {
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
 
-        const commentText = document.createElement('span');
-        commentText.innerText = commentData.comment; // Access comment text
-        commentDiv.appendChild(commentText);
+    const commentText = document.createElement('span');
+    commentText.innerText = commentData.comment;
+    commentDiv.appendChild(commentText);
 
-        const commentUser = document.createElement('span');
-        commentUser.classList.add('comment-user');
-        commentUser.innerText = ` - by ${commentData.user}`;
-        commentDiv.appendChild(commentUser);
+    const commentUser = document.createElement('span');
+    commentUser.classList.add('comment-user');
+    commentUser.innerText = ` - by ${commentData.user}`;
+    commentDiv.appendChild(commentUser);
 
-        // Show delete button only for admin
-        // if (currentUser === ADMIN_USER) {
-        //   const deleteButton = document.createElement('button');
-        //   deleteButton.innerText = "Delete";
-        //   deleteButton.classList.add('delete-button');
-        //   deleteButton.onclick = function() {
-        //     deleteComment(index); // Pass the index of the comment to delete
-        //   };
-        //   commentDiv.appendChild(deleteButton);
-        // }
+    commentsList.appendChild(commentDiv);
+  });
+}
 
-        commentsList.appendChild(commentDiv);
-      });
-    }
+// Function to add a comment to the server
+async function addComment(commentText, userName) {
+  const response = await fetch('http://localhost:3000/api/comments', { // Replace with your server URL
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ comment: commentText, user: userName }),
+  });
 
-    // Function to add a comment
-    function addComment(commentText, userName) {
-      const comments = JSON.parse(localStorage.getItem('comments')) || [];
+  if (response.ok) {
+    loadComments();  // Reload comments after adding
+  }
+}
 
-      // Save the comment along with the user name
-      comments.push({ comment: commentText, user: userName });
-      localStorage.setItem('comments', JSON.stringify(comments));
-    }
+// Event listener for form submission
+document.getElementById('commentForm').addEventListener('submit', function (event) {
+  event.preventDefault();
 
-    // Function to delete a comment by index
-    function deleteComment(index) {
-      let comments = JSON.parse(localStorage.getItem('comments')) || [];
+  const commentInput = document.getElementById('commentInput');
+  const userInput = document.getElementById('userNameInput');
+  const commentText = commentInput.value.trim();
+  const userName = userInput.value.trim();
 
-      // Remove the comment at the given index
-      comments.splice(index, 1);
+  if (commentText !== "" && userName !== "") {
+    // Add the comment to the server
+    addComment(commentText, userName);
 
-      // Save the updated array back to localStorage
-      localStorage.setItem('comments', JSON.stringify(comments));
+    // Clear the input fields
+    commentInput.value = "";
+    userInput.value = "";
+  }
+});
 
-      // Reload the comments to reflect the changes
-      loadComments();
-    }
-
-    // Event listener for form submission
-    document.getElementById('commentForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const commentInput = document.getElementById('commentInput');
-      const userInput = document.getElementById('userNameInput');
-      const commentText = commentInput.value.trim();
-      const userName = userInput.value.trim();
-
-      if (commentText !== "" && userName !== "") {
-        // Save current user in localStorage for future comparison
-        localStorage.setItem('currentUser', userName);
-
-        // Add the comment
-        addComment(commentText, userName);
-        loadComments();
-
-        // Clear the textarea
-        commentInput.value = "";
-        userInput.value = "";
-      }
-    });
-
-    // Load comments on page load
-    window.onload = loadComments;
+// Load comments when the page loads
+window.onload = loadComments;
 
 
   </script>

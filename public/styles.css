@@ -253,7 +253,7 @@ nav {
   margin-top: 7px;
   height: 50px;
   width: 50px;
-  margin-left: 50px;
+  margin-left: 0px;
 }
 .nav__logo a {
   color: white;
@@ -1148,6 +1148,7 @@ button:hover {
 }
 
 .comment {
+  position: relative;
   background-color: #f9f9f9;
   padding: 15px;
   margin-bottom: 10px;
@@ -1247,6 +1248,7 @@ button:hover {
   .nav__logo img {
     max-width: 120px;
     margin-bottom: 7px;
+    margin-left: 50px;
   }
 
   .nav__menu__btn {
@@ -2041,6 +2043,7 @@ button:hover {
 
   .nav__logo img {
     margin-bottom: 7px;
+    margin-left: 0;
   }
 
   .nav__logo a{
@@ -2096,7 +2099,7 @@ button:hover {
     font-family: "Lobster", sans-serif;
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: 1rem;
+    font-size: 2.5rem;
     font-weight: 600;
     color: var(--secondary-color);
   }
@@ -2145,6 +2148,7 @@ button:hover {
     /* height: 400px;
     width: 400px; */
   }
+  
   .about__header {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
@@ -2327,10 +2331,16 @@ button:hover {
   }
   
   .about-us-img-wrapper img {
-    width: 100%;
+    /* width: 100%; */
     object-fit: cover;
     mix-blend-mode: color-burn;
-    margin-top: 7rem;
+    /* margin-top: 7rem; */
+    height: 34px;
+    width: 452px;
+    /* text-align: center; */
+    overflow: visible;
+    margin: auto;
+    margin-bottom: -70px;
   }
   .trainer{
     margin-left: 0;
