@@ -31,6 +31,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <style>
+  #success-message {
+            display: none;
+            color: green;
+            background-color: white;
+            margin: 30px;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
   .contact1 {
     color: var(--text-light);
     font-weight: 600;
@@ -286,11 +295,13 @@
     input[type=color],
     select {
       font-size: 10px;
+      width: auto;
       /* Further reduce font size */
     }
 
     textarea {
       margin: 10px;
+      width: auto;
       /* Adjust margin */
     }
 
@@ -381,7 +392,7 @@
     <div class="contact1">Contact Us</div>
   </div>
   <div class="bigcontainer">
-    <form action="/contact" method="POST">
+    <!-- <form action="/contact" method="POST">
       <div id="notification"></div>
       <div class="group-field">
         <P>
@@ -411,7 +422,51 @@
           <span class="wpcf7-spinner"></span>
         </p>
       </div>
-    </form>
+    </form> -->
+
+
+    <form id="contactForm"   action="https://formspree.io/f/xanyyqlb"    method="POST">      <div id="notification"></div>
+      <div class="group-field">
+        <P>
+          <span class="wpcf7-form-control-wrap" data-name="Fname">
+            <input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
+              aria-invalid="false" placeholder="First Name *" value="" type="text" name="Fname" id="Fname"></span><br>
+          <span class="wpcf7-form-control-wrap" data-name="Lname">
+            <input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
+              aria-invalid="false" placeholder="Last Name *" value="" type="text" name="Lname" id="Lname"></span><br>
+        </P>
+        <div class="group-field">
+          <p><span class="wpcf7-form-control-wrap" data-name="email">
+              <input size="40"
+                class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
+                aria-required="true" aria-invalid="false" placeholder="Email *" value="" type="email"
+                name="email" id="email"></span><br>
+            <span class="wpcf7-form-control-wrap" data-name="phone">
+              <input size="40" maxlength="12" minlength="10"
+                class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel"
+                aria-required="true" aria-invalid="false" placeholder="Phone *" value="" type="tel" name="phone" id="phone"></span>
+          </p>
+        </div>
+        <p><span class="wpcf7-form-control-wrap" data-name="message">
+            <textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
+              aria-required="true" aria-invalid="false" placeholder="Message *" name="message" id="message"></textarea></span><br>
+          <button class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary" type="submit">Submit</button>
+          <span class="wpcf7-spinner"></span>
+        </p>
+      </div>
+      <div id="success-message">Your form was submitted successfully!</div>
+    </form> 
+
+
+    <!-- <form id="contactForm"   action="https://formspree.io/f/xanyyqlb"    method="POST">
+      <input type="text" name="name" id="name" placeholder="Your Name" required>
+      <input type="email" name="email" id="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required>
+      <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+      <button class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary" type="submit">Submit</button>
+      <div id="success-message">Your form was submitted successfully!</div>
+    </form> -->
+
     <div class="infor-box wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6 vc_col-md-6 vc_col-xs-12">
       <div class="vc_column-inner">
         <div class="wpb_wrapper">
@@ -633,6 +688,44 @@
 </script> -->
     <script src="script.js"></script>
     <script src="main.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script>
+    (function(){
+        emailjs.init("Itix54etQxDxb6Hil82kH");  // Replace 'your_user_id' with your EmailJS user ID
+    })();
+    function submitForm(event) {
+        event.preventDefault();
+
+        const Fname = document.getElementById('Fname').value;
+        const Lname = document.getElementById('Lname').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+        // const formMessage = document.getElementById('formMessage');
+
+        emailjs.send("service_0lqmqgr", "template_l0yu45n", {
+            Fname: Fname,
+            Lname: Lname,
+            email: email,
+            phone: phone,
+            message: message
+        })
+        .then(function(response) {
+            formMessage.innerHTML = "<p style='color: green;'>Form submitted successfully! We will contact you shortly.</p>";
+            document.getElementById('contactForm').reset();
+        }, function(error) {
+            formMessage.innerHTML = "<p style='color: red;'>There was an error. Please try again later.</p>";
+        });
+    }
+    document.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Display the success message
+            document.getElementById("success-message").style.display = "block";
+        });
+</script>
+
 
 </body>
 
