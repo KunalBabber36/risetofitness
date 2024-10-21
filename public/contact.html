@@ -430,26 +430,26 @@
         <P>
           <span class="wpcf7-form-control-wrap" data-name="Fname">
             <input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
-              aria-invalid="false" placeholder="First Name *" value="" type="text" name="Fname" id="Fname"></span><br>
+              aria-invalid="false" placeholder="First Name *" value="" type="text" name="Fname" id="Fname" required></span><br>
           <span class="wpcf7-form-control-wrap" data-name="Lname">
             <input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
-              aria-invalid="false" placeholder="Last Name *" value="" type="text" name="Lname" id="Lname"></span><br>
+              aria-invalid="false" placeholder="Last Name *" value="" type="text" name="Lname" id="Lname" required></span><br>
         </P>
         <div class="group-field">
           <p><span class="wpcf7-form-control-wrap" data-name="email">
               <input size="40"
                 class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                aria-required="true" aria-invalid="false" placeholder="Email *" value="" type="email"
+                aria-required="true" aria-invalid="false" placeholder="Email *" value="" type="email" required
                 name="email" id="email"></span><br>
             <span class="wpcf7-form-control-wrap" data-name="phone">
               <input size="40" maxlength="12" minlength="10"
                 class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel"
-                aria-required="true" aria-invalid="false" placeholder="Phone *" value="" type="tel" name="phone" id="phone"></span>
+                aria-required="true" aria-invalid="false" placeholder="Phone *" value="" type="tel" name="phone" id="phone" required></span>
           </p>
         </div>
         <p><span class="wpcf7-form-control-wrap" data-name="message">
             <textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
-              aria-required="true" aria-invalid="false" placeholder="Message *" name="message" id="message"></textarea></span><br>
+              aria-required="true" aria-invalid="false" placeholder="Message *" name="message" id="message" required></textarea></span><br>
           <button class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary" type="submit">Submit</button>
           <span class="wpcf7-spinner"></span>
         </p>
@@ -565,7 +565,7 @@
             </li>
             <li>
               <a href="#" onclick="openGmail()"><span><i class="ri-mail-fill"></i></span>
-                   prami72rao@gmail.com</a>
+                prami72rao@gmail.com</a>
             </li>
           </ul>
         </div>
@@ -576,17 +576,18 @@
             <li><a href="blog.html">Gym Updates</a></li>
             <li><a href="termandcondition.html">Terms and Condtions</a></li>
             <div>
-            <h4 class="hr">Hours:</h4>
-            <li><a href="about.html">Sunday Closed</a></li>
-            <li><a href="about.html"> Mon - Sat: 6 am–9 pm</a></li>
-          </div>
+              <h4 class="hr">Hours:</h4>
+              <li><a href="about.html">Sunday Closed</a></li>
+              <li><a href="about.html"> Mon - Sat: 6 am–9 pm</a></li>
+            </div>
           </ul>
-        </div>  
+        </div>
   
         <div class="footer__col">
           <h4>SOCIAL LINKS</h4>
           <p>
-            Follow us for the latest fitness tips, workout challenges, and exclusive offers! Stay motivated and connected with our fitness community!
+            Follow us for the latest fitness tips, workout challenges, and exclusive offers! Stay motivated and connected
+            with our fitness community!
           </p>
           <!-- <form action="/">
                 <input type="text" placeholder="Enter Email" />
@@ -606,33 +607,6 @@
     </footer>
     <div class="bg_blur1"></div>
     <script>
-
-      const form = document.getElementById('contactForm');
-      const successMessage = document.getElementById('successMessage');
-      const errorMessage = document.getElementById('errorMessage');
-
-      form.addEventListener('submit', function (e) {
-        // Prevent the form from redirecting immediately
-        e.preventDefault();
-
-        // Simulate AJAX submission (replace with actual logic if needed)
-        fetch(form.action, {
-          method: 'POST',
-          body: new URLSearchParams(new FormData(form))
-        })
-          .then(response => {
-            if (response.ok) {
-              successMessage.style.display = 'block';
-              errorMessage.style.display = 'none';
-            } else {
-              throw new Error('Something went wrong');
-            }
-          })
-          .catch(error => {
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'block';
-          });
-      });
 
       let lastScrollTop = 0;
       const header = document.getElementById("navbar");
@@ -702,7 +676,7 @@
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
         const message = document.getElementById('message').value;
-        // const formMessage = document.getElementById('formMessage');
+        const formMessage = document.getElementById('formMessage');
 
         emailjs.send("service_0lqmqgr", "template_l0yu45n", {
             Fname: Fname,

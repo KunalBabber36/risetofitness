@@ -90,3 +90,12 @@ document.getElementById('updateContent').addEventListener('click', function() {
 });
 
 
+// Automatically move to the next slide every 3 seconds
+setInterval(showNextCarouselSlide, 3000);
+
+
+function openGmail() {
+  var subject = encodeURIComponent("Your Subject");
+  var body = encodeURIComponent("Your message goes here");
+  window.open("https://mail.google.com/mail/?view=cm&fs=1&to=prami72rao@gmail.com&su=" + subject + "&body=" + body);
+}
