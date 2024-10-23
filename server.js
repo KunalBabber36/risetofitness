@@ -201,17 +201,17 @@ app.get('/', (req, res) => {
 
 
 const { MongoClient } = require('mongodb');
-const uri = "your-mongodb-connection-string";
+const uri = "your-correct-mongodb-connection-string"; // Make sure this starts with mongodb:// or mongodb+srv://
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function connectDB() {
   try {
     await client.connect();
     console.log("Connected to MongoDB");
-    const db = client.db('your-database-name');
-    // Perform database operations
+    // Your further logic here
   } catch (error) {
-    console.error(error);
+    console.error("Connection error:", error);
   }
 }
 
