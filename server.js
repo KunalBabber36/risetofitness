@@ -201,7 +201,7 @@ app.get('/', (req, res) => {
 
 
 const { MongoClient } = require('mongodb');
-const uri = "your-correct-mongodb-connection-string"; // Make sure this starts with mongodb:// or mongodb+srv://
+const uri = "mongodb://localhost:27017/myDatabase";
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
