@@ -199,6 +199,25 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
+const { MongoClient } = require('mongodb');
+const uri = "your-mongodb-connection-string";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+async function connectDB() {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
+    const db = client.db('your-database-name');
+    // Perform database operations
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+connectDB();
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
