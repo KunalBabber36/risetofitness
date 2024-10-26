@@ -8,12 +8,11 @@ const cors = require('cors');
 
 // Initialize the app
 const app = express();
-const port = 3000;
+// const port = 3000;
+const port = process.env.PORT || 3000;
+
 
 // Middleware
-app.use('/', (req, res) => {
-  res.json({message:"Server is running"}); 
-});
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -84,6 +83,9 @@ app.get('/images', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: 'Error fetching images', error });
   }
+});
+app.get('/', (req, res) => {
+  res.send('Hello from Vercel!');
 });
 
 // Set up your other middleware and routes
