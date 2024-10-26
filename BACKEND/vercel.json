@@ -2,25 +2,17 @@
   "version": 2,
   "builds": [
     {
-      "src": "FRONTEND/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "FRONTEND/build"
-      }
-    },
-    {
-      "src": "BACKEND/server.js",
+      "src": "server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/BACKEND/server.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/FRONTEND/index.html"
+      "dest": "/"
     }
-  ]
+  ],
+  "env": {
+    "MONGODB_URI": "mongodb://localhost:27017/combinedDB"
+  }
 }
