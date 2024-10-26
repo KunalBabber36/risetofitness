@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General styling */
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #380000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.bg__blur{
+    position: absolute;
+    box-shadow: 0 0 1000px 900px rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 3em;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+h2 {
+    color: #fff;
+    font-size: 2em;
+}
+
+.del-btn {
+    margin-top: 15%;
+    margin-left: -19%;
+    height: 50px;
+    width: 100px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ff0000f6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s;
+}
+
+.del-btn:hover{
+    background-color: #ff0000b0;
+    transform: scale(1.05);
+}
+.delete-button{
+    margin-left: 30px;
+    height: 50px;
+    width: 100px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ff0000f6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s;
+}
+
+.delete-button:hover{
+    background-color: #ff0000b0;
+    transform: scale(1.05);
+}
+/* .comment{
+    display: inline-block;
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+.comments-container {
+  background-color: transparent;
+  border: 2px solid var(--text-light);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.comments-container h2, h3{
+  color: var(--text-light);
+}
+textarea, input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#commentsList {
+  margin-top: 30px;
+}
+
+.comment {
+    color: #333;
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment span{
+    overflow-wrap: anywhere;
+}
+
+.comment-user {
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a;
+}
+
+/* Button styling */
+.btn {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 30px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ff0000f6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff0000b0;
+    transform: scale(1.05);
+}
+
+/* Image input styling */
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    color: #fff;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #ff0000f6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #ff0000f6;
+}
+
+/* Uploaded images container */
+#uploaded-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 110px;
+    padding: 20px;
+}
+
+#uploaded-images img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+#uploaded-images img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+.head{
+    text-align: center;
+}
+/* Keyframe animations */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+
+    #uploaded-images img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
+
+    .del-btn {
+        margin-top: 10%;
+        margin-left: 0;
+        width: 90px;
+        height: 45px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1140px){
+    .del-btn{
+        margin-top: 200px;
+        margin-left: -242px;
+    }
+}
+<<<<<<< HEAD
+
+=======
+>>>>>>> 0f22351f09df36ad71444a92d870f1e257bdcf30
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+
+    #uploaded-images img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+    }
+
+    .del-btn {
+        margin-left: 0;
+        width: 80px;
+        height: 40px;
+    }
+}
+@media (max-width: 320px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    .head{
+        margin-bottom: 130px;
+    }
+
+    #uploaded-images img {
+        width: 100px;
+        height: 100px;
+        margin-top: -110px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+    }
+
+    .del-btn {
+        margin-top: -100px;
+        margin-left: 0;
+        width: 80px;
+        height: 40px;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="bg__blur"></div>
+    <h1>Admin Management</h1>
+    <input type="file" id="imageInput">
+    <!-- <input type="text" id="imageStatement" placeholder="Enter image statement"> -->
+    <button onclick="uploadImage()" class="btn">Upload Image</button>
+    <h2 class="head">Uploaded Images</h2>
+    <div id="uploaded-images"></div>
+    <div class="comments-container">
+        <h1>Admin - Manage Comments</h1>
+        <div id="commentsList">
+          <h2 class="head">All Comments:</h2>
+          <!-- Comments will be added here dynamically -->
+        </div>
+    <button onclick="logout()" class="btn">Logout</button>
+    <script>
+
+const ADMIN_USER = "admin"; // Define the admin user
+
+// Function to load comments for admin
+function loadComments() {
+  const comments = JSON.parse(localStorage.getItem('comments')) || [];
+  const commentsList = document.getElementById('commentsList');
+
+  // Clear the comment list
+  commentsList.innerHTML = '<h2 class="head">All Comments:</h2>';
+
+  // Loop through comments and display them
+  comments.forEach((commentData, index) => {
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+
+    const commentText = document.createElement('span');
+    commentText.innerText = commentData.comment; // Access comment text
+    commentDiv.appendChild(commentText);
+
+    const commentUser = document.createElement('span');
+    commentUser.classList.add('comment-user');
+    commentUser.innerText = ` - by ${commentData.user}`;
+    commentDiv.appendChild(commentUser);
+
+    // Show delete button for admin
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = "Delete";
+    deleteButton.classList.add('delete-button');
+    deleteButton.onclick = function() {
+      deleteComment(index); // Pass the index of the comment to delete
+    };
+    commentDiv.appendChild(deleteButton);
+
+    commentsList.appendChild(commentDiv);
+  });
+}
+
+// Function to delete a comment by index for admin
+function deleteComment(index) {
+  let comments = JSON.parse(localStorage.getItem('comments')) || [];
+  
+  // Remove the comment at the given index
+  comments.splice(index, 1);
+
+  // Save the updated array back to localStorage
+  localStorage.setItem('comments', JSON.stringify(comments));
+
+  // Reload the comments to reflect the changes
+  loadComments();
+}
+
+// Load comments on page load
+window.onload = loadComments;
+
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rise To Fitness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  /> -->
+
+  <link rel="stylesheet" href="styles.css" />
+
+
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Boxicons CSS -->
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="home"></div>
+  <nav>
+    <div class="nav__bar" id="navbar">
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#"><img src="assets/logo.jpg" alt="logo" />Rise To Fitness</a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="trainers.html">TRAINER</a></li>
+        <li><a>CLASSES <i class="fas fa-angle-down"></i> </a>
+          <div class="hover">
+            <ul>
+              <li class="dropdown">
+                <a href="cardio.html">CARDIO</a>
+              </li>
+              <li><a href="power.html">POWER LIFTING</a>
+              </li>
+              <li><a href="personal.html">PERSONAL TRAINING</a>
+              </li>
+              <li><a href="crossfit.html">CROSS FIT</a>
+              </li>
+              <li><a href="yoga.html">YOGA</a>
+              </li>
+              <li><a href="weight.html">WEIGHT TRAINING</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="review.html">REVIEWS</a></li>
+        <li><a href="blog.html">GYM UPDATES</a></li>
+        <li><a href="contact.html"><button class="btnn">CONTACT US</button></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="section__container header__container">
+    <div class="header__content">
+      <span class="bg__blur"></span>
+      <span class="bg__blur header__blur"></span>
+      <h4 class="area">WELCOME TO RISE TO FITNESS</h4>
+      <h1><span>STRONGER</span> EVERY SINGLE DAY</h1>
+      <span class="multiple-text"></span>
+      <p class="multiple-text2"></p>
+      <a href="contact.html"><button class="btnn">JOIN NOW</button></a>
+    </div>
+    <!-- <div class="header__image">
+      <img src="assets/header.png" alt="header" />
+    </div> -->
+    <div class="image-carousel-container">
+      <div class="image-carousel-wrapper">
+        <div class="image-carousel-slide">
+          <img src="assets/header.png" alt="Slide 1">
+        </div>
+        <div class="image-carousel-slide">
+          <img src="assets/hero_image.png" alt="Slide 2">
+        </div>
+        <div class="image-carousel-slide">
+          <img src="assets/home-img.png" alt="Slide 3">
+        </div>
+        <div class="image-carousel-slide">
+          <img src="assets/choose-img.png" alt="Slide 4">
+        </div>
+        <div class="image-carousel-slide">
+          <img src="assets/calculate-img.png" alt="Slide 5">
+        </div>
+      </div>
+    </div>
+
+
+  </header>
+
+  <section class="section__container about__container" id="about">
+    <div class="about__header">
+      <h2 class="section__header">ABOUT US</h2>
+      <p class="section__description">
+        Our mission is to inspire and support individuals in achieving their
+        health and wellness goals, regardless of their fitness level or
+        background.
+      </p>
+    </div>
+    <div class="about__grid">
+      <div class="about__card">
+        <h4>WINNER COACHES</h4>
+        <p>
+          We pride ourselves on having a team of dedicated and experienced
+          coaches who are committed to helping you succeed.
+        </p>
+      </div>
+      <div class="about__card">
+        <h4>AFFORDABLE PRICE</h4>
+        <p>
+          We believe that everyone should have access to high-quality fitness
+          facilities without breaking the bank.
+        </p>
+      </div>
+      <div class="about__card">
+        <h4>MODERN EQUIPMENTS</h4>
+        <p>
+          Stay ahead of the curve with our state-of-the-art equipment designed
+          to elevate your workout experience.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="classes" id="classes">
+    <div class="section-new">
+      <h1 class="section-heading">Classes</h1>
+      <div class="underline"></div>
+    </div>
+    <div class="servicess">
+      <div class="service">
+        <div class="service-new">
+          <h1>Cardio</h1>
+        </div>
+        <p class="service-text">
+          Cardio exercises, like running and cycling, help improve heart health, boost stamina, and burn calories,
+          making them essential for overall fitness and endurance.
+        </p>
+      </div>
+      <div class="service">
+        <div class="service-new">
+          <h1>Power Lifting</h1>
+        </div>
+        <p class="service-text">
+          Powerlifting is a strength-based sport focusing on three main lifts: squat, bench press, and deadlift. It
+          emphasizes maximal strength development through heavy weightlifting and proper technique.
+        </p>
+      </div>
+      <div class="service">
+        <div class="service-new">
+          <h1>Personal Training</h1>
+        </div>
+        <p class="service-text">
+          Personal training is a customized fitness coaching service where a certified trainer designs and guides
+          individualized workout plans. It focuses on achieving specific fitness goals, improving technique, and
+          providing motivation.
+        </p>
+      </div>
+      <div class="service">
+        <div class="service-new">
+          <h1>Cross Fit</h1>
+        </div>
+        <p class="service-text">
+          CrossFit is a high-intensity fitness program combining strength training, cardio, and functional movements
+          like lifting, jumping, and sprinting, designed to improve overall endurance and strength.
+        </p>
+      </div>
+      <div class="service">
+        <div class="service-new">
+          <h1>Yoga</h1>
+        </div>
+        <p class="service-text">
+          Yoga is a mind-body practice combining physical postures, breathing exercises, and meditation. It enhances
+          flexibility, strength, balance, and mental clarity while promoting relaxation and stress relief.
+        </p>
+      </div>
+      <div class="service">
+        <div class="service-new">
+          <h1>Weight Training</h1>
+        </div>
+        <p class="service-text">
+          Weight training is a form of exercise using resistance, typically with free weights or machines, to build
+          muscle strength, endurance, and tone. It targets specific muscle groups and enhances overall physical fitness.
+        </p>
+      </div>
+      <div class="about-us-img-wrapper">
+        <img src="assets/aboutimage.jpg" />
+      </div>
+    </div>
+  </section>
+  <div class="bg_blur"></div>
+
+  <section class="section__container trainer__container" id="trainer">
+    <h2 class="section__header trainer">MEET OUR TRAINERS</h2>
+    <div class="trainer__grid">
+      <div class="trainer__card">
+        <img src="assets/trainer-1.jpg" alt="trainer" />
+        <h4>DAVID WILLIAMS</h4>
+        <p>Body Builder Coach</p>
+        <div class="trainer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+      <div class="trainer__card">
+        <img src="assets/trainer-2.jpg" alt="trainer" />
+        <h4>ROSY RIVERA</h4>
+        <p>Cardio Coach</p>
+        <div class="trainer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+      <div class="trainer__card">
+        <img src="assets/trainer-3.jpg" alt="trainer" />
+        <h4>MATT STONIE</h4>
+        <p>Fitness Coach</p>
+        <div class="trainer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+      <div class="trainer__card">
+        <img src="assets/trainer-4.jpg" alt="trainer" />
+        <h4>SOFIA LAUREN</h4>
+        <p>Crossfit Coach</p>
+        <div class="trainer__socials">
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg_blur2"></div>
+
+  <div class="section__container client__container" id="client">
+    <h2 class="section__header review">What People Says About Us?</h2>
+    <p class="section__description des">
+      These testimonials serve as a testament to our commitment to helping
+      individuals achieve their fitness goals, and fostering a supportive
+      environment for everyone who walks through our doors.
+    </p>
+  </div>
+  <section class="container">
+    <div class="testimonial mySwiper">
+      <div class="testi-content swiper-wrapper">
+        <div class="slide swiper-slide">
+          <img src="images/N.png" alt="" class="image" />
+          <div class="client__ratings">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+          </div>
+          <p>
+            Till yet it is the best gym I have experienced.
+            Environment is so good and friendly.
+            Gym owner pramila madam is so encouraging and helpful in every manners.
+            Trainer Shiva sir is best .
+            All the time outing is planned.
+            Best place to workout 💪 with fun.
+            Here is no politics and every one very friendly.
+          </p>
+
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">namita singh</span>
+            <!-- <span class="job">Web Developer</span> -->
+          </div>
+        </div>
+        <div class="slide swiper-slide">
+          <img src="images/R.png" alt="" class="image" />
+          <div class="client__ratings">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+          </div>
+          <p>
+            This gym is amazing. Amazing facility, good equipment and great environment. Good service with friendly
+            staff and super clean and comfortable gym for everyone from beginners to professional athletes to train at.I
+            love going to this gym everyday..Trainer is too good and professional.. it feels motivated.. Gym deserves
+            five ⭐..
+          </p>
+
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Richa Kumari</span>
+            <!-- <span class="job">Web Developer</span> -->
+          </div>
+        </div>
+        <div class="slide swiper-slide">
+          <img src="images/G.png" alt="" class="image" />
+          <div class="client__ratings">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+          </div>
+          <p>
+            Best gym in the town🦾trainer(shiva)is very much supportive.He really helped me to lose 5kg in just
+            2weeks.The environment of gym is fantastic.I gained a lot of knowledge from shiva sir about diet,exercises
+            an all.
+            Thank you 🙏 🤌🏻🫰
+          </p>
+
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Gurpreet Kaur</span>
+            <!-- <span class="job">Web Developer</span> -->
+          </div>
+        </div>
+
+
+        <div class="slide swiper-slide">
+          <img src="images/L.png" alt="" class="image" />
+          <div class="client__ratings">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+          </div>
+          <p>
+            Nice n very familiar atmosphere
+          </p>
+
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Laxman Rao</span>
+            <!-- <span class="job">Web Developer</span> -->
+          </div>
+        </div>
+        <div class="slide swiper-slide">
+          <img src="images/H.png" alt="" class="image" />
+          <div class="client__ratings">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+          </div>
+          <p>
+            I am very inspired with rise to fitness gym ☺️ and all gym staff very good behaviour
+          </p>
+
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Happy Deepika</span>
+            <!-- <span class="job">Web Developer</span> -->
+          </div>
+        </div>
+        <div class="slide swiper-slide">
+          <img src="images/P.png" alt="" class="image" />
+          <div class="client__ratings">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+          </div>
+          <p>
+            Nice place to do gyming activity facilitated with good equipment.
+          </p>
+
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Prashant Jha</span>
+            <!-- <span class="job">Web Developer</span> -->
+          </div>
+        </div>
+
+        <div class="slide swiper-slide">
+          <img src="images/S.jpg" alt="" class="image" />
+          <div class="client__ratings">
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+            <span><i class="ri-star-fill"></i></span>
+          </div>
+          <p>
+            One of the best gym in this area with well maintained equipments and supportive trainers.
+          </p>
+
+          <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+          <div class="details">
+            <span class="name">Siddhartha</span>
+            <!-- <span class="job">Web Developer</span> -->
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next nav-btn"></div>
+      <div class="swiper-button-prev nav-btn"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <section class="blog" id="blog">
+    <div class="section__container blog__container">
+      <h2 class="section__header">GYM UPDATES</h2>
+      <div class="blog__grid">
+        <div class="blog__card">
+          <div id="image-gallery"></div>
+        </div>
+        <div class="blog__btn">
+        </div>
+      </div>
+  </section>
+  <div class="comments-container">
+    <h2>Leave a Comment</h2>
+    <form id="commentForm">
+      <input type="text" id="userNameInput" placeholder="Your Name" required>
+      <textarea id="commentInput" placeholder="Write your comment here..." required></textarea>
+      <button type="submit">Post Comment</button>
+    </form>
+
+    <div id="commentsList">
+      <h3>Comments:</h3>
+      <!-- Comments will be added here dynamically -->
+    </div>
+  </div>
+
+  <div class="bg_blur4"></div>
+  <div class="bg_blur5"></div>
+
+
+
+  <section class="section__container logo__banner">
+    <div class="bg_blur6"></div>
+
+    <img src="assets/banner-1.png" alt="banner" />
+    <img src="assets/banner-2.png" alt="banner" />
+    <img src="assets/banner-3.png" alt="banner" />
+    <img src="assets/banner-4.png" alt="banner" />
+  </section>
+
+
+
+
+
+  <footer class="footer" id="contact">
+    <div class="section__container footer__container">
+      <div class="footer__col">
+        <div class="footer__logo">
+          <a href="#"><img src="assets/logo.jpg" alt="logo" /></a>
+        </div>
+        <p>
+          Welcome to Rise To fitness! We’re excited to help you embark on your fitness journey!
+        </p>
+        <ul class="footer__links">
+          <li>
+            <a
+              href="https://www.google.com/maps/dir/Rise+To+Fitness,+Besides+Krishna+Mandir,+Punjabi+Refugee+Colony,+Golmuri,+Jamshedpur,+Jharkhand/Besides+Krishna+Mandir,+1st+floor,+Shree+Krishna+Mandir+Bhawan,+Punjabi+Refugee+Colony,+Jamshedpur,+Jharkhand+831003/@22.7972919,86.171417,13z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x39f5e34eb6a03c15:0xc6112b30e302ac7b!2m2!1d86.2126096!2d22.7972433!1m5!1m1!1s0x39f5e34eb6a03c15:0xc6112b30e302ac7b!2m2!1d86.2126096!2d22.7972433?entry=ttu&g_ep=EgoyMDI0MTAwNy4xIKXMDSoASAFQAw%3D%3D">
+              <span><i class="ri-map-pin-2-fill"></i></span>
+              Besides Krishna Mandir, 1st floor, Shree Krishna Mandir Bhawan, Punjabi Refugee Colony, Jamshedpur,
+              Jharkhand 831009 </a>
+          </li>
+          <li>
+            <a href="#">
+              <span><i class="ri-phone-fill"></i></span>
+              <a href="tel:+91 87097 82478">+91 8709782478</a>
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="openGmail()"><span><i class="ri-mail-fill"></i></span>
+              prami72rao@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__col footer__company">
+        <h4>COMPANY</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Gym Updates</a></li>
+          <li><a href="termandcondition.html">Terms and Condtions</a></li>
+          <div>
+            <h4 class="hr">Hours:</h4>
+            <li><a href="about.html">Sunday Closed</a></li>
+            <li><a href="about.html"> Mon - Sat: 6 am–9 pm</a></li>
+          </div>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>SOCIAL LINKS</h4>
+        <p>
+          Follow us for the latest fitness tips, workout challenges, and exclusive offers! Stay motivated and connected
+          with our fitness community!
+        </p>
+        <!-- <form action="/">
+              <input type="text" placeholder="Enter Email" />
+              <button class="btnn">SEND</button>
+            </form> -->
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/profile.php?id=100063924465595"><i class="ri-facebook-fill"></i></a>
+          <a href="https://www.youtube.com/@risetofitnessr2f679"><i class="ri-youtube-fill"></i></a>
+          <a href="https://www.instagram.com/rise2fitness/"><i class="ri-instagram-fill"></i></a>
+          <a href="https://wa.me/+918709782478?text=Hello%20there!" target="_blank"><i class="ri-whatsapp-fill"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      Copyright © 2024 Rise To Fitness. All rights reserved.
+    </div>
+  </footer>
+  <div class="bg_blur1"></div>
+  <script>
+
+
+// Example: fetching data from the backend
+fetch('http://localhost:3000/api/data')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // Do something with the data, like displaying it in the frontend
+  })
+  .catch(error => console.error('Error fetching data:', error));
+
+
+
+    let carouselIndex = 0;
+    const carouselWrapper = document.querySelector('.image-carousel-wrapper');
+    const carouselSlides = document.querySelectorAll('.image-carousel-slide');
+    const totalCarouselSlides = carouselSlides.length;
+
+    // Clone first and last slides for seamless loop
+    const firstCarouselSlideClone = carouselSlides[0].cloneNode(true);
+    const lastCarouselSlideClone = carouselSlides[totalCarouselSlides - 1].cloneNode(true);
+
+    carouselWrapper.appendChild(firstCarouselSlideClone);  // Add clone to the end
+    carouselWrapper.insertBefore(lastCarouselSlideClone, carouselSlides[0]);  // Add clone to the beginning
+
+    // Update total number of slides after cloning
+    let newTotalCarouselSlides = document.querySelectorAll('.image-carousel-slide').length;
+
+    function showNextCarouselSlide() {
+      carouselIndex++;
+
+      if (carouselIndex >= newTotalCarouselSlides - 1) {
+        carouselWrapper.style.transition = "none";  // Disable transition
+        carouselIndex = 1;  // Reset to first real slide
+        carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      } else {
+        carouselWrapper.style.transition = "transform 0.5s ease";  // Enable transition for normal slide move
+        carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      }
+    }
+
+    function showPreviousCarouselSlide() {
+      carouselIndex--;
+
+      if (carouselIndex < 0) {
+        carouselWrapper.style.transition = "none";  // Disable transition
+        carouselIndex = newTotalCarouselSlides - 2;  // Reset to last real slide
+        carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      } else {
+        carouselWrapper.style.transition = "transform 0.5s ease";  // Enable transition for normal slide move
+        carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      }
+    }
+
+    // Automatically move to the next slide every 3 seconds
+    setInterval(showNextCarouselSlide, 3000);
+
+
+    function openGmail() {
+      var subject = encodeURIComponent("Your Subject");
+      var body = encodeURIComponent("Your message goes here");
+      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=prami72rao@gmail.com&su=" + subject + "&body=" + body);
+    }
+
+    let lastScrollTop = 0;
+    const header = document.getElementById("navbar");
+
+    window.addEventListener("scroll", function () {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        // Scroll Down
+        header.classList.add("hidden");
+      } else {
+        // Scroll Up
+        header.classList.remove("hidden");
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
+    });
+
+    document.getElementById('menu-btn').addEventListener('click', function () {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active'); // Toggle active class
+    });
+
+    const typed = new Typed('.multiple-text', {
+      strings: ['CARDIO', 'POWER LIFTING', 'PERSONAL TRAINING', 'CROSS FIT', 'YOGA', 'WEIGHT TRAINING'],
+      typeSpeed: 60,
+      backSpeed: 60,
+      backDelay: 11000,
+      loop: false,
+
+    });
+    const typed2 = new Typed('.multiple-text2', {
+      strings: ['Cardio is exercise that raises heart rate and improves endurance.', 'Powerlifting focuses on three main lifts: squat, bench press, deadlift.', 'Personal training provides tailored workouts and guidance to achieve goals.', 'CrossFit combines varied functional movements for fitness training.', 'Yoga integrates physical postures, breath control, for body.', 'Weight training uses resistance to build strength and mass.'],
+      typeSpeed: 60,
+      backSpeed: 60,
+      backDelay: 1000,
+      loop: false,
+
+    });
+
+    // const ADMIN_USER = "admin"; // Define the admin user name
+    // // Function to load comments from localStorage
+    // function loadComments() {
+    //   const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    //   const commentsList = document.getElementById('commentsList');
+    //   const currentUser = localStorage.getItem('currentUser'); // Get current user from localStorage
+
+    //   // Clear the comment list
+    //   commentsList.innerHTML = '<h3>Comments:</h3>';
+
+    //   // Loop through comments and display them
+    //   comments.forEach((commentData, index) => {
+    //     const commentDiv = document.createElement('div');
+    //     commentDiv.classList.add('comment');
+
+    //     const commentText = document.createElement('span');
+    //     commentText.innerText = commentData.comment; // Access comment text
+    //     commentDiv.appendChild(commentText);
+
+    //     const commentUser = document.createElement('span');
+    //     commentUser.classList.add('comment-user');
+    //     commentUser.innerText = ` - by ${commentData.user}`;
+    //     commentDiv.appendChild(commentUser);
+
+    //     // Show delete button only for admin
+    //     // if (currentUser === ADMIN_USER) {
+    //     //   const deleteButton = document.createElement('button');
+    //     //   deleteButton.innerText = "Delete";
+    //     //   deleteButton.classList.add('delete-button');
+    //     //   deleteButton.onclick = function() {
+    //     //     deleteComment(index); // Pass the index of the comment to delete
+    //     //   };
+    //     //   commentDiv.appendChild(deleteButton);
+    //     // }
+
+    //     commentsList.appendChild(commentDiv);
+    //   });
+    // }
+
+    // // Function to add a comment
+    // function addComment(commentText, userName) {
+    //   const comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    //   // Save the comment along with the user name
+    //   comments.push({ comment: commentText, user: userName });
+    //   localStorage.setItem('comments', JSON.stringify(comments));
+    // }
+
+    // // Function to delete a comment by index
+    // function deleteComment(index) {
+    //   let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    //   // Remove the comment at the given index
+    //   comments.splice(index, 1);
+
+    //   // Save the updated array back to localStorage
+    //   localStorage.setItem('comments', JSON.stringify(comments));
+
+    //   // Reload the comments to reflect the changes
+    //   loadComments();
+    // }
+
+    // // Event listener for form submission
+    // document.getElementById('commentForm').addEventListener('submit', function (event) {
+    //   event.preventDefault();
+
+    //   const commentInput = document.getElementById('commentInput');
+    //   const userInput = document.getElementById('userNameInput');
+    //   const commentText = commentInput.value.trim();
+    //   const userName = userInput.value.trim();
+
+    //   if (commentText !== "" && userName !== "") {
+    //     // Save current user in localStorage for future comparison
+    //     localStorage.setItem('currentUser', userName);
+
+    //     // Add the comment
+    //     addComment(commentText, userName);
+    //     loadComments();
+
+    //     // Clear the textarea
+    //     commentInput.value = "";
+    //     userInput.value = "";
+    //   }
+    // });
+
+    // // Load comments on page load
+    // window.onload = loadComments;
+   
+    // Function to load comments from the database
+async function loadComments() {
+  const response = await fetch('http://localhost:3000/comments');
+  const comments = await response.json();
+  const commentsList = document.getElementById('commentsList');
+
+  // Clear the comment list
+  commentsList.innerHTML = '<h3>Comments:</h3>';
+
+  // Loop through comments and display them
+  comments.forEach((commentData) => {
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+
+    const commentText = document.createElement('span');
+    commentText.innerText = commentData.comment; // Access comment text
+    commentDiv.appendChild(commentText);
+
+    const commentUser = document.createElement('span');
+    commentUser.classList.add('comment-user');
+    commentUser.innerText = ` - by ${commentData.user}`;
+    commentDiv.appendChild(commentUser);
+
+    commentsList.appendChild(commentDiv);
+  });
+}
+
+// Function to add a comment to the database
+async function addComment(commentText, userName) {
+  await fetch('http://localhost:3000/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ user: userName, comment: commentText }),
+  });
+}
+
+// Event listener for form submission
+document.getElementById('commentForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const commentInput = document.getElementById('commentInput');
+  const userInput = document.getElementById('userNameInput');
+  const commentText = commentInput.value.trim();
+  const userName = userInput.value.trim();
+
+  if (commentText !== "" && userName !== "") {
+    // Add the comment
+    addComment(commentText, userName).then(() => {
+      loadComments();
+    });
+
+    // Clear the textarea
+    commentInput.value = "";
+    userInput.value = "";
+  }
+});
+
+// Load comments on page load
+window.onload = loadComments;
+
+// Full-screen function
+function openImageInFullScreen(imageElement) {
+  if (imageElement.requestFullscreen) {
+    imageElement.requestFullscreen();
+  } else if (imageElement.mozRequestFullScreen) { // Firefox
+    imageElement.mozRequestFullScreen();
+  } else if (imageElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+    imageElement.webkitRequestFullscreen();
+  } else if (imageElement.msRequestFullscreen) { // IE/Edge
+    imageElement.msRequestFullscreen();
+  }
+}
+
+// Fetch images from the server
+fetch('http://localhost:3000/images') // Specify full URL for better debugging
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    return response.json();
+  })
+  .then(images => {
+    const gallery = document.getElementById('image-gallery');
+    gallery.innerHTML = ''; // Clear existing gallery content
+
+    images.forEach(image => {
+      // Create an img element for each image
+      const img = document.createElement('img');
+      // Correct image URL (replace backslashes with forward slashes)
+      img.src = `http://localhost:3000/${image.url.replace(/\\/g, '/')}`; 
+      img.alt = image.statement;
+      img.style.width = '200px'; // Optional: Adjust the size of the image
+      img.classList.add('clickable-image'); // Add a class for identifying clickable images
+
+      // Add a click event to open the image in full-screen mode
+      img.addEventListener('click', function() {
+        openImageInFullScreen(this);
+      });
+
+      // Create a div to hold the image and statement
+      const div = document.createElement('div');
+      div.style.marginBottom = '20px'; // Optional: Spacing between image blocks
+      div.classList.add('image-block'); // Updated class name for clarity
+
+      // Create the statement element and add the statement text
+      const statement = document.createElement('p');
+      statement.textContent = image.statement; // Display the statement
+      statement.style.marginBottom = '20px'; // Optional: Spacing between image blocks
+      statement.classList.add('image-statement'); // Updated class name for clarity
+
+      // Append the image and statement to the div
+      div.appendChild(img);
+      div.appendChild(statement);
+
+      // Append the div to the gallery
+      gallery.appendChild(div);
+    });
+  })
+  .catch(err => {
+    console.error('Error fetching images:', err);
+    alert('Could not load images. Please check the console for details.'); // Alert user
+  });
+
+// Function to open image in full-screen mode (you need to define this)
+function openImageInFullScreen(imageElement) {
+  if (imageElement.requestFullscreen) {
+    imageElement.requestFullscreen();
+  } else if (imageElement.webkitRequestFullscreen) { // Safari
+    imageElement.webkitRequestFullscreen();
+  } else if (imageElement.msRequestFullscreen) { // IE11
+    imageElement.msRequestFullscreen();
+  }
+}
+    
+  </script>
+  <script src="script.js"></script>
+  <!-- <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script> -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+  <!-- Swiper JS -->
+  <script src="js/swiper-bundle.min.js"></script>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+  <!-- <script>
+        // Extract the image filename from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageName = urlParams.get('image');
+  
+        if (imageName) {
+            document.getElementById("uploadedImage").src = "/uploads/" + imageName;
+        } else {
+            document.body.innerHTML = "<h1>No image to display</h1>";
+        }
+    </script> -->
+  <script src="script.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>

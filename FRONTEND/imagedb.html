@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload with Delete</title>
+  <style>
+      body {
+      font-family: Arial, sans-serif;
+    }
+    .comments-container {
+      margin: 20px;
+    }
+    .comment-item {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+    }
+    .delete-button {
+      color: red;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upload Image with Statement</h1>
+
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="image" id="imageInput" required><br><br>
+    <input type="text" name="statement" id="statementInput" placeholder="Enter a statement" required><br><br>
+    <button type="submit">Upload</button>
+  </form>
+
+  <h2>Uploaded Images</h2>
+  <div id="imagesList"></div>
+
+  <div class="comments-container">
+    <h2>Manage Comments</h2>
+    <div id="commentsList">
+      <!-- Comments will be displayed here with delete option -->
+    </div>
+  </div>
+  <!-- <script src="upload.js"></script> -->
+
+  <script>
+    // Function to fetch and display uploaded images
+    async function fetchImages() {
+      const response = await fetch('/images');
+      const images = await response.json();
+      const imagesList = document.getElementById('imagesList');
+      imagesList.innerHTML = ''; // Clear previous content
+      images.forEach(image => {
+        const imgDiv = document.createElement('div');
+        imgDiv.innerHTML = `
+          <img src="${image.url}" width="200"><br>
+          <p>${image.statement}</p>
+          <button onclick="deleteImage('${image._id}')">Delete</button>
+        `;
+        imagesList.appendChild(imgDiv);
+      });
+    }
+
+    // Function to delete an image
+    async function deleteImage(id) {
+      if (confirm('Are you sure you want to delete this image?')) {
+        const response = await fetch(`/images/${id}`, {
+          method: 'DELETE'
+        });
+        const result = await response.json();
+        alert(result.message);
+        fetchImages(); // Refresh the image list
+      }
+    }
+
+    // Handle form submission for image upload
+    const uploadForm = document.getElementById('uploadForm');
+    uploadForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(uploadForm);
+      const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+      alert(result.message);
+      fetchImages(); // Refresh the image list after upload
+    });
+
+    // Fetch and display images on page load
+    fetchImages();
+
+    // Fetch and display comments
+    function loadComments() {
+      fetch('/comments')
+        .then(response => response.json())
+        .then(comments => {
+          const commentsList = document.getElementById('commentsList');
+          commentsList.innerHTML = ""; // Clear previous comments
+
+          comments.forEach(comment => {
+            const commentItem = document.createElement('div');
+            commentItem.classList.add('comment-item');
+            commentItem.innerHTML = `
+              <p><strong>${comment.user}</strong>: ${comment.comment}</p>
+              <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
+            `;
+            commentsList.appendChild(commentItem);
+          });
+        })
+        .catch(error => console.error('Error loading comments:', error));
+    }
+
+    // Delete comment
+    function deleteComment(commentId) {
+      fetch(`/comments/${commentId}`, {
+        method: 'DELETE'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'Comment deleted successfully') {
+          loadComments(); // Refresh the comment list after deletion
+        } else {
+          alert('Error deleting comment');
+        }
+      })
+      .catch(error => console.error('Error deleting comment:', error));
+    }
+
+    // Load comments when the page loads
+    window.onload = loadComments;
+
+  </script>
+</body>
+</html>

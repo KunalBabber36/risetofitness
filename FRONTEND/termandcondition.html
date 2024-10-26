@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rise To Fitness</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  /> -->
+
+  <link rel="stylesheet" href="styles.css" />
+
+
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Boxicons CSS -->
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    body {
+      font-size: 12px;
+    }
+
+    .flex_align_justify {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper {
+      min-height: 100vh;
+      padding: 0 20px;
+    }
+
+    .tc_wrap {
+      width: 700px;
+      max-width: 100%;
+      height: 450px;
+      background: var(--white);
+      display: flex;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .tc_wrap .tabs_list {
+      width: 200px;
+      background: #ffadadf6;
+      height: 100%;
+    }
+
+    .tc_wrap .tabs_content {
+      width: calc(100% - 200px);
+      padding: 0 10px 0 20px;
+      height: 100%;
+    }
+
+    .tc_wrap .tabs_content .tab_head,
+    .tc_wrap .tabs_content .tab_foot {
+      color: #ff0000f6;
+      padding: 25px 0;
+      height: 70px;
+    }
+
+    .tc_wrap .tabs_content .tab_head {
+      text-align: center;
+    }
+
+    .tc_wrap .tabs_content .tab_body {
+      height: calc(100% - 140px);
+      overflow: auto;
+    }
+
+    .tc_wrap .tabs_list ul {
+      padding: 70px 20px;
+      text-align: right;
+    }
+
+    .tc_wrap .tabs_list ul li {
+      padding: 10px 0;
+      position: relative;
+      margin-bottom: 3px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.5s ease;
+    }
+
+    .tc_wrap .tabs_list ul li:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -20px;
+      width: 2px;
+      height: 100%;
+      background: var(--primary-clr);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .tc_wrap .tabs_list ul li.active,
+    .tc_wrap .tabs_list ul li:hover {
+      color: #ff0000f6;
+    }
+
+    .tc_wrap .tabs_list ul li.active:before {
+      opacity: 1;
+    }
+
+    .tc_wrap .tabs_content .tab_body .tab_item h3 {
+      padding-top: 10px;
+      margin-bottom: 10px;
+      color: #ff0000f6;
+    }
+
+    .tc_wrap .tabs_content .tab_body .tab_item p {
+      margin-bottom: 20px;
+    }
+
+    .tc_wrap .tabs_content .tab_body .tab_item.active {
+      display: block !important;
+    }
+
+    .tc_wrap .tabs_content .tab_foot button {
+      width: 125px;
+      padding: 5px 10px;
+      background: transparent;
+      border: 1px solid;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.5s ease;
+    }
+
+    .tc_wrap .tabs_content .tab_foot button.decline {
+      margin-right: 15px;
+      border-color: #ff0000f6;
+      color: #ff0000f6;
+    }
+
+    .tc_wrap .tabs_content .tab_foot button.agree {
+      background: var(--primary-clr);
+      border-color: #ff0000f6;
+      color: #ff0000f6;
+    }
+
+    .tc_wrap .tabs_content .tab_foot button.decline:hover {
+      background: var(--tabs-list-bg-clr);
+      color: #ff0000f6;
+    }
+
+    .tc_wrap .tabs_content .tab_foot button.agree:hover {
+      background: var(--btn-hvr);
+      border-color: #ff0000f6;
+    }
+
+    .term {
+      color: #ff0000f6;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .tc_wrap {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .tc_wrap .tabs_list {
+        width: 100%;
+        height: auto;
+        text-align: center;
+      }
+
+      .tc_wrap .tabs_list ul {
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      .tc_wrap .tabs_content {
+        width: 100%;
+        padding: 0 10px;
+        height: auto;
+      }
+
+      .tc_wrap .tabs_content .tab_body {
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 10px;
+      }
+
+      .tc_wrap .tabs_list ul li {
+        font-size: 12px;
+      }
+
+      .tc_wrap .tabs_content .tab_body .tab_item h3 {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg__blur"></div>
+  <div class="wrapper flex_align_justify">
+    <div class="tc_wrap">
+      <div class="tabs_list">
+        <ul>
+          <li data-tc="tab_item_1" class="active">Terms of use</li>
+          <li data-tc="tab_item_2">Intellectual property rights</li>
+          <li data-tc="tab_item_3">Prohibited activities</li>
+          <li data-tc="tab_item_4">Termination clause</li>
+          <li data-tc="tab_item_5">Governing law</li>
+        </ul>
+      </div>
+      <div class="tabs_content">
+        <div class="tab_head">
+          <h2 class="term">Terms & Conditions</h2>
+        </div>
+        <div class="tab_body">
+          <div class="tab_item tab_item_1">
+            <h3>Terms of use</h3>
+            <b>Please read the following carefully and sign the declaration below.</b>
+            <p>• The gym is for the use of Rise to Fitness members only, therefore guests are not allowed.</p>
+            <p>• For reasons of health and safety, members must adhere strictly to the following:</p>
+            <p>-All free weights are to be returned to their racks after use.</p>
+            <p>-Cups and mugs are not allowed in the gym.</p>
+            <p>- Members should bring a small towel to wipe down machinery after use.
+              Tracksuits or shorts and t-shirts must be worn at all times.</p>
+              <p>-Suitable footwear should be worn at all times.</p>
+              <p>-Offensive language or behavior will not be tolerated.</p>
+              <p>- Clashing weights, excessive noises and mistreatment of equipment is not allowed
+                Anyone thought to be under the influence of alcohol or drugs will be ejected and their membership will be reviewed.</p>
+                <p>•Rise to Fitness reserve the right to exclude any member they deem not to be adhering to any of the above or whoby their actions poses a health and safety risk.</p>
+          </div>
+          <div class="tab_item tab_item_2" style="display: none;">
+            <h3>Intellectual property rights</h3>
+            <p>1. All content, including logos, designs, and workout programs, are the exclusive intellectual property of the gym.</p>
+<p>2. Unauthorized use or reproduction of any materials is strictly prohibited.</p>
+<p>3. Users may not copy, distribute, or modify any content without prior written consent from the gym.</p>
+<p>4. Trademarks, including the gym’s name and logo, are protected by intellectual property laws.</p>
+<p>5. Any violation of intellectual property rights may result in legal action.</p>
+<p>6. Users are prohibited from using any third-party content on the gym's website without the proper licenses or permissions.</p>
+<p>7. The gym reserves the right to take down any user-generated content that infringes on intellectual property rights.</p>
+<p>8. All intellectual property rights are retained even after the termination of membership or services.</p>
+
+          </div>
+          <div class="tab_item tab_item_3" style="display: none;">
+            <h3>Prohibited activities</h3>
+            <p>1. No unauthorized personal training or coaching without approval.</p>
+            <p>2. No smoking, alcohol, or drugs allowed on gym premises.</p>
+            <p>3. No dropping or throwing weights recklessly.</p>
+            <p>4. No use of inappropriate language or offensive behavior.</p>
+            <p>5. No improper use of equipment; always follow safety guidelines.</p>
+            <p>6. No entry without valid membership or guest pass.</p>
+            <p>7. No food or drinks, except water, in workout areas.</p>
+            <p>8. No improper gym attire; wear appropriate workout clothing and shoes.</p>
+            <p>9. No personal belongings left on the gym floor; use lockers provided.</p>
+            <p>10. No photography or recording without consent from those involved.</p>
+            
+          </div>
+          <div class="tab_item tab_item_4" style="display: none;">
+            <h3>Termination clause</h3>
+            <p>1. Members may terminate their membership at any time by providing a written notice to the gym at least 30 days in advance.</p>
+<p>2. The gym reserves the right to terminate a membership immediately if the member violates any terms of the membership agreement or gym policies.</p>
+<p>3. Memberships may be suspended or terminated for non-payment of fees after a 7-day grace period following the payment due date.</p>
+<p>4. Members are not entitled to a refund for any unused portion of their membership upon termination, except as required by law.</p>
+<p>5. The gym may terminate or suspend membership for inappropriate behavior, including but not limited to harassment, abuse of equipment, or misconduct within the gym premises.</p>
+
+          </div>
+          <div class="tab_item tab_item_5" style="display: none;">
+            <h3>Governing law</h3>
+            <p>1. <strong>Health and Safety Regulations:</strong> Gyms must comply with local health and safety regulations to ensure the well-being of all members and staff.</p>
+
+<p>2. <strong>Licensing and Permits:</strong> A gym must obtain the necessary business licenses and permits as required by local and state authorities.</p>
+
+<p>3. <strong>Employment Law:</strong> Compliance with labor laws, including minimum wage, working conditions, and non-discrimination laws, is required for all employees.</p>
+
+<p>4. <strong>Liability Insurance:</strong> Gym owners are often required to have liability insurance to protect against potential lawsuits for injuries that occur on the premises.</p>
+
+<p>5. <strong>Data Protection and Privacy Laws:</strong> Personal information collected from members (e.g., addresses, payment details) must comply with data protection laws such as GDPR or CCPA.</p>
+
+<p>6. <strong>Consumer Protection Law:</strong> Gyms must adhere to laws regarding fair marketing, transparent membership contracts, and refund policies to protect consumer rights.</p>
+
+<p>7. <strong>ADA Compliance:</strong> The gym should meet accessibility standards set by the Americans with Disabilities Act (ADA) to accommodate all members.</p>
+
+<p>8. <strong>COVID-19 Guidelines (if applicable):</strong> Following local health department guidelines for hygiene, social distancing, and capacity restrictions related to COVID-19.</p>
+
+          </div>
+        </div>
+        <!-- <div class="tab_foot flex_align_justify">
+            <button class="decline">
+              Decline
+            </button>
+            <button class="agree">
+              Agree
+            </button>
+          </div> -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var tab_lists = document.querySelectorAll(".tabs_list ul li");
+    var tab_items = document.querySelectorAll(".tab_item");
+
+    tab_lists.forEach(function (list) {
+      list.addEventListener("click", function () {
+        var tab_data = list.getAttribute("data-tc");
+
+        tab_lists.forEach(function (list) {
+          list.classList.remove("active");
+        });
+        list.classList.add("active");
+
+        tab_items.forEach(function (item) {
+          var tab_class = item.getAttribute("class").split(" ");
+          if (tab_class.includes(tab_data)) {
+            item.style.display = "block";
+          }
+          else {
+            item.style.display = "none";
+          }
+
+        })
+
+      })
+    })
+  </script>
+</body>
+
+</html>
