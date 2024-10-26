@@ -11,6 +11,9 @@ const app = express();
 const port = 3000;
 
 // Middleware
+app.use('/', (req, res) => {
+  res.json({message:"Server is running"}); 
+});
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -23,9 +26,7 @@ app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
 });
-app.get('/', (req, res) => {
-  res.send('Server is running'); 
-});
+
 
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/combinedDB')
