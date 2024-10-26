@@ -26,14 +26,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
 });
 
-const MONGODB_URI = process.env.MONGODB_URI || 'your-mongodb-uri-here';
 
-mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+// MongoDB connection
+mongoose.connect('mongodb://localhost:27017/combinedDB')
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-mongodb://localhost:27017/combinedDB
 // Define comment schema
 const commentSchema = new mongoose.Schema({
   user: String,
@@ -153,6 +151,9 @@ app.get('/display', (req, res) => {
 });
 
 // Serve the upload page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 
 // Routes for comments
@@ -213,6 +214,12 @@ app.get('/display', (req, res) => {
   res.sendFile(path.join(__dirname, 'display.html'));
 });
 
+// Serve the upload page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
-
-
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
