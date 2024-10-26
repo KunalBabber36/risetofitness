@@ -1,17 +1,20 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/BACKEND/server.js"
-    }
-  ],
+  
+    "version": 2,
+    "builds": [
+      {
+        "src": "BACKEND/index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/BACKEND/index.js"
+      }
+    ]
+  
+  ,
   "env": {
     "MONGODB_URI": "mongodb://localhost:27017/combinedDB"
   }
