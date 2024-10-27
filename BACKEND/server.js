@@ -123,13 +123,15 @@ app.delete('/images/:id', async (req, res) => {
 
 // Routes for Comments
 app.get('/comments', async (req, res) => {
-    try {
-        const comments = await Comment.find();
-        res.status(200).json(comments);
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching comments', error });
-    }
+  try {
+    const comments = await CommentModel.find(); // Assuming Mongoose or similar
+    res.json(comments);
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
+
 
 app.post('/comments', async (req, res) => {
     const { user, comment } = req.body;
