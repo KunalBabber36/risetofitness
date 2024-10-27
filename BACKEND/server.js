@@ -98,7 +98,19 @@ app.get('/', (req, res) => {
 app.get('/api/data', (req, res) => {
   res.json({ message: 'Hello from the backend!' });
 });
-
+app.get('/data',async(req, res)=>{
+  try{
+    const data = await fetchDataFromExternalAPI();
+    res.json(data);
+  }
+  catch(error){
+    res.status(500).send('Server Error');
+  }
+});
+app.use((err,req,res,next)=>{
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 // Delete image
 app.delete('/images/:id', async (req, res) => {
