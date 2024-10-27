@@ -10,7 +10,12 @@ const cors = require('cors');
 const app = express();
 // const port = 3000;
 const port = process.env.PORT || 3000;
-
+app.use(cors({
+  origin: 'https://r2f.vercel.app/', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-auth-token'],
+  credentials: true
+}));
 
 // Middleware
 app.use(express.json());
