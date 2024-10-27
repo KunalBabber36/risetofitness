@@ -45,7 +45,7 @@
   <script>
     // Function to fetch and display uploaded images
     async function fetchImages() {
-      const response = await fetch('/images');
+      const response = await fetch('/uploads');
       const images = await response.json();
       const imagesList = document.getElementById('imagesList');
       imagesList.innerHTML = ''; // Clear previous content
@@ -63,7 +63,7 @@
     // Function to delete an image
     async function deleteImage(id) {
       if (confirm('Are you sure you want to delete this image?')) {
-        const response = await fetch(`/images/${id}`, {
+        const response = await fetch(`/uploads/${id}`, {
           method: 'DELETE'
         });
         const result = await response.json();
