@@ -440,6 +440,9 @@
       <div class="blog__grid">
         <div class="blog__card">
           <div id="image-gallery"></div>
+          <img src="..." alt="Image description" loading="lazy" class="clickable-image">
+          <div id="loading" class="loading-spinner">Loading...</div>
+
         </div>
         <div class="blog__btn">
         </div>
@@ -547,7 +550,7 @@
 
 http://localhost:3000/api/data
 // Example: fetching data from the backend
-fetch('https://r2f-kunal-babbers-projects.vercel.app/api/data')
+fetch('https://r2f.vercel.app/api/data')
   .then(response => response.json())
   .then(data => {
     console.log(data);
@@ -555,131 +558,240 @@ fetch('https://r2f-kunal-babbers-projects.vercel.app/api/data')
   })
   .catch(error => console.error('Error fetching data:', error));
 
-let carouselIndex = 0;
-const carouselWrapper = document.querySelector('.image-carousel-wrapper');
-const carouselSlides = document.querySelectorAll('.image-carousel-slide');
-const totalCarouselSlides = carouselSlides.length;
 
-// Clone first and last slides for seamless loop
-const firstCarouselSlideClone = carouselSlides[0].cloneNode(true);
-const lastCarouselSlideClone = carouselSlides[totalCarouselSlides - 1].cloneNode(true);
 
-carouselWrapper.appendChild(firstCarouselSlideClone); // Add clone to the end
-carouselWrapper.insertBefore(lastCarouselSlideClone, carouselSlides[0]); // Add clone to the beginning
+    let carouselIndex = 0;
+    const carouselWrapper = document.querySelector('.image-carousel-wrapper');
+    const carouselSlides = document.querySelectorAll('.image-carousel-slide');
+    const totalCarouselSlides = carouselSlides.length;
 
-// Update total number of slides after cloning
-let newTotalCarouselSlides = document.querySelectorAll('.image-carousel-slide').length;
+    // Clone first and last slides for seamless loop
+    const firstCarouselSlideClone = carouselSlides[0].cloneNode(true);
+    const lastCarouselSlideClone = carouselSlides[totalCarouselSlides - 1].cloneNode(true);
 
-function showNextCarouselSlide() {
-  carouselIndex++;
-  if (carouselIndex >= newTotalCarouselSlides - 1) {
-    carouselWrapper.style.transition = "none";
-    carouselIndex = 1;
-    carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
-  } else {
-    carouselWrapper.style.transition = "transform 0.5s ease";
-    carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
-  }
-}
+    carouselWrapper.appendChild(firstCarouselSlideClone);  // Add clone to the end
+    carouselWrapper.insertBefore(lastCarouselSlideClone, carouselSlides[0]);  // Add clone to the beginning
 
-function showPreviousCarouselSlide() {
-  carouselIndex--;
-  if (carouselIndex < 0) {
-    carouselWrapper.style.transition = "none";
-    carouselIndex = newTotalCarouselSlides - 2;
-    carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
-  } else {
-    carouselWrapper.style.transition = "transform 0.5s ease";
-    carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
-  }
-}
+    // Update total number of slides after cloning
+    let newTotalCarouselSlides = document.querySelectorAll('.image-carousel-slide').length;
 
-// Navigation controls for carousel
-document.querySelector('.carousel-next').addEventListener('click', showNextCarouselSlide);
-document.querySelector('.carousel-prev').addEventListener('click', showPreviousCarouselSlide);
+    function showNextCarouselSlide() {
+      carouselIndex++;
 
-// Automatically move to the next slide every 3 seconds
-setInterval(showNextCarouselSlide, 3000);
+      if (carouselIndex >= newTotalCarouselSlides - 1) {
+        carouselWrapper.style.transition = "none";  // Disable transition
+        carouselIndex = 1;  // Reset to first real slide
+        carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      } else {
+        carouselWrapper.style.transition = "transform 0.5s ease";  // Enable transition for normal slide move
+        carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      }
+    }
 
-function openGmail() {
-  const subject = encodeURIComponent("Your Subject");
-  const body = encodeURIComponent("Your message goes here");
-  window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=prami72rao@gmail.com&su=${subject}&body=${body}`);
-}
+    function showPreviousCarouselSlide() {
+      carouselIndex--;
 
-let lastScrollTop = 0;
-const header = document.getElementById("navbar");
+      if (carouselIndex < 0) {
+        carouselWrapper.style.transition = "none";  // Disable transition
+        carouselIndex = newTotalCarouselSlides - 2;  // Reset to last real slide
+        carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      } else {
+        carouselWrapper.style.transition = "transform 0.5s ease";  // Enable transition for normal slide move
+        carouselWrapper.style.transform = `translateX(-${carouselIndex * 100}%)`;
+      }
+    }
 
-window.addEventListener("scroll", debounce(function () {
-  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-  if (currentScroll > lastScrollTop) {
-    header.classList.add("hidden");
-  } else {
-    header.classList.remove("hidden");
-  }
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-}, 100)); // Debounced scroll event handler for better performance
+    // Automatically move to the next slide every 3 seconds
+    setInterval(showNextCarouselSlide, 3000);
 
-document.getElementById('menu-btn').addEventListener('click', function () {
-  const navLinks = document.getElementById('nav-links');
-  navLinks.classList.toggle('active');
-});
 
-const typed = new Typed('.multiple-text', {
-  strings: ['CARDIO', 'POWER LIFTING', 'PERSONAL TRAINING', 'CROSS FIT', 'YOGA', 'WEIGHT TRAINING'],
-  typeSpeed: 60,
-  backSpeed: 60,
-  backDelay: 11000,
-  loop: false,
-});
+    function openGmail() {
+      var subject = encodeURIComponent("Your Subject");
+      var body = encodeURIComponent("Your message goes here");
+      window.open("https://mail.google.com/mail/?view=cm&fs=1&to=prami72rao@gmail.com&su=" + subject + "&body=" + body);
+    }
 
-const typed2 = new Typed('.multiple-text2', {
-  strings: ['Cardio is exercise that raises heart rate and improves endurance.', 'Powerlifting focuses on three main lifts: squat, bench press, deadlift.', 'Personal training provides tailored workouts and guidance to achieve goals.', 'CrossFit combines varied functional movements for fitness training.', 'Yoga integrates physical postures, breath control, for body.', 'Weight training uses resistance to build strength and mass.'],
-  typeSpeed: 60,
-  backSpeed: 60,
-  backDelay: 1000,
-  loop: false,
-});
+    let lastScrollTop = 0;
+    const header = document.getElementById("navbar");
 
-// Load comments from the database
+    window.addEventListener("scroll", function () {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        // Scroll Down
+        header.classList.add("hidden");
+      } else {
+        // Scroll Up
+        header.classList.remove("hidden");
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
+    });
+
+    document.getElementById('menu-btn').addEventListener('click', function () {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active'); // Toggle active class
+    });
+
+    const typed = new Typed('.multiple-text', {
+      strings: ['CARDIO', 'POWER LIFTING', 'PERSONAL TRAINING', 'CROSS FIT', 'YOGA', 'WEIGHT TRAINING'],
+      typeSpeed: 60,
+      backSpeed: 60,
+      backDelay: 11000,
+      loop: false,
+
+    });
+    const typed2 = new Typed('.multiple-text2', {
+      strings: ['Cardio is exercise that raises heart rate and improves endurance.', 'Powerlifting focuses on three main lifts: squat, bench press, deadlift.', 'Personal training provides tailored workouts and guidance to achieve goals.', 'CrossFit combines varied functional movements for fitness training.', 'Yoga integrates physical postures, breath control, for body.', 'Weight training uses resistance to build strength and mass.'],
+      typeSpeed: 60,
+      backSpeed: 60,
+      backDelay: 1000,
+      loop: false,
+
+    });
+
+    // const ADMIN_USER = "admin"; // Define the admin user name
+    // // Function to load comments from localStorage
+    // function loadComments() {
+    //   const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    //   const commentsList = document.getElementById('commentsList');
+    //   const currentUser = localStorage.getItem('currentUser'); // Get current user from localStorage
+
+    //   // Clear the comment list
+    //   commentsList.innerHTML = '<h3>Comments:</h3>';
+
+    //   // Loop through comments and display them
+    //   comments.forEach((commentData, index) => {
+    //     const commentDiv = document.createElement('div');
+    //     commentDiv.classList.add('comment');
+
+    //     const commentText = document.createElement('span');
+    //     commentText.innerText = commentData.comment; // Access comment text
+    //     commentDiv.appendChild(commentText);
+
+    //     const commentUser = document.createElement('span');
+    //     commentUser.classList.add('comment-user');
+    //     commentUser.innerText = ` - by ${commentData.user}`;
+    //     commentDiv.appendChild(commentUser);
+
+    //     // Show delete button only for admin
+    //     // if (currentUser === ADMIN_USER) {
+    //     //   const deleteButton = document.createElement('button');
+    //     //   deleteButton.innerText = "Delete";
+    //     //   deleteButton.classList.add('delete-button');
+    //     //   deleteButton.onclick = function() {
+    //     //     deleteComment(index); // Pass the index of the comment to delete
+    //     //   };
+    //     //   commentDiv.appendChild(deleteButton);
+    //     // }
+
+    //     commentsList.appendChild(commentDiv);
+    //   });
+    // }
+
+    // // Function to add a comment
+    // function addComment(commentText, userName) {
+    //   const comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    //   // Save the comment along with the user name
+    //   comments.push({ comment: commentText, user: userName });
+    //   localStorage.setItem('comments', JSON.stringify(comments));
+    // }
+
+    // // Function to delete a comment by index
+    // function deleteComment(index) {
+    //   let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+    //   // Remove the comment at the given index
+    //   comments.splice(index, 1);
+
+    //   // Save the updated array back to localStorage
+    //   localStorage.setItem('comments', JSON.stringify(comments));
+
+    //   // Reload the comments to reflect the changes
+    //   loadComments();
+    // }
+
+    // // Event listener for form submission
+    // document.getElementById('commentForm').addEventListener('submit', function (event) {
+    //   event.preventDefault();
+
+    //   const commentInput = document.getElementById('commentInput');
+    //   const userInput = document.getElementById('userNameInput');
+    //   const commentText = commentInput.value.trim();
+    //   const userName = userInput.value.trim();
+
+    //   if (commentText !== "" && userName !== "") {
+    //     // Save current user in localStorage for future comparison
+    //     localStorage.setItem('currentUser', userName);
+
+    //     // Add the comment
+    //     addComment(commentText, userName);
+    //     loadComments();
+
+    //     // Clear the textarea
+    //     commentInput.value = "";
+    //     userInput.value = "";
+    //   }
+    // });
+
+    // // Load comments on page load
+    // window.onload = loadComments;
+   
+    // Function to load comments from the database
 async function loadComments() {
-  try {
-    const response = await fetch('https://r2f-kunal-babbers-projects.vercel.app/comments');
-    const comments = await response.json();
-    const commentsList = document.getElementById('commentsList');
-    commentsList.innerHTML = '<h3>Comments:</h3>';
-    comments.forEach((commentData) => {
-      const commentDiv = document.createElement('div');
-      commentDiv.classList.add('comment');
-      commentDiv.innerHTML = `<span>${commentData.comment}</span> <span class="comment-user"> - by ${commentData.user}</span>`;
-      commentsList.appendChild(commentDiv);
-    });
-  } catch (error) {
-    console.error('Error loading comments:', error);
-  }
+  const response = await fetch('https://r2f.vercel.app/comments');
+  const comments = await response.json();
+  const commentsList = document.getElementById('commentsList');
+
+  // Clear the comment list
+  commentsList.innerHTML = '<h3>Comments:</h3>';
+
+  // Loop through comments and display them
+  comments.forEach((commentData) => {
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+
+    const commentText = document.createElement('span');
+    commentText.innerText = commentData.comment; // Access comment text
+    commentDiv.appendChild(commentText);
+
+    const commentUser = document.createElement('span');
+    commentUser.classList.add('comment-user');
+    commentUser.innerText = ` - by ${commentData.user}`;
+    commentDiv.appendChild(commentUser);
+
+    commentsList.appendChild(commentDiv);
+  });
 }
 
-// Add a comment to the database
+// Function to add a comment to the database
 async function addComment(commentText, userName) {
-  try {
-    await fetch('https://r2f-kunal-babbers-projects.vercel.app/comments', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ user: userName, comment: commentText }),
-    });
-  } catch (error) {
-    console.error('Error adding comment:', error);
-  }
+  await fetch('https://r2f.vercel.app/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ user: userName, comment: commentText }),
+  });
 }
 
+// Event listener for form submission
 document.getElementById('commentForm').addEventListener('submit', function (event) {
   event.preventDefault();
+
   const commentInput = document.getElementById('commentInput');
   const userInput = document.getElementById('userNameInput');
   const commentText = commentInput.value.trim();
   const userName = userInput.value.trim();
-  if (commentText && userName) {
-    addComment(commentText, userName).then(() => loadComments());
+
+  if (commentText !== "" && userName !== "") {
+    // Add the comment
+    addComment(commentText, userName).then(() => {
+      loadComments();
+    });
+
+    // Clear the textarea
     commentInput.value = "";
     userInput.value = "";
   }
@@ -692,46 +804,56 @@ window.onload = loadComments;
 function openImageInFullScreen(imageElement) {
   if (imageElement.requestFullscreen) {
     imageElement.requestFullscreen();
-  } else if (imageElement.webkitRequestFullscreen) {
+  } else if (imageElement.mozRequestFullScreen) { // Firefox
+    imageElement.mozRequestFullScreen();
+  } else if (imageElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
     imageElement.webkitRequestFullscreen();
-  } else if (imageElement.msRequestFullscreen) {
+  } else if (imageElement.msRequestFullscreen) { // IE/Edge
     imageElement.msRequestFullscreen();
   }
 }
 
-// Fetch and display images
-fetch('https://r2f-kunal-babbers-projects.vercel.app/images')
-  .then(response => response.ok ? response.json() : Promise.reject('Failed to load'))
-  .then(images => {
-    const gallery = document.getElementById('image-gallery');
-    gallery.innerHTML = '';
-    images.forEach(image => {
-      const img = document.createElement('img');
-      img.src = `https://r2f-kunal-babbers-projects.vercel.app/${image.url.replace(/\\/g, '/')}`;
-      img.alt = image.statement;
-      img.style.width = '200px';
-      img.classList.add('clickable-image');
-      img.addEventListener('click', () => openImageInFullScreen(img));
-      const div = document.createElement('div');
-      div.classList.add('image-block');
-      const statement = document.createElement('p');
-      statement.textContent = image.statement;
-      statement.classList.add('image-statement');
-      div.append(img, statement);
-      gallery.appendChild(div);
-    });
+// Fetch images from the server
+fetch('https://r2f.vercel.app/api/data')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    return response.json();
   })
-  .catch(err => console.error('Error fetching images:', err));
-
-// Debounce function
-function debounce(func, wait) {
-  let timeout;
-  return function (...args) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(this, args), wait);
-  };
+  .then(data => {
+    console.log(data);
+    // Do something with the data, like displaying it in the frontend
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+    alert('There was an issue retrieving data. Please try again later.');
+  });
+  async function addComment(commentText, userName) {
+  await fetch('https://r2f-kunal-babbers-projects.vercel.app/comments', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user: userName, comment: commentText }),
+  });
+  // Directly add the comment to the commentsList
+  const commentsList = document.getElementById('commentsList');
+  const newComment = document.createElement('div');
+  newComment.classList.add('comment');
+  newComment.innerHTML = `<span>${commentText}</span> - by <span class="comment-user">${userName}</span>`;
+  commentsList.appendChild(newComment);
 }
 
+
+// Function to open image in full-screen mode (you need to define this)
+function openImageInFullScreen(imageElement) {
+  if (imageElement.requestFullscreen) {
+    imageElement.requestFullscreen();
+  } else if (imageElement.webkitRequestFullscreen) { // Safari
+    imageElement.webkitRequestFullscreen();
+  } else if (imageElement.msRequestFullscreen) { // IE11
+    imageElement.msRequestFullscreen();
+  }
+}
     
   </script>
   <script src="script.js"></script>
