@@ -81,7 +81,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   }
 });
 // Fetch images
-app.get('/images', async (req, res) => {
+app.get('/uploads', async (req, res) => {
   try {
     const images = await Image.find();
     res.status(200).json(images);
@@ -101,7 +101,7 @@ app.get('/api/data', (req, res) => {
 
 
 // Delete image
-app.delete('/images/:id', async (req, res) => {
+app.delete('/uploads/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -215,9 +215,9 @@ app.post('/comments', async (req, res) => {
 // });
 
 // Serve the display page
-app.get('/display', (req, res) => {
-  res.sendFile(path.join(__dirname, 'display.html'));
-});
+// app.get('/display', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'display.html'));
+// });
 
 // Serve the upload page
 app.get('/', (req, res) => {

@@ -547,7 +547,7 @@
 
 http://localhost:3000/api/data
 // Example: fetching data from the backend
-fetch('https://r2f-kunal-babbers-projects.vercel.app/api/data')
+fetch('https://r2f.vercel.app/api/data')
   .then(response => response.json())
   .then(data => {
     console.log(data);
@@ -737,7 +737,7 @@ fetch('https://r2f-kunal-babbers-projects.vercel.app/api/data')
    
     // Function to load comments from the database
 async function loadComments() {
-  const response = await fetch('https://r2f-kunal-babbers-projects.vercel.app/comments');
+  const response = await fetch('https://r2f.vercel.app/comments');
   const comments = await response.json();
   const commentsList = document.getElementById('commentsList');
 
@@ -764,7 +764,7 @@ async function loadComments() {
 
 // Function to add a comment to the database
 async function addComment(commentText, userName) {
-  await fetch('https://r2f-kunal-babbers-projects.vercel.app/comments', {
+  await fetch('https://r2f.vercel.app/comments', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -811,7 +811,7 @@ function openImageInFullScreen(imageElement) {
 }
 
 // Fetch images from the server
-fetch('https://r2f-kunal-babbers-projects.vercel.app/images') // Specify full URL for better debugging
+fetch('https://r2f.vercel.app/uploads') // Specify full URL for better debugging
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok: ' + response.statusText);
@@ -826,7 +826,7 @@ fetch('https://r2f-kunal-babbers-projects.vercel.app/images') // Specify full UR
       // Create an img element for each image
       const img = document.createElement('img');
       // Correct image URL (replace backslashes with forward slashes)
-      img.src = `https://r2f-kunal-babbers-projects.vercel.app/${image.url.replace(/\\/g, '/')}`; 
+      img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`; 
       img.alt = image.statement;
       img.style.width = '200px'; // Optional: Adjust the size of the image
       img.classList.add('clickable-image'); // Add a class for identifying clickable images
