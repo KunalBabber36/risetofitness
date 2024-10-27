@@ -811,7 +811,7 @@ function openImageInFullScreen(imageElement) {
 }
 
 // Fetch images from the server
-fetch('https://r2f.vercel.app/uploads') // Specify full URL for better debugging
+fetch('https://r2f.vercel.app/images') // Specify full URL for better debugging
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok: ' + response.statusText);
