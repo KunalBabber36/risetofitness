@@ -547,7 +547,7 @@
 
 http://localhost:3000/api/data
 // Example: fetching data from the backend
-fetch('https://r2f.vercel.app')
+fetch('https://r2f.vercel.app/api/data')
   .then(response => response.json())
   .then(data => {
     console.log(data);
@@ -797,79 +797,79 @@ document.getElementById('commentForm').addEventListener('submit', function (even
 // Load comments on page load
 window.onload = loadComments;
 
-// // Full-screen function
-// function openImageInFullScreen(imageElement) {
-//   if (imageElement.requestFullscreen) {
-//     imageElement.requestFullscreen();
-//   } else if (imageElement.mozRequestFullScreen) { // Firefox
-//     imageElement.mozRequestFullScreen();
-//   } else if (imageElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
-//     imageElement.webkitRequestFullscreen();
-//   } else if (imageElement.msRequestFullscreen) { // IE/Edge
-//     imageElement.msRequestFullscreen();
-//   }
-// }
+// Full-screen function
+function openImageInFullScreen(imageElement) {
+  if (imageElement.requestFullscreen) {
+    imageElement.requestFullscreen();
+  } else if (imageElement.mozRequestFullScreen) { // Firefox
+    imageElement.mozRequestFullScreen();
+  } else if (imageElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+    imageElement.webkitRequestFullscreen();
+  } else if (imageElement.msRequestFullscreen) { // IE/Edge
+    imageElement.msRequestFullscreen();
+  }
+}
 
 // Fetch images from the server
-// fetch('https://r2f.vercel.app/images') // Specify full URL for better debugging
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok: ' + response.statusText);
-//     }
-//     return response.json();
-//   })
-//   .then(images => {
-//     const gallery = document.getElementById('image-gallery');
-//     gallery.innerHTML = ''; // Clear existing gallery content
+fetch('https://r2f.vercel.app/images') // Specify full URL for better debugging
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    return response.json();
+  })
+  .then(images => {
+    const gallery = document.getElementById('image-gallery');
+    gallery.innerHTML = ''; // Clear existing gallery content
 
-//     images.forEach(image => {
-//       // Create an img element for each image
-//       const img = document.createElement('img');
-//       // Correct image URL (replace backslashes with forward slashes)
-//       img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`; 
-//       img.alt = image.statement;
-//       img.style.width = '200px'; // Optional: Adjust the size of the image
-//       img.classList.add('clickable-image'); // Add a class for identifying clickable images
+    images.forEach(image => {
+      // Create an img element for each image
+      const img = document.createElement('img');
+      // Correct image URL (replace backslashes with forward slashes)
+      img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`; 
+      img.alt = image.statement;
+      img.style.width = '200px'; // Optional: Adjust the size of the image
+      img.classList.add('clickable-image'); // Add a class for identifying clickable images
 
-//       // Add a click event to open the image in full-screen mode
-//       img.addEventListener('click', function() {
-//         openImageInFullScreen(this);
-//       });
+      // Add a click event to open the image in full-screen mode
+      img.addEventListener('click', function() {
+        openImageInFullScreen(this);
+      });
 
-//       // Create a div to hold the image and statement
-//       const div = document.createElement('div');
-//       div.style.marginBottom = '20px'; // Optional: Spacing between image blocks
-//       div.classList.add('image-block'); // Updated class name for clarity
+      // Create a div to hold the image and statement
+      const div = document.createElement('div');
+      div.style.marginBottom = '20px'; // Optional: Spacing between image blocks
+      div.classList.add('image-block'); // Updated class name for clarity
 
-//       // Create the statement element and add the statement text
-//       const statement = document.createElement('p');
-//       statement.textContent = image.statement; // Display the statement
-//       statement.style.marginBottom = '20px'; // Optional: Spacing between image blocks
-//       statement.classList.add('image-statement'); // Updated class name for clarity
+      // Create the statement element and add the statement text
+      const statement = document.createElement('p');
+      statement.textContent = image.statement; // Display the statement
+      statement.style.marginBottom = '20px'; // Optional: Spacing between image blocks
+      statement.classList.add('image-statement'); // Updated class name for clarity
 
-//       // Append the image and statement to the div
-//       div.appendChild(img);
-//       div.appendChild(statement);
+      // Append the image and statement to the div
+      div.appendChild(img);
+      div.appendChild(statement);
 
-//       // Append the div to the gallery
-//       gallery.appendChild(div);
-//     });
-//   })
-//   .catch(err => {
-//     console.error('Error fetching images:', err);
-//     alert('Could not load images. Please check the console for details.'); // Alert user
-//   });
+      // Append the div to the gallery
+      gallery.appendChild(div);
+    });
+  })
+  .catch(err => {
+    console.error('Error fetching images:', err);
+    alert('Could not load images. Please check the console for details.'); // Alert user
+  });
 
-// // Function to open image in full-screen mode (you need to define this)
-// function openImageInFullScreen(imageElement) {
-//   if (imageElement.requestFullscreen) {
-//     imageElement.requestFullscreen();
-//   } else if (imageElement.webkitRequestFullscreen) { // Safari
-//     imageElement.webkitRequestFullscreen();
-//   } else if (imageElement.msRequestFullscreen) { // IE11
-//     imageElement.msRequestFullscreen();
-//   }
-// }
+// Function to open image in full-screen mode (you need to define this)
+function openImageInFullScreen(imageElement) {
+  if (imageElement.requestFullscreen) {
+    imageElement.requestFullscreen();
+  } else if (imageElement.webkitRequestFullscreen) { // Safari
+    imageElement.webkitRequestFullscreen();
+  } else if (imageElement.msRequestFullscreen) { // IE11
+    imageElement.msRequestFullscreen();
+  }
+}
     
   </script>
   <script src="script.js"></script>
