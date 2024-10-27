@@ -18,5 +18,5 @@
         "Access-Control-Allow-Methods": "DELETE, POST, GET, PUT, OPTIONS"
       }
     }
-  ],
+  ]
 }
