@@ -1,5 +1,22 @@
 const mongoose = require('mongoose');
 
+
+
+const imageSchema = new mongoose.Schema({
+    url: String,
+    statement: String,
+  });
+  
+  module.exports = mongoose.model('Image', imageSchema);
+
+
+  const commentSchema = new mongoose.Schema({
+    user: String,
+    comment: String,
+  });
+  
+  module.exports = mongoose.model('Comment', commentSchema);
+
 const formDetailSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
