@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Image Upload</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+}
+
+.upload-section, .images-section, .comments-container {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.images-section img {
+  width: 200px;
+  border-radius: 5px;
+}
+
+.delete-button {
+  color: red;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #333;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <h1>Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="display.html">Display</a>
+      <a href="#" id="logoutButton">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="upload-section">
+      <h2>Upload Image</h2>
+      <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="image" id="imageInput" required>
+        <input type="text" name="statement" id="statementInput" placeholder="Enter a statement" required>
+        <button type="submit">Upload</button>
+      </form>
+    </section>
+
+    <section class="images-section">
+      <h2>Uploaded Images</h2>
+      <div id="imagesList"></div>
+    </section>
+
+    <section class="comments-container">
+      <h2>Manage Comments</h2>
+      <div id="commentsList"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Your Gym Website</p>
+  </footer>
+<script>
+    // Function to fetch and display uploaded images
+async function fetchImages() {
+  const response = await fetch('/images');
+  const images = await response.json();
+  const imagesList = document.getElementById('imagesList');
+  imagesList.innerHTML = ''; // Clear previous content
+  images.forEach(image => {
+    const imgDiv = document.createElement('div');
+    imgDiv.innerHTML = `
+      <img src="${image.url}" alt="Uploaded Image"><br>
+      <p>${image.statement}</p>
+      <button onclick="deleteImage('${image._id}')">Delete</button>
+    `;
+    imagesList.appendChild(imgDiv);
+  });
+}
+
+// Function to delete an image
+async function deleteImage(id) {
+  if (confirm('Are you sure you want to delete this image?')) {
+    const response = await fetch(`/images/${id}`, {
+      method: 'DELETE'
+    });
+    const result = await response.json();
+    alert(result.message);
+    fetchImages(); // Refresh the image list
+  }
+}
+
+// Handle form submission for image upload
+const uploadForm = document.getElementById('uploadForm');
+uploadForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const formData = new FormData(uploadForm);
+  const response = await fetch('/upload', {
+    method: 'POST',
+    body: formData
+  });
+  const result = await response.json();
+  alert(result.message);
+  fetchImages(); // Refresh the image list after upload
+});
+
+// Fetch and display images on page load
+window.onload = fetchImages;
+
+// Fetch and display comments
+function loadComments() {
+  fetch('/comments')
+    .then(response => response.json())
+    .then(comments => {
+      const commentsList = document.getElementById('commentsList');
+      commentsList.innerHTML = ""; // Clear previous comments
+
+      comments.forEach(comment => {
+        const commentItem = document.createElement('div');
+        commentItem.classList.add('comment-item');
+        commentItem.innerHTML = `
+          <p><strong>${comment.user}</strong>: ${comment.comment}</p>
+          <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
+        `;
+        commentsList.appendChild(commentItem);
+      });
+    })
+    .catch(error => console.error('Error loading comments:', error));
+}
+
+// Delete comment
+function deleteComment(commentId) {
+  fetch(`/comments/${commentId}`, {
+    method: 'DELETE'
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.message === 'Comment deleted successfully') {
+      loadComments(); // Refresh the comment list after deletion
+    } else {
+      alert('Error deleting comment');
+    }
+  })
+  .catch(error => console.error('Error deleting comment:', error));
+}
+
+// Load comments when the page loads
+window.onload = function() {
+  fetchImages();
+  loadComments();
+};
+
+</script>
+</body>
+</html>
