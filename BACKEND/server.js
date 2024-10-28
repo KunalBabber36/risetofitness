@@ -55,7 +55,7 @@ app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
         req.session.isAuthenticated = true;
-        res.redirect('/admin');
+        res.redirect('/dashboard.html');
     } else {
         res.send('Invalid credentials. Please try again.');
     }
@@ -93,7 +93,7 @@ app.post('/submit', async (req, res) => {
 });
 
 // Protected route for admin page
-app.get('/admin', isAuthenticated, async (req, res) => {
+app.get('/dashboard.html', isAuthenticated, async (req, res) => {
     const formDetails = await FormDetail.find();
     res.send(`
         <h1>Admin Panel - Submitted Form Details</h1>
@@ -101,7 +101,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
             <div>
                 <h2>${detail.name}</h2>
                 <p><strong>Email:</strong> ${detail.email}</p>
-                <p><strong>Message:</strong> ${detail.phoneno}</p>
+                <p><strong>Phone No:</strong> ${detail.phoneno}</p>
                 <p><strong>Message:</strong> ${detail.message}</p>
             </div>
         `).join('')}
