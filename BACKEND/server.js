@@ -69,16 +69,16 @@ app.get('/logout', (req, res) => {
 });
 
 // Route to display form for submission
-app.get('/', (req, res) => {
-    res.send(`
-        <form action="/submit" method="POST">
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <textarea name="message" placeholder="Message" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    `);
-});
+// app.get('/', (req, res) => {
+//     res.send(`
+//         <form action="/submit" method="POST">
+//             <input type="text" name="name" placeholder="Name" required>
+//             <input type="email" name="email" placeholder="Email" required>
+//             <textarea name="message" placeholder="Message" required></textarea>
+//             <button type="submit">Submit</button>
+//         </form>
+//     `);
+// });
 
 // Route to handle form submission and save to MongoDB
 app.post('/submit', async (req, res) => {
