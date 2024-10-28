@@ -1,10 +1,15 @@
+require('dotenv').config();
 const express = require('express');
+const session = require('express-session');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const multer = require('multer');
 const fs = require('fs'); // To handle file system operations
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const FormDetail = require('./models/FormDetail'); // Import model
+
 
 // Initialize the app
 const app = express();
@@ -16,6 +21,95 @@ app.use(cors({
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-auth-token'],
   credentials: true
 }));
+
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(
+  session({
+    secret: 'yourSecureSecretKey', // Use a secure, random string
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+app.use(express.static(path.join(__dirname, 'views'))); // Serve static files
+
+
+// Middleware to check if user is authenticated
+function isAuthenticated(req, res, next) {
+  if (req.session.isAuthenticated) {
+      next();
+  } else {
+      res.redirect('/login');
+  }
+}
+
+// Route to display login page
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+// Route to handle login form submission
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
+      req.session.isAuthenticated = true;
+      res.redirect('/admin');
+  } else {
+      res.send('Invalid credentials. Please try again.');
+  }
+});
+
+// Route to handle logout
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+      res.redirect('/login');
+  });
+});
+
+// Route to display form for submission
+app.get('/', (req, res) => {
+  res.send(`
+      <form action="/submit" method="POST">
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <textarea name="message" placeholder="Message" required></textarea>
+          <button type="submit">Submit</button>
+      </form>
+  `);
+});
+
+// Route to handle form submission and save to MongoDB
+app.post('/submit', async (req, res) => {
+  try {
+      const { name, email, message } = req.body;
+      const newFormDetail = new FormDetail({ name, email, message });
+      await newFormDetail.save();
+      res.send('Form submitted successfully.');
+  } catch (err) {
+      res.status(500).send('Error saving form data.');
+  }
+});
+
+// Protected route for admin page
+app.get('/admin', isAuthenticated, async (req, res) => {
+  const formDetails = await FormDetail.find();
+  res.send(`
+      <h1>Admin Panel - Submitted Form Details</h1>
+      ${formDetails.map(detail => `
+          <div>
+              <h2>${detail.name}</h2>
+              <p><strong>Email:</strong> ${detail.email}</p>
+              <p><strong>Message:</strong> ${detail.message}</p>
+          </div>
+      `).join('')}
+      <a href="/logout">Logout</a>
+  `);
+});
+
+
+
 
 // Middleware
 app.use(express.json());
