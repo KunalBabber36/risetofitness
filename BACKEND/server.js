@@ -21,15 +21,15 @@ app.use(cors({
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-// app.use(express.static(path.join(__dirname, 'FRONTEND'))); // Serve static files
+app.use(express.static(path.join(__dirname, 'FRONTEND'))); // Serve static files
 app.use('/uploads', express.static('uploads')); // Serve uploaded files
 // Serve static files from the FRONTEND directory
-// app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up one level to BACKEND, then into FRONTEND
+app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up one level to BACKEND, then into FRONTEND
 
 // Serve index.html on the root path
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
-// });
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
+});
 
 
 // MongoDB connection
