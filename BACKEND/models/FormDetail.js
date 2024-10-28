@@ -2,13 +2,6 @@ const mongoose = require('mongoose');
 
 
 
-const imageSchema = new mongoose.Schema({
-    url: String,
-    statement: String,
-  });
-  
-  module.exports = mongoose.model('FormDetail', imageSchema);
-
 
   const commentSchema = new mongoose.Schema({
     user: String,
