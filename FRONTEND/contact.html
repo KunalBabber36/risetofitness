@@ -424,6 +424,7 @@
       </div>
     </form> -->
 
+    <section id="contact" class="contact">
 
     <form id="contactForm"   action="https://formspree.io/f/xanyyqlb"    method="POST">      <div id="notification"></div>
       <div class="group-field">
@@ -454,8 +455,11 @@
           <span class="wpcf7-spinner"></span>
         </p>
       </div>
-      <div id="success-message">Your form was submitted successfully!</div>
+      <!-- <div id="success-message">Your form was submitted successfully!</div> -->
     </form> 
+    <div id="formMessage" class="form-message"></div>
+
+  </section>
 
 
     <!-- <form id="contactForm"   action="https://formspree.io/f/xanyyqlb"    method="POST">
@@ -692,12 +696,12 @@
             formMessage.innerHTML = "<p style='color: red;'>There was an error. Please try again later.</p>";
         });
     }
-    document.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the default form submission behavior
+    // document.addEventListener("submit", function(event) {
+    //         event.preventDefault(); // Prevent the default form submission behavior
 
-            // Display the success message
-            document.getElementById("success-message").style.display = "block";
-        });
+    //         // Display the success message
+    //         document.getElementById("success-message").style.display = "block";
+    //     });
 </script>
 
 
