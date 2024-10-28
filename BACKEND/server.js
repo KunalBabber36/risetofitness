@@ -9,8 +9,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const FormDetail = require('./models/FormDetail'); // Import model
-const Image = require('./models/Image');
-const Comment = require('./models/Comment');
+
 
 
 // Initialize the app
@@ -131,8 +130,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
         <a href="/logout">Logout</a>
     `);
 });
-
-
 
 
 
