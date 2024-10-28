@@ -7,7 +7,7 @@ const imageSchema = new mongoose.Schema({
     statement: String,
   });
   
-  module.exports = mongoose.model('Image', imageSchema);
+  module.exports = mongoose.model('FormDetail', imageSchema);
 
 
   const commentSchema = new mongoose.Schema({
@@ -15,7 +15,7 @@ const imageSchema = new mongoose.Schema({
     comment: String,
   });
   
-  module.exports = mongoose.model('Comment', commentSchema);
+  module.exports = mongoose.model('FormDetail', commentSchema);
 
 const formDetailSchema = new mongoose.Schema({
     name: { type: String, required: true },
