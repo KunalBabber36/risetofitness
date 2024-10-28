@@ -28,7 +28,9 @@ app.use('/uploads', express.static('uploads')); // Serve uploaded files
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  poolSize: 10 // Increased pool size for concurrent requests
+  poolSize: 10 ,// Increased pool size for concurrent requests
+  socketTimeoutMS: 45000, // Adjust as needed
+  connectTimeoutMS: 30000 // Adjust as needed
 })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
