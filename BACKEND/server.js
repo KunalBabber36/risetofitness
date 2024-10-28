@@ -77,20 +77,30 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   }
 });
 
-// Fetch limited images to improve response time
+// Updated routes for images with pagination and limit
 app.get('/images', async (req, res) => {
+  const page = parseInt(req.query.page) || 1; // Default page is 1 if not provided
+  const limit = parseInt(req.query.limit) || 10; // Default limit is 10 items per page
+
   try {
-    const images = await Image.find().limit(50); // Limit results to improve response time
+    const images = await Image.find()
+      .skip((page - 1) * limit) // Calculate the starting index
+      .limit(limit); // Limit the results to the specified number
     res.status(200).json(images);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching images', error });
   }
 });
 
-// Fetch limited comments to improve response time
+// Updated routes for comments with pagination and limit
 app.get('/comments', async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
   try {
-    const comments = await Comment.find().limit(50); // Limit results to improve response time
+    const comments = await Comment.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.status(200).json(comments);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching comments', error });

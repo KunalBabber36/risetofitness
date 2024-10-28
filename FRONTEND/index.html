@@ -870,43 +870,43 @@ fetch('https://r2f.vercel.app/api/data')
 //     imageElement.msRequestFullscreen();
 //   }
 // }
-async function fetchWithRetry(url, options = {}, retries = 3, delay = 1000) {
+// Retry logic function for fetch
+async function fetchWithRetry(url, retries = 3) {
   for (let i = 0; i < retries; i++) {
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(url);
       if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
       return await response.json();
     } catch (error) {
-      if (i < retries - 1) {
-        await new Promise(resolve => setTimeout(resolve, delay));
-      } else {
-        throw error; // All retries failed
-      }
+      console.error(`Attempt ${i + 1} failed:`, error);
+      if (i === retries - 1) throw error; // Throw error if all attempts fail
     }
   }
 }
 
-// Fetch comments with retry
-async function loadComments() {
+// Load images with retry logic
+async function loadImages(page = 1, limit = 10) {
   try {
-    const comments = await fetchWithRetry('https://r2f.vercel.app/comments');
-    displayComments(comments);
+    const images = await fetchWithRetry(`https://r2f.vercel.app/images?page=${page}&limit=${limit}`);
+    // Process images as needed
   } catch (error) {
-    console.error('Error fetching comments:', error);
-    alert('Could not load comments.');
+    console.error('Error fetching images:', error);
   }
 }
 
-// Fetch images with retry
-async function loadImages() {
+// Load comments with retry logic
+async function loadComments(page = 1, limit = 10) {
   try {
-    const images = await fetchWithRetry('https://r2f.vercel.app/images');
-    displayImages(images);
+    const comments = await fetchWithRetry(`https://r2f.vercel.app/comments?page=${page}&limit=${limit}`);
+    // Process comments as needed
   } catch (error) {
-    console.error('Error fetching images:', error);
-    alert('Could not load images.');
+    console.error('Error fetching comments:', error);
   }
 }
+
+// Example usage to load the first page of images and comments
+loadImages(1, 10);
+loadComments(1, 10);
 
 function displayComments(comments) {
   const commentsList = document.getElementById('commentsList');
