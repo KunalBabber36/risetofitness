@@ -1,15 +1,5 @@
 const mongoose = require('mongoose');
 
-
-
-
-  const commentSchema = new mongoose.Schema({
-    user: String,
-    comment: String,
-  });
-  
-  module.exports = mongoose.model('FormDetail', commentSchema);
-
 const formDetailSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
