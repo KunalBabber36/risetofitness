@@ -26,12 +26,13 @@ app.use(cors({
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(session({
-    secret: process.env.SESSION_SECRET,
+app.use(
+  session({
+    secret: 'yourSecureSecretKey', // Use a secure, random string
     resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false } // Set to true if using HTTPS
-}));
+    saveUninitialized: true,
+  })
+);
 app.use(express.static(path.join(__dirname, 'views'))); // Serve static files
 
 
