@@ -870,6 +870,88 @@ function openImageInFullScreen(imageElement) {
     imageElement.msRequestFullscreen();
   }
 }
+async function fetchWithRetry(url, options = {}, retries = 3, delay = 1000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+      return await response.json();
+    } catch (error) {
+      if (i < retries - 1) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+      } else {
+        throw error; // All retries failed
+      }
+    }
+  }
+}
+
+// Fetch comments with retry
+async function loadComments() {
+  try {
+    const comments = await fetchWithRetry('https://r2f.vercel.app/comments');
+    displayComments(comments);
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    alert('Could not load comments.');
+  }
+}
+
+// Fetch images with retry
+async function loadImages() {
+  try {
+    const images = await fetchWithRetry('https://r2f.vercel.app/images');
+    displayImages(images);
+  } catch (error) {
+    console.error('Error fetching images:', error);
+    alert('Could not load images.');
+  }
+}
+
+function displayComments(comments) {
+  const commentsList = document.getElementById('commentsList');
+  commentsList.innerHTML = '<h3>Comments:</h3>';
+  comments.forEach(commentData => {
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+    const commentText = document.createElement('span');
+    commentText.innerText = commentData.comment;
+    const commentUser = document.createElement('span');
+    commentUser.classList.add('comment-user');
+    commentUser.innerText = ` - by ${commentData.user}`;
+    commentDiv.appendChild(commentText);
+    commentDiv.appendChild(commentUser);
+    commentsList.appendChild(commentDiv);
+  });
+}
+
+function displayImages(images) {
+  const gallery = document.getElementById('image-gallery');
+  gallery.innerHTML = '';
+  images.forEach(image => {
+    const img = document.createElement('img');
+    img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`;
+    img.alt = image.statement;
+    img.style.width = '200px';
+    img.classList.add('clickable-image');
+    img.addEventListener('click', () => openImageInFullScreen(img));
+    const div = document.createElement('div');
+    div.style.marginBottom = '20px';
+    div.classList.add('image-block');
+    const statement = document.createElement('p');
+    statement.textContent = image.statement;
+    statement.classList.add('image-statement');
+    div.appendChild(img);
+    div.appendChild(statement);
+    gallery.appendChild(div);
+  });
+}
+
+window.onload = () => {
+  loadComments();
+  loadImages();
+};
+
     
   </script>
   <script src="script.js"></script>
