@@ -735,223 +735,141 @@ fetch('https://r2f.vercel.app/api/data')
     // // Load comments on page load
     // window.onload = loadComments;
    
-//     // Function to load comments from the database
-// async function loadComments() {
-//   const response = await fetch('https://r2f.vercel.app/comments');
-//   const comments = await response.json();
-//   const commentsList = document.getElementById('commentsList');
-
-//   // Clear the comment list
-//   commentsList.innerHTML = '<h3>Comments:</h3>';
-
-//   // Loop through comments and display them
-//   comments.forEach((commentData) => {
-//     const commentDiv = document.createElement('div');
-//     commentDiv.classList.add('comment');
-
-//     const commentText = document.createElement('span');
-//     commentText.innerText = commentData.comment; // Access comment text
-//     commentDiv.appendChild(commentText);
-
-//     const commentUser = document.createElement('span');
-//     commentUser.classList.add('comment-user');
-//     commentUser.innerText = ` - by ${commentData.user}`;
-//     commentDiv.appendChild(commentUser);
-
-//     commentsList.appendChild(commentDiv);
-//   });
-// }
-
-// // Function to add a comment to the database
-// async function addComment(commentText, userName) {
-//   await fetch('https://r2f.vercel.app/comments', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ user: userName, comment: commentText }),
-//   });
-// }
-
-// // Event listener for form submission
-// document.getElementById('commentForm').addEventListener('submit', function (event) {
-//   event.preventDefault();
-
-//   const commentInput = document.getElementById('commentInput');
-//   const userInput = document.getElementById('userNameInput');
-//   const commentText = commentInput.value.trim();
-//   const userName = userInput.value.trim();
-
-//   if (commentText !== "" && userName !== "") {
-//     // Add the comment
-//     addComment(commentText, userName).then(() => {
-//       loadComments();
-//     });
-
-//     // Clear the textarea
-//     commentInput.value = "";
-//     userInput.value = "";
-//   }
-// });
-
-// // Load comments on page load
-// window.onload = loadComments;
-
-// // Full-screen function
-// function openImageInFullScreen(imageElement) {
-//   if (imageElement.requestFullscreen) {
-//     imageElement.requestFullscreen();
-//   } else if (imageElement.mozRequestFullScreen) { // Firefox
-//     imageElement.mozRequestFullScreen();
-//   } else if (imageElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
-//     imageElement.webkitRequestFullscreen();
-//   } else if (imageElement.msRequestFullscreen) { // IE/Edge
-//     imageElement.msRequestFullscreen();
-//   }
-// }
-
-// // Fetch images from the server
-// fetch('https://r2f.vercel.app/images') // Specify full URL for better debugging
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok: ' + response.statusText);
-//     }
-//     return response.json();
-//   })
-//   .then(images => {
-//     const gallery = document.getElementById('image-gallery');
-//     gallery.innerHTML = ''; // Clear existing gallery content
-
-//     images.forEach(image => {
-//       // Create an img element for each image
-//       const img = document.createElement('img');
-//       // Correct image URL (replace backslashes with forward slashes)
-//       img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`; 
-//       img.alt = image.statement;
-//       img.style.width = '200px'; // Optional: Adjust the size of the image
-//       img.classList.add('clickable-image'); // Add a class for identifying clickable images
-
-//       // Add a click event to open the image in full-screen mode
-//       img.addEventListener('click', function() {
-//         openImageInFullScreen(this);
-//       });
-
-//       // Create a div to hold the image and statement
-//       const div = document.createElement('div');
-//       div.style.marginBottom = '20px'; // Optional: Spacing between image blocks
-//       div.classList.add('image-block'); // Updated class name for clarity
-
-//       // Create the statement element and add the statement text
-//       const statement = document.createElement('p');
-//       statement.textContent = image.statement; // Display the statement
-//       statement.style.marginBottom = '20px'; // Optional: Spacing between image blocks
-//       statement.classList.add('image-statement'); // Updated class name for clarity
-
-//       // Append the image and statement to the div
-//       div.appendChild(img);
-//       div.appendChild(statement);
-
-//       // Append the div to the gallery
-//       gallery.appendChild(div);
-//     });
-//   })
-//   .catch(err => {
-//     console.error('Error fetching images:', err);
-//     alert('Could not load images. Please check the console for details.'); // Alert user
-//   });
-
-// // Function to open image in full-screen mode (you need to define this)
-// function openImageInFullScreen(imageElement) {
-//   if (imageElement.requestFullscreen) {
-//     imageElement.requestFullscreen();
-//   } else if (imageElement.webkitRequestFullscreen) { // Safari
-//     imageElement.webkitRequestFullscreen();
-//   } else if (imageElement.msRequestFullscreen) { // IE11
-//     imageElement.msRequestFullscreen();
-//   }
-// }
-// Retry logic function for fetch
-async function fetchWithRetry(url, retries = 3) {
-  for (let i = 0; i < retries; i++) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
-      return await response.json();
-    } catch (error) {
-      console.error(`Attempt ${i + 1} failed:`, error);
-      if (i === retries - 1) throw error; // Throw error if all attempts fail
-    }
-  }
-}
-
-// Load images with retry logic
-async function loadImages(page = 1, limit = 10) {
-  try {
-    const images = await fetchWithRetry(`https://r2f.vercel.app/images?page=${page}&limit=${limit}`);
-    // Process images as needed
-  } catch (error) {
-    console.error('Error fetching images:', error);
-  }
-}
-
-// Load comments with retry logic
-async function loadComments(page = 1, limit = 10) {
-  try {
-    const comments = await fetchWithRetry(`https://r2f.vercel.app/comments?page=${page}&limit=${limit}`);
-    // Process comments as needed
-  } catch (error) {
-    console.error('Error fetching comments:', error);
-  }
-}
-
-// Example usage to load the first page of images and comments
-loadImages(1, 10);
-loadComments(1, 10);
-
-function displayComments(comments) {
+    // Function to load comments from the database
+async function loadComments() {
+  const response = await fetch('https://r2f.vercel.app/comments');
+  const comments = await response.json();
   const commentsList = document.getElementById('commentsList');
+
+  // Clear the comment list
   commentsList.innerHTML = '<h3>Comments:</h3>';
-  comments.forEach(commentData => {
+
+  // Loop through comments and display them
+  comments.forEach((commentData) => {
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment');
+
     const commentText = document.createElement('span');
-    commentText.innerText = commentData.comment;
+    commentText.innerText = commentData.comment; // Access comment text
+    commentDiv.appendChild(commentText);
+
     const commentUser = document.createElement('span');
     commentUser.classList.add('comment-user');
     commentUser.innerText = ` - by ${commentData.user}`;
-    commentDiv.appendChild(commentText);
     commentDiv.appendChild(commentUser);
+
     commentsList.appendChild(commentDiv);
   });
 }
 
-function displayImages(images) {
-  const gallery = document.getElementById('image-gallery');
-  gallery.innerHTML = '';
-  images.forEach(image => {
-    const img = document.createElement('img');
-    img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`;
-    img.alt = image.statement;
-    img.style.width = '200px';
-    img.classList.add('clickable-image');
-    img.addEventListener('click', () => openImageInFullScreen(img));
-    const div = document.createElement('div');
-    div.style.marginBottom = '20px';
-    div.classList.add('image-block');
-    const statement = document.createElement('p');
-    statement.textContent = image.statement;
-    statement.classList.add('image-statement');
-    div.appendChild(img);
-    div.appendChild(statement);
-    gallery.appendChild(div);
+// Function to add a comment to the database
+async function addComment(commentText, userName) {
+  await fetch('https://r2f.vercel.app/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ user: userName, comment: commentText }),
   });
 }
 
-window.onload = () => {
-  loadComments();
-  loadImages();
-};
+// Event listener for form submission
+document.getElementById('commentForm').addEventListener('submit', function (event) {
+  event.preventDefault();
 
+  const commentInput = document.getElementById('commentInput');
+  const userInput = document.getElementById('userNameInput');
+  const commentText = commentInput.value.trim();
+  const userName = userInput.value.trim();
+
+  if (commentText !== "" && userName !== "") {
+    // Add the comment
+    addComment(commentText, userName).then(() => {
+      loadComments();
+    });
+
+    // Clear the textarea
+    commentInput.value = "";
+    userInput.value = "";
+  }
+});
+
+// Load comments on page load
+window.onload = loadComments;
+
+// Full-screen function
+function openImageInFullScreen(imageElement) {
+  if (imageElement.requestFullscreen) {
+    imageElement.requestFullscreen();
+  } else if (imageElement.mozRequestFullScreen) { // Firefox
+    imageElement.mozRequestFullScreen();
+  } else if (imageElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+    imageElement.webkitRequestFullscreen();
+  } else if (imageElement.msRequestFullscreen) { // IE/Edge
+    imageElement.msRequestFullscreen();
+  }
+}
+
+// Fetch images from the server
+fetch('https://r2f.vercel.app/images') // Specify full URL for better debugging
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    return response.json();
+  })
+  .then(images => {
+    const gallery = document.getElementById('image-gallery');
+    gallery.innerHTML = ''; // Clear existing gallery content
+
+    images.forEach(image => {
+      // Create an img element for each image
+      const img = document.createElement('img');
+      // Correct image URL (replace backslashes with forward slashes)
+      img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`; 
+      img.alt = image.statement;
+      img.style.width = '200px'; // Optional: Adjust the size of the image
+      img.classList.add('clickable-image'); // Add a class for identifying clickable images
+
+      // Add a click event to open the image in full-screen mode
+      img.addEventListener('click', function() {
+        openImageInFullScreen(this);
+      });
+
+      // Create a div to hold the image and statement
+      const div = document.createElement('div');
+      div.style.marginBottom = '20px'; // Optional: Spacing between image blocks
+      div.classList.add('image-block'); // Updated class name for clarity
+
+      // Create the statement element and add the statement text
+      const statement = document.createElement('p');
+      statement.textContent = image.statement; // Display the statement
+      statement.style.marginBottom = '20px'; // Optional: Spacing between image blocks
+      statement.classList.add('image-statement'); // Updated class name for clarity
+
+      // Append the image and statement to the div
+      div.appendChild(img);
+      div.appendChild(statement);
+
+      // Append the div to the gallery
+      gallery.appendChild(div);
+    });
+  })
+  .catch(err => {
+    console.error('Error fetching images:', err);
+    alert('Could not load images. Please check the console for details.'); // Alert user
+  });
+
+// Function to open image in full-screen mode (you need to define this)
+function openImageInFullScreen(imageElement) {
+  if (imageElement.requestFullscreen) {
+    imageElement.requestFullscreen();
+  } else if (imageElement.webkitRequestFullscreen) { // Safari
+    imageElement.webkitRequestFullscreen();
+  } else if (imageElement.msRequestFullscreen) { // IE11
+    imageElement.msRequestFullscreen();
+  }
+}
     
   </script>
   <script src="script.js"></script>
