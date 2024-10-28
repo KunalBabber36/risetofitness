@@ -11,7 +11,6 @@ const cors = require('cors');
 const FormDetail = require('./models/FormDetail'); // Import model
 
 
-
 // Initialize the app
 const app = express();
 // const port = 3000;
@@ -131,39 +130,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
     `);
 });
 
-// Route to fetch all comments
-app.get('/comments', async (req, res) => {
-  try {
-    const comments = await Comment.find();
-    res.json(comments);
-  } catch (error) {
-    res.status(500).json({ message: 'Error loading comments' });
-  }
-});
-
-// Route to add a new comment
-app.post('/comments', async (req, res) => {
-  try {
-    const newComment = new Comment({
-      user: req.body.user,
-      comment: req.body.comment,
-    });
-    await newComment.save();
-    res.json({ message: 'Comment added successfully' });
-  } catch (error) {
-    res.status(500).json({ message: 'Error adding comment' });
-  }
-});
-
-// Route to delete a comment
-app.delete('/comments/:id', async (req, res) => {
-  try {
-    await Comment.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Comment deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ message: 'Error deleting comment' });
-  }
-});
 
 
 
