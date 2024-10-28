@@ -78,7 +78,7 @@
       event.preventDefault();
 
       const formData = new FormData(uploadForm);
-      const response = await fetch('/images', {
+      const response = await fetch('/upload', {
         method: 'POST',
         body: formData
       });
