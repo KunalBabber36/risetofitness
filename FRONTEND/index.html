@@ -217,9 +217,28 @@
     <h2 class="section__header trainer">MEET OUR TRAINERS</h2>
     <div class="trainer__grid">
       <div class="trainer__card">
-        <img src="assets/trainer-1.jpg" alt="trainer" />
-        <h4>DAVID WILLIAMS</h4>
-        <p>Body Builder Coach</p>
+        <!-- <img src="assets/trainer-1.jpg" alt="trainer" /> -->
+         
+        <div class="carousel-container">
+          <div class="carousel-track">
+              <img src="assets/DSC06965.JPG" class="carousel-slide" alt="Image 1">
+              <img src="assets/DSC06966.JPG" class="carousel-slide" alt="Image 2">
+              <img src="assets/DSC06968.JPG" class="carousel-slide" alt="Image 3">
+              <img src="assets/DSC06969.JPG" class="carousel-slide" alt="Image 3">
+
+              <!-- Add more images as needed -->
+          </div>
+          <div class="carousel-indicators">
+              <span class="dot active" onclick="goToSlide(0)"></span>
+              <span class="dot" onclick="goToSlide(1)"></span>
+              <span class="dot" onclick="goToSlide(2)"></span>
+              <span class="dot" onclick="goToSlide(3)"></span>
+
+              <!-- Add dots matching the number of images -->
+          </div>
+      </div>
+        <h4>NEIL DEY</h4>
+        <p>Yoga Coach</p>
         <div class="trainer__socials">
           <a href="#"><i class="ri-facebook-fill"></i></a>
           <a href="#"><i class="ri-twitter-fill"></i></a>
@@ -482,8 +501,35 @@
       </div>
     </div>
 </section>
+<section class="blog" id="blog">
+  <div class="section__container blog__container">
+    <h2 class="section__header">GYM UPDATES</h2>
+    <div class="blog__grid">
+      <div class="blog__card">
+        <img src="assets/blog-1.jpg" alt="blog" />
+        <h4>Fueling Your Body for Optimal Performance</h4>
+      </div>
+      <div class="blog__card">
+        <img src="assets/blog-2.jpg" alt="blog" />
+        <h4>A Guide to Setting and Achieving Fitness Goals</h4>
+      </div>
+      <div class="blog__card">
+        <img src="assets/blog-3.jpg" alt="blog" />
+        <h4>Tips and Techniques for Efficient Exercise</h4>
+      </div>
+      <div class="blog__card">
+        <img src="assets/blog-4.jpg" alt="blog" />
+        <h4>A Beginner's Guide to Starting Your Running Journey</h4>
+      </div>
+    </div>
+    <br>
+    <div>
+      <a href="blog.html"><button class="btnn">VIEW ALL</button></a>
+    </div>
+  </div>
+</section>
 
-  <section class="blog" id="blog">
+  <!-- <section class="blog" id="blog">
     <div class="section__container blog__container">
       <h2 class="section__header">GYM UPDATES</h2>
       <div class="blog__grid">
@@ -493,7 +539,7 @@
         <div class="blog__btn">
         </div>
       </div>
-  </section>
+  </section> -->
   <div class="comments-container">
     <h2>Leave a Comment</h2>
     <form id="commentForm">
@@ -947,6 +993,76 @@ async function selectPlan(event, planType) {
         alert("There was an error. Please try again.");
     }
 }
+
+let currentIndex = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.dot');
+const track = document.querySelector('.carousel-track');
+
+function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+}
+
+function updateCarousel() {
+    // Move the carousel to the selected slide
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    // Update active dot
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+    });
+}
+
+// Touch and drag/swipe functionality
+let startPos = 0;
+let isDragging = false;
+
+track.addEventListener('mousedown', (e) => {
+    startPos = e.clientX;
+    isDragging = true;
+    track.style.cursor = 'grabbing';
+});
+
+track.addEventListener('mouseup', () => {
+    isDragging = false;
+    track.style.cursor = 'grab';
+});
+
+track.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const currentPosition = e.clientX;
+    const movedBy = startPos - currentPosition;
+
+    if (movedBy > 50) {
+        // Swipe left
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+        isDragging = false;
+    } else if (movedBy < -50) {
+        // Swipe right
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+        isDragging = false;
+    }
+});
+
+// For mobile touch support
+track.addEventListener('touchstart', (e) => startPos = e.touches[0].clientX);
+track.addEventListener('touchmove', (e) => {
+    const currentPosition = e.touches[0].clientX;
+    const movedBy = startPos - currentPosition;
+
+    if (movedBy > 50) {
+        // Swipe left
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    } else if (movedBy < -50) {
+        // Swipe right
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+});
 
   </script>
   <script src="script.js"></script>

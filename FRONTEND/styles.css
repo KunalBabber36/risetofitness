@@ -568,6 +568,7 @@ nav {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  margin-top: 150px;
 }
 
 .membership__container .section__header {
@@ -725,6 +726,54 @@ nav {
   object-fit: cover;
   mix-blend-mode: color-burn;
 }
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  cursor: grab;
+}
+
+.carousel-track img{
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+
+}
+
+.carousel-slide {
+  min-width: 100%;
+  object-fit: cover;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
 
 
 .trainer{
@@ -1700,7 +1749,7 @@ button:hover {
     background-color: #ff0000f6;
   }
 
-  .blog {
+  /* .blog {
     background-color: var(--text-dark);
     width: 100%;
     margin-left: 0%;
@@ -1734,7 +1783,44 @@ button:hover {
   .blog__btn {
     margin-top: 4rem;
     text-align: center;
+  } */
+  .blog {
+    background-color: var(--text-dark);
   }
+  
+  .blog__container .section__header {
+    color: var(--text-light);
+    margin-top: -130px;
+  }
+  
+  .blog__grid {
+    margin-top: 4rem;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .blog__card img {
+    margin-bottom: 10px;
+  }
+  
+  .blog__card h4 {
+    max-width: calc(100% - 1rem);
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: var(--header-font);
+    color: var(--text-light);
+    transition: 0.3s;
+  }
+  
+  .blog__card:hover h4 {
+    color: var(--secondary-color-dark);
+  }
+  
+  .blog__btn {
+    margin-top: 4rem;
+    text-align: center;
+  }
+  
   
   .logo__banner {
     padding-block: 4rem;
