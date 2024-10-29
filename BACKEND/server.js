@@ -118,48 +118,48 @@ app.post('/submit', async (req, res) => {
     }
 });
 
-// // Protected route for admin page
-// app.get('/admin', isAuthenticated, async (req, res) => {
-//     const formDetails = await FormDetail.find();
-//     res.send(`
-//       <main>
-//     <section class="upload-section">
-//       <h2>Upload Image</h2>
-//       <form id="uploadForm" enctype="multipart/form-data">
-//         <input type="file" name="image" id="imageInput" required>
-//         <input type="text" name="statement" id="statementInput" placeholder="Enter a statement" required>
-//         <button type="submit">Upload</button>
-//       </form>
-//     </section>
+// Protected route for admin page
+app.get('/admin', isAuthenticated, async (req, res) => {
+    const formDetails = await FormDetail.find();
+    res.send(`
+      <main>
+    <section class="upload-section">
+      <h2>Upload Image</h2>
+      <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="image" id="imageInput" required>
+        <input type="text" name="statement" id="statementInput" placeholder="Enter a statement" required>
+        <button type="submit">Upload</button>
+      </form>
+    </section>
 
-//     <section class="images-section">
-//       <h2>Uploaded Images</h2>
-//       <div id="imagesList"></div>
-//     </section>
+    <section class="images-section">
+      <h2>Uploaded Images</h2>
+      <div id="imagesList"></div>
+    </section>
 
-//     <section class="comments-container">
-//       <h2>Manage Comments</h2>
-//       <div id="commentsList"></div>
-//     </section>
-//   </main>
-//         <h1>Admin Panel - Submitted Form Details</h1>
-//         ${formDetails.map(detail => `
-//             <div>
-//                 <p><strong>Name:</strong>${detail.name}</p>
-//                 <p><strong>Email:</strong> ${detail.email}</p>
-//                 <p><strong>Phone No:</strong> ${detail.phoneno}</p>
-//                 <p><strong>Message:</strong> ${detail.message}</p>
-//             </div>
+    <section class="comments-container">
+      <h2>Manage Comments</h2>
+      <div id="commentsList"></div>
+    </section>
+  </main>
+        <h1>Admin Panel - Submitted Form Details</h1>
+        ${formDetails.map(detail => `
+            <div>
+                <p><strong>Name:</strong>${detail.name}</p>
+                <p><strong>Email:</strong> ${detail.email}</p>
+                <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+                <p><strong>Message:</strong> ${detail.message}</p>
+            </div>
             
-//         `).join('')}
-//         <a href="/logout">Logout</a>
-//     `);
-// });
-
-// Serve the admin page only to authenticated users
-app.get('/admin', isAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'admin.html'));
+        `).join('')}
+        <a href="/logout">Logout</a>
+    `);
 });
+
+// // Serve the admin page only to authenticated users
+// app.get('/admin', isAuthenticated, (req, res) => {
+//   res.sendFile(path.join(__dirname, 'views', 'admin.html'));
+// });
 
 
 // Middleware
