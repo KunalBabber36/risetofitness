@@ -929,7 +929,7 @@ function selectPlan(event, planType) {
             return;
         }
         
-        fetch('http://localhost:3000/select-plan', {
+        fetch('https://r2f.vercel.app/select-plan', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userName, planType })
