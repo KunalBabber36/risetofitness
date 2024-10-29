@@ -118,7 +118,7 @@ app.post('/submit', async (req, res) => {
     }
 });
 
-// Protected route for admin page
+// // Protected route for admin page
 // app.get('/admin', isAuthenticated, async (req, res) => {
 //     const formDetails = await FormDetail.find();
 //     res.send(`
