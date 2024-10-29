@@ -2435,11 +2435,8 @@ button:hover {
   }
   
   .about-us-img-wrapper img {
-<<<<<<< HEAD
     /* width: 100%; */
-=======
   /* width: 100%; */
->>>>>>> 0f22351f09df36ad71444a92d870f1e257bdcf30
     object-fit: cover;
     mix-blend-mode: color-burn;
     /* margin-top: 7rem; */
