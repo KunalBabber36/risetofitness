@@ -41,7 +41,8 @@
     </div>
   </div>
   <!-- <script src="upload.js"></script> -->
-
+  <h2>Selected Gym Plans</h2>
+  <div id="plansContainer"></div>
   <script>
     // Function to fetch and display uploaded images
     async function fetchImages() {
@@ -130,6 +131,20 @@
 
     // Load comments when the page loads
     window.onload = loadComments;
+
+    async function loadPlans() {
+            const response = await fetch('http://localhost:3000/admin/plans');
+            const plans = await response.json();
+
+            const container = document.getElementById('plansContainer');
+            container.innerHTML = plans.map(plan => `
+                <p><strong>Plan:</strong> ${plan.planType} <br>
+                <strong>Selected By:</strong> ${plan.selectedBy} <br>
+                <strong>Date:</strong> ${new Date(plan.date).toLocaleString()}</p>
+            `).join('');
+        }
+
+        loadPlans();
 
   </script>
 </body>

@@ -61,6 +61,32 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// Plan Schema
+const planSchema = new mongoose.Schema({
+  planType: String,
+  selectedBy: String,
+  date: { type: Date, default: Date.now }
+});
+
+const Plan = mongoose.model('Plan', planSchema);
+
+// Route to select plan
+app.post('/select-plan', (req, res) => {
+  const { planType, userName } = req.body;
+
+  const newPlan = new Plan({ planType, selectedBy: userName });
+  newPlan.save()
+      .then(() => res.json({ message: 'Plan selected successfully' }))
+      .catch((error) => res.status(500).json({ error: 'Error saving plan' }));
+});
+
+// Route to retrieve selected plans for admin view
+app.get('/admin/plans', (req, res) => {
+  Plan.find()
+      .then((plans) => res.json(plans))
+      .catch((error) => res.status(500).json({ error: 'Error retrieving plans' }));
+});
+
 // Route to handle logout
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
