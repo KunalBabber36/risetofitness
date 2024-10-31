@@ -15,20 +15,6 @@ const FormDetail = require('./models/FormDetail'); // Import model
 const app = express();
 // const port = 3000;
 const port = process.env.PORT || 3000;
-
-// Middleware
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-app.use(express.static(path.join(__dirname, 'FRONTEND'))); // Serve static files
-app.use('/uploads', express.static('uploads')); // Serve uploaded files
-// Serve static files from the FRONTEND directory
-app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up one level to BACKEND, then into FRONTEND
-
-// Serve index.html on the root path
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
-});
 app.use(cors({
   origin: 'https://r2f.vercel.app/', 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -156,7 +142,20 @@ app.get('/admin', isAuthenticated, async (req, res) => {
 // });
 
 
+// Middleware
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.static(path.join(__dirname, 'FRONTEND'))); // Serve static files
+app.use('/uploads', express.static('uploads')); // Serve uploaded files
+// Serve static files from the FRONTEND directory
+app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up one level to BACKEND, then into FRONTEND
+app.use(express.static(path.join(__dirname, '..', 'FRONTEND','styles.css'))); // Navigate up one level to BACKEND, then into FRONTEND
 
+// Serve index.html on the root path
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
+});
 
 
 // MongoDB connection
@@ -216,15 +215,15 @@ app.get('/images', async (req, res) => {
     res.status(500).json({ message: 'Error fetching images', error });
   }
 });
-// app.get('/', (req, res) => {
-//   res.send('Hello from Vercel!');
-// });
+app.get('/', (req, res) => {
+  res.send('Hello from Vercel!');
+});
 
 // Set up your other middleware and routes
 // Example route
-// app.get('/api/data', (req, res) => {
-//   res.json({ message: 'Hello from the backend!' });
-// });
+app.get('/api/data', (req, res) => {
+  res.json({ message: 'Hello from the backend!' });
+});
 
 
 // Delete image
