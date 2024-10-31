@@ -155,7 +155,7 @@ app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up 
 // app.get('/', (req, res) => {
 //     res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
 // });
-
+// a
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
