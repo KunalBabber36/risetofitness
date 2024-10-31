@@ -155,6 +155,9 @@ app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
 });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'styles.css')); // Same navigation as above
+});
 
 
 // MongoDB connection
