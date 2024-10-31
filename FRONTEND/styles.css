@@ -383,7 +383,7 @@ nav {
   position: absolute;
   bottom: 6.5rem;
   margin-left: -9px;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 600;
   line-height: 3.5rem;
   color: var(--white);
@@ -822,6 +822,19 @@ nav {
 .trainer__socials a:hover {
   color: var(--secondary-color);
 }
+.testimonial__trainer{
+  display: grid;
+  margin: auto;
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100px;
+  overflow: hidden;
+}
 .review{
   /* margin-left: 20%; */
   width: 100%;
@@ -887,15 +900,13 @@ nav {
   background-color: var(--primary-color);
 }
 
-
+/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
 .container {
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #111310;
-  margin-bottom: 90px;
  
 }
 .testimonial {
@@ -1664,14 +1675,11 @@ button:hover {
     text-align: center;
   }
   .container {
-    margin-top: -80px;
-    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #111310; 
-    margin-bottom: -18%;
   }
   .testimonial {
     position: relative;
@@ -1679,8 +1687,6 @@ button:hover {
     width: 100%;
     padding: 50px 0;
     overflow: hidden;
-    margin-bottom: 50px;
-    margin-top: -200px;
   }
   .testimonial .image {
     height: 170px;
@@ -2512,14 +2518,11 @@ button:hover {
     text-align: center;
   }
   .container {
-    margin-top: -80px;
-    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #111310; 
-    margin-bottom: -18%;
   }
   .testimonial {
     position: relative;
@@ -2527,8 +2530,6 @@ button:hover {
     width: 100%;
     padding: 50px 0;
     overflow: hidden;
-    margin-bottom: 50px;
-    margin-top: 0px;
   }
   .testimonial .image {
     height: 170px;
@@ -2803,5 +2804,129 @@ button:hover {
 
   .membership__card {
     padding: 2rem;
+  }
+}
+.trainer {
+  margin-left: 0;
+  text-align: center;
+}
+
+/* Trainer Grid Layout */
+.trainer__grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for small screens */
+  gap: 1rem;
+  margin-top: 4rem;
+  width: 100%;
+  margin-left: 0;
+}
+
+/* Trainer Card */
+.trainer__card {
+  overflow: hidden; /* Prevent overflow of card elements */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+}
+
+.trainer__card img {
+  margin-bottom: 1rem;
+  width: 100%; /* Make images responsive */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Crop the image to cover the space */
+}
+
+.trainer__card h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-family: var(--header-font);
+  color: var(--text-light);
+}
+
+.trainer__card p {
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+/* Social Icons */
+.trainer__socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.trainer__socials a {
+  font-size: 1.25rem;
+  color: var(--text-light);
+}
+
+.trainer__socials a:hover {
+  color: var(--secondary-color);
+}
+
+/* Testimonial Trainer */
+.testimonial__trainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  text-align: center;
+  position: relative;
+  width: 100%; /* Full width on small screens */
+  max-width: 270px;
+  overflow: hidden;
+}
+
+/* Responsive Adjustments */
+
+/* Medium Screens (Tablets) */
+@media (min-width: 600px) {
+  .trainer__grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    gap: 1.5rem;
+  }
+
+  .trainer__card h4 {
+    font-size: 1.5rem;
+  }
+
+  .testimonial__trainer {
+    width: 100%; /* Wider testimonial section for medium screens */
+    max-width: 400px;
+  }
+}
+
+/* Large Screens (Desktops) */
+@media (min-width: 1024px) {
+  .trainer__grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on large screens */
+    gap: 2rem;
+  }
+
+  .trainer__card h4 {
+    font-size: 1.75rem;
+  }
+
+  .testimonial__trainer {
+    width: 100%; /* Fixed width for larger screens */
+    max-width: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .trainer{
+    margin: auto;
+  }
+  .trainer__card{
+    margin: auto;
+    width: 100%;  
+  }
+
+  .trainer__card h4 {
+    font-size: 1.5rem;
+  }
+
+  .testimonial__trainer {
+    width: 100%; /* Wider testimonial section for medium screens */
+    max-width: 400px;
+    margin: auto;
   }
 }
