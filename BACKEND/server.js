@@ -150,6 +150,7 @@ app.use(express.static(path.join(__dirname, 'FRONTEND'))); // Serve static files
 app.use('/uploads', express.static('uploads')); // Serve uploaded files
 // Serve static files from the FRONTEND directory
 app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up one level to BACKEND, then into FRONTEND
+app.use(express.static(path.join(__dirname, '..', 'FRONTEND','css'))); // Navigate up one level to BACKEND, then into FRONTEND
 
 // Serve index.html on the root path
 app.get('/', (req, res) => {
