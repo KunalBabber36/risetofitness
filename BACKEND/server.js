@@ -347,12 +347,7 @@ app.get('/display', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
-app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up one level to BACKEND, then into FRONTEND
 
-// Serve index.html on the root path
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
-});
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

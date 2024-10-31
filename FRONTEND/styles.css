@@ -2930,3 +2930,8 @@ button:hover {
     margin: auto;
   }
 }
+@media (min-width: 1140px) {
+  .blog{
+    margin-top: 130px;
+  }
+}
