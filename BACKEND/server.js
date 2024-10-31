@@ -152,10 +152,9 @@ app.use('/uploads', express.static('uploads')); // Serve uploaded files
 app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up one level to BACKEND, then into FRONTEND
 
 // Serve index.html on the root path
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
-// });
-// a
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
+});
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
