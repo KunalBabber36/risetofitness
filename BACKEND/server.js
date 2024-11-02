@@ -170,20 +170,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                   h1 {
                       color: #444;
                   }
-                  .notification {
-                      display: none;
-                      padding: 10px;
-                      margin-bottom: 20px;
-                      border-radius: 5px;
-                  }
-                  .notification.success {
-                      background-color: #d4edda;
-                      color: #155724;
-                  }
-                  .notification.error {
-                      background-color: #f8d7da;
-                      color: #721c24;
-                  }
                   .tabs_list {
                       display: flex;
                       list-style-type: none;
@@ -244,8 +230,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
               <div class="container">
                   <h1>Admin Dashboard</h1>
 
-                  <div id="notification" class="notification"></div>
-
                   <ul class="tabs_list">
                       <li data-tab="formDetails" class="active">Submitted Form Details</li>
                       <li data-tab="comments">Manage Comments</li>
@@ -291,7 +275,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                   // Tab switching functionality
                   const tabs = document.querySelectorAll('.tabs_list li');
                   const tabBodies = document.querySelectorAll('.tab_body');
-                  const notification = document.getElementById('notification');
 
                   tabs.forEach(tab => {
                       tab.addEventListener('click', () => {
@@ -303,33 +286,18 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       });
                   });
 
-                  // Function to show notifications
-                  function showNotification(message, type) {
-                      notification.innerText = message;
-                      notification.className = 'notification ' + (type === 'success' ? 'success' : 'error');
-                      notification.style.display = 'block';
-
-                      setTimeout(() => {
-                          notification.style.display = 'none';
-                      }, 3000); // Hide after 3 seconds
-                  }
-
                   // Function to delete a comment
                   function deleteComment(commentId) {
                       fetch('/comments/' + commentId, { method: 'DELETE' })
                           .then(response => response.json())
                           .then(data => {
                               if (data.message === 'Comment deleted successfully') {
-                                  showNotification('Comment deleted successfully', 'success');
                                   location.reload(); // Refresh the page to update comments
                               } else {
-                                  showNotification('Error deleting comment', 'error');
+                                  alert('Error deleting comment');
                               }
                           })
-                          .catch(error => {
-                              console.error('Error deleting comment:', error);
-                              showNotification('Error deleting comment', 'error');
-                          });
+                          .catch(error => console.error('Error deleting comment:', error));
                   }
               </script>
           </body>
