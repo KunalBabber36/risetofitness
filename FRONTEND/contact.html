@@ -424,7 +424,10 @@
       </div>
     </form> -->
 
-    <section id="contact" class="contact">
+
+
+
+    <!-- <section id="contact" class="contact">
 
     <form id="contactForm"   action="https://formspree.io/f/xanyyqlb"    method="POST">      <div id="notification"></div>
       <div class="group-field">
@@ -455,11 +458,47 @@
           <span class="wpcf7-spinner"></span>
         </p>
       </div>
-      <!-- <div id="success-message">Your form was submitted successfully!</div> -->
+    </form> 
+    <div id="formMessage" class="form-message"></div>
+
+  </section> -->
+
+<section id="contact" class="contact">
+
+  <form id="contactForm"   action="/submit"    method="POST">
+    <div class="group-field">
+        <P>
+          <span class="wpcf7-form-control-wrap" data-name="Fname">
+            <input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
+              aria-invalid="false" placeholder="First Name *" value="" type="text" name="name" id="name" required></span><br>
+          <span class="wpcf7-form-control-wrap" data-name="Lname">
+            <input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true"
+              aria-invalid="false" placeholder="Last Name *" value="" type="text" name="name" id="name" required></span><br>
+        </P>
+        <div class="group-field">
+          <p><span class="wpcf7-form-control-wrap" data-name="email">
+              <input size="40"
+                class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
+                aria-required="true" aria-invalid="false" placeholder="Email *" value="" type="email" required
+                name="email" id="email"></span><br>
+            <span class="wpcf7-form-control-wrap" data-name="phone">
+              <input size="40" maxlength="12" minlength="10"
+                class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel"
+                aria-required="true" aria-invalid="false" placeholder="Phone *" value="" type="tel" name="phoneno" id="phone" required></span>
+          </p>
+        </div>
+        <p><span class="wpcf7-form-control-wrap" data-name="message">
+            <textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
+              aria-required="true" aria-invalid="false" placeholder="Message *" name="message" id="message" required></textarea></span><br>
+          <button class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary" type="submit">Submit</button>
+          <span class="wpcf7-spinner"></span>
+        </p>
+      </div>
     </form> 
     <div id="formMessage" class="form-message"></div>
 
   </section>
+
 
 
     <!-- <form id="contactForm"   action="https://formspree.io/f/xanyyqlb"    method="POST">
