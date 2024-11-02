@@ -119,22 +119,95 @@ app.post('/submit', async (req, res) => {
 });
 
 // Protected route for admin page
-app.get('/admin', isAuthenticated, async (req, res) => {
-    const formDetails = await FormDetail.find();
-    res.send(`
-        <h1>Admin Panel - Submitted Form Details</h1>
-        ${formDetails.map(detail => `
-            <div>
-                <p><strong>Name:</strong>${detail.name}</p>
-                <p><strong>Email:</strong> ${detail.email}</p>
-                <p><strong>Phone No:</strong> ${detail.phoneno}</p>
-                <p><strong>Message:</strong> ${detail.message}</p>
-            </div>
+// app.get('/admin', isAuthenticated, async (req, res) => {
+//     const formDetails = await FormDetail.find();
+//     res.send(`
+//         <h1>Admin Panel - Submitted Form Details</h1>
+//         ${formDetails.map(detail => `
+//             <div>
+//                 <p><strong>Name:</strong>${detail.name}</p>
+//                 <p><strong>Email:</strong> ${detail.email}</p>
+//                 <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+//                 <p><strong>Message:</strong> ${detail.message}</p>
+//             </div>
             
-        `).join('')}
-        <a href="/logout">Logout</a>
-    `);
+//         `).join('')}
+//         <a href="/logout">Logout</a>
+//     `);
+// });
+
+// Route for admin page
+app.get('/admin', isAuthenticated, async (req, res) => {
+  try {
+      // Fetch form details
+      const formDetails = await FormDetail.find();
+      const comments = await Comment.find();
+      const plans = await Plan.find();
+
+      res.send(`
+          <h1>Admin Panel - Submitted Form Details</h1>
+          ${formDetails.map(detail => `
+              <div>
+                  <p><strong>Name:</strong> ${detail.name}</p>
+                  <p><strong>Email:</strong> ${detail.email}</p>
+                  <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+                  <p><strong>Message:</strong> ${detail.message}</p>
+              </div>
+          `).join('')}
+          <h2>Manage Comments</h2>
+          <div id="commentsList">
+              ${comments.map(comment => `
+                  <div class="comment-item">
+                      <p><strong>${comment.user}</strong>: ${comment.comment}</p>
+                      <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
+                  </div>
+              `).join('')}
+          </div>
+          <h2>Selected Gym Plans</h2>
+          <div id="plansContainer">
+              ${plans.map(plan => `
+                  <p><strong>Plan:</strong> ${plan.planType} <br>
+                  <strong>Selected By:</strong> ${plan.selectedBy} <br>
+                  <strong>Date:</strong> ${new Date(plan.date).toLocaleString()}</p>
+              `).join('')}
+          </div>
+          <a href="/logout">Logout</a>
+
+          <script>
+              // Function to delete a comment
+              function deleteComment(commentId) {
+                  fetch('/comments/' + commentId, { method: 'DELETE' })
+                      .then(response => response.json())
+                      .then(data => {
+                          if (data.message === 'Comment deleted successfully') {
+                              location.reload(); // Refresh the page to update comments
+                          } else {
+                              alert('Error deleting comment');
+                          }
+                      })
+                      .catch(error => console.error('Error deleting comment:', error));
+              }
+          </script>
+      `);
+  } catch (error) {
+      res.status(500).send('Error loading admin data');
+  }
 });
+
+// Route for deleting a comment
+app.delete('/comments/:id', isAuthenticated, async (req, res) => {
+  try {
+      const { id } = req.params;
+      await Comment.findByIdAndDelete(id);
+      res.json({ message: 'Comment deleted successfully' });
+  } catch (error) {
+      res.status(500).json({ message: 'Error deleting comment' });
+  }
+});
+
+
+
+
 
 // // Serve the admin page only to authenticated users
 // app.get('/admin', isAuthenticated, (req, res) => {
