@@ -464,27 +464,15 @@
   </section> -->
 
 <section id="contact" class="contact">
-  <form id="contactForm" action="/submit" method="POST">
+  <form id="contactForm"   action="/submit"    method="POST">
     <input type="text" name="name" id="name" placeholder="Your Name" required>
     <input type="email" name="email" id="email" placeholder="Your Email" required>
     <input type="tel" name="phoneno" id="phone" placeholder="Your Phone Number" required>
-    
-    <textarea cols="40" rows="10" placeholder="Your Message" name="message" id="message" required></textarea>
-    
-    <!-- Free Trial Option Using a Checkbox -->
-    <div class="free-trial-option">
-        <label for="freeTrial">
-            <input type="checkbox" id="freeTrial" name="freeTrial"> Request a free one-day gym trial
-        </label>
-    </div>
-
-    <button type="submit" class="btn-primary">Submit</button>
-</form>
-
-
-
-
-
+    <textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
+    aria-required="true" aria-invalid="false" placeholder="Message *" name="message" id="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary">Submit</button>
+    <span class="wpcf7-spinner"></span>
+  </form>
     <div id="formMessage" class="form-message"></div>
 
   </section>

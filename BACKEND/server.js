@@ -105,40 +105,18 @@ app.get('/logout', (req, res) => {
 //         </form>
 //     `);
 // });
-// Define your Mongoose schema and model
-const formDetailSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  phoneno: String,
-  message: String,
-  freeTrial: String
-});
-const FormDetail = mongoose.model('FormDetail', formDetailSchema);
-// Handle form submission
+
+// Route to handle form submission and save to MongoDB
 app.post('/submit', async (req, res) => {
-  try {
-      const { name, email, phoneno, message, freeTrial } = req.body;
-      
-      // Check if the checkbox is checked (it sends "on" when checked)
-      const trialStatus = freeTrial === 'on' ? 'Requested' : 'Not Requested';
-
-      const newFormDetail = new FormDetail({
-          name,
-          email,
-          phoneno,
-          message,
-          freeTrial: trialStatus
-      });
-
-      await newFormDetail.save();
-      res.send('Form submitted successfully.');
-  } catch (err) {
-      res.status(500).send('Error saving form data.');
-  }
+    try {
+        const { name, email, phoneno, message } = req.body;
+        const newFormDetail = new FormDetail({ name, email,phoneno, message });
+        await newFormDetail.save();
+        res.send('Form submitted successfully.');
+    } catch (err) {
+        res.status(500).send('Error saving form data.');
+    }
 });
-
-
-
 
 // Protected route for admin page
 // app.get('/admin', isAuthenticated, async (req, res) => {
@@ -257,20 +235,17 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       <li data-tab="comments">Manage Comments</li>
                       <li data-tab="plans">Selected Gym Plans</li>
                   </ul>
+
                   <div class="tab_body active" id="formDetails">
-                    ${formDetails.map(detail => `
-                    <div class="card">
-                  <p><strong>Name:</strong> ${detail.name}</p>
-                  <p><strong>Email:</strong> ${detail.email}</p>
-                  <p><strong>Phone No:</strong> ${detail.phoneno}</p>
-                  <p><strong>Message:</strong> ${detail.message}</p>
-                  <p><strong>Trial:</strong> ${detail.freeTrial}</p>
-                </div>
-                `).join('')}
-                </div>
-
-
-
+                      ${formDetails.map(detail => `
+                          <div class="card">
+                              <p><strong>Name:</strong> ${detail.name}</p>
+                              <p><strong>Email:</strong> ${detail.email}</p>
+                              <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+                              <p><strong>Message:</strong> ${detail.message}</p>
+                          </div>
+                      `).join('')}
+                  </div>
 
                   <div class="tab_body" id="comments">
                       <div id="commentsList">
