@@ -107,7 +107,6 @@ app.get('/logout', (req, res) => {
 // });
 
 // Route to handle form submission and save to MongoDB
-xpress.urlencoded({ extended: true }));
 
 app.post('/submit', async (req, res) => {
   try {
