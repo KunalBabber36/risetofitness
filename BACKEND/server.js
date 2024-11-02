@@ -108,20 +108,16 @@ app.get('/logout', (req, res) => {
 
 // Route to handle form submission and save to MongoDB
 app.post('/submit', async (req, res) => {
-  console.log(req.body); // Log the incoming data to check
-
   try {
       const { name, email, phoneno, message, freeTrial } = req.body;
 
-      // If `freeTrial` is 'on', set status to 'Yes', otherwise 'No'
-      const trialStatus = freeTrial === 'on' ? 'Yes' : 'No';
-
+      // Use the freeTrial value directly from the form
       const newFormDetail = new FormDetail({
           name,
           email,
           phoneno,
           message,
-          freeTrial: trialStatus
+          freeTrial
       });
 
       await newFormDetail.save();

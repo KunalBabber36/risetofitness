@@ -472,15 +472,19 @@
     <textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
     aria-required="true" aria-invalid="false" placeholder="Message *" name="message" id="message" required></textarea>
     
-    <!-- Free Trial Option -->
+    <!-- Free Trial Option using Radio Buttons -->
     <div class="free-trial-option">
-      <input type="checkbox" id="freeTrial" name="freeTrial" value="on">
-        <label for="freeTrial">I would like to sign up for a free one-day gym trial</label>
+        <p>Would you like to sign up for a free one-day gym trial?</p>
+        <input type="radio" id="trialYes" name="freeTrial" value="Yes" required>
+        <label for="trialYes">Yes</label>
+        <input type="radio" id="trialNo" name="freeTrial" value="No" required>
+        <label for="trialNo">No</label>
     </div>
 
     <button type="submit" class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary">Submit</button>
     <span class="wpcf7-spinner"></span>
 </form>
+
 
 
 
