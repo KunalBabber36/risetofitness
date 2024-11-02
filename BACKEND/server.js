@@ -108,22 +108,15 @@ app.get('/logout', (req, res) => {
 
 // Route to handle form submission and save to MongoDB
 app.post('/submit', async (req, res) => {
-  console.log(req.body); // Log the incoming request body to check the value of freeTrial
-  try {
-    const { name, email, phoneno, message, freeTrial } = req.body;
-    
-    // You can directly use freeTrial since it will be either 'yes' or 'no'
-    console.log(`Free Trial Value: ${freeTrial}`); // Log the trial value
-
-    const newFormDetail = new FormDetail({ name, email, phoneno, message, freeTrial });
-    await newFormDetail.save();
-
-    res.send('Form submitted successfully.');
-  } catch (err) {
-    res.status(500).send('Error saving form data.');
-  }
+    try {
+        const { name, email, phoneno, message,trial } = req.body;
+        const newFormDetail = new FormDetail({ name, email,phoneno, message,trial });
+        await newFormDetail.save();
+        res.send('Form submitted successfully.');
+    } catch (err) {
+        res.status(500).send('Error saving form data.');
+    }
 });
-
 
 // Protected route for admin page
 // app.get('/admin', isAuthenticated, async (req, res) => {
@@ -243,18 +236,17 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       <li data-tab="plans">Selected Gym Plans</li>
                   </ul>
 
-                <div class="tab_body active" id="formDetails">
-  ${formDetails.map(detail => `
-    <div class="card">
-      <p><strong>Name:</strong> ${detail.name}</p>
-      <p><strong>Email:</strong> ${detail.email}</p>
-      <p><strong>Phone No:</strong> ${detail.phoneno}</p>
-      <p><strong>Message:</strong> ${detail.message}</p>
-      <p><strong>Trial:</strong> ${detail.freeTrial}</p> <!-- Will show 'yes' or 'no' -->
-    </div>
-  `).join('')}
-</div>
-
+                  <div class="tab_body active" id="formDetails">
+                      ${formDetails.map(detail => `
+                          <div class="card">
+                              <p><strong>Name:</strong> ${detail.name}</p>
+                              <p><strong>Email:</strong> ${detail.email}</p>
+                              <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+                              <p><strong>Message:</strong> ${detail.message}</p>
+                              <p><strong>Trial:</strong> ${detail.trial}</p>
+                          </div>
+                      `).join('')}
+                  </div>
 
                   <div class="tab_body" id="comments">
                       <div id="commentsList">
@@ -308,35 +300,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                           })
                           .catch(error => console.error('Error deleting comment:', error));
                   }
-                          const form = document.getElementById('contactForm');
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(form);
-  
-  // Logging the values before sending
-  console.log("Name:", formData.get('name'));
-  console.log("Email:", formData.get('email'));
-  console.log("Phone No:", formData.get('phoneno'));
-  console.log("Message:", formData.get('message'));
-  console.log("Free Trial:", formData.get('freeTrial')); // This should log 'yes' or 'no'
-
-  const response = await fetch('/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phoneno: formData.get('phoneno'),
-      message: formData.get('message'),
-      freeTrial: formData.get('freeTrial') // Capture freeTrial here
-    })
-  });
-
-  const result = await response.text();
-  console.log(result);
-});
-
               </script>
           </body>
           </html>

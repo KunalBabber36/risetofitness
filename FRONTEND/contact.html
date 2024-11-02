@@ -462,37 +462,21 @@
     <div id="formMessage" class="form-message"></div>
 
   </section> -->
-  <section id="contact" class="contact">
-    <form id="contactForm" action="/submit" method="POST">
-      <input type="text" name="name" id="name" placeholder="Your Name" required>
-      <input type="email" name="email" id="email" placeholder="Your Email" required>
-      <input type="tel" name="phoneno" id="phone" placeholder="Your Phone Number" required>
-      <textarea
-        cols="40"
-        rows="10"
-        class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
-        aria-required="true"
-        aria-invalid="false"
-        placeholder="Your Message"
-        name="message"
-        id="message"
-        required
-      ></textarea>
-      
-      <!-- Free Trial Dropdown -->
-      <label for="freeTrial">Would you like a one-day free gym trial?</label>
-      <select id="freeTrial" name="freeTrial" required>
-        <option value="">Select an option</option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-      
-      <button type="submit" class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary">Submit</button>
-      <span class="wpcf7-spinner"></span>
-    </form>
+
+<section id="contact" class="contact">
+  <form id="contactForm"   action="/submit"    method="POST">
+    <input type="text" name="name" id="name" placeholder="Your Name" required>
+    <input type="email" name="email" id="email" placeholder="Your Email" required>
+    <input type="tel" name="phoneno" id="phone" placeholder="Your Phone Number" required>
+    <textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
+    aria-required="true" aria-invalid="false" placeholder="Message *" name="message" id="message" placeholder="Your Message" required></textarea>
+    <input type="text" name="trial" id="trial" placeholder="Want free trail: Y or N">
+    <button type="submit" class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary">Submit</button>
+    <span class="wpcf7-spinner"></span>
+  </form>
     <div id="formMessage" class="form-message"></div>
+
   </section>
-  
 
 
 
