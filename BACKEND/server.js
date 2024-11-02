@@ -107,28 +107,21 @@ app.get('/logout', (req, res) => {
 // });
 
 // Route to handle form submission and save to MongoDB
-
 app.post('/submit', async (req, res) => {
+  console.log(req.body); // Log the incoming request body to check the value of freeTrial
   try {
-    console.log(req.body); // Log the incoming request body
-
-    // Extract data from the request body
     const { name, email, phoneno, message, freeTrial } = req.body;
-    
-    // If freeTrial is undefined or not "yes", set it to "no"
-    const trialValue = freeTrial === 'yes' ? 'yes' : 'no';
+    const trialValue = freeTrial === 'yes' ? 'yes' : 'no'; // This should work as expected
+    console.log(`Free Trial Value: ${trialValue}`); // Log the trial value
 
-    // Create a new FormDetail instance with the extracted data
     const newFormDetail = new FormDetail({ name, email, phoneno, message, freeTrial: trialValue });
-
-    // Save the data to the database
     await newFormDetail.save();
-
     res.send('Form submitted successfully.');
   } catch (err) {
     res.status(500).send('Error saving form data.');
   }
 });
+
 
 
 
@@ -318,9 +311,9 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                           const form = document.getElementById('contactForm');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-
+  
   const formData = new FormData(form);
-  const freeTrial = formData.get('freeTrial') === 'yes' ? 'yes' : 'no';
+  const freeTrial = formData.get('freeTrial') ? 'yes' : 'no'; // Set to 'yes' if checked, otherwise 'no'
 
   const response = await fetch('/submit', {
     method: 'POST',
@@ -330,7 +323,7 @@ form.addEventListener('submit', async (e) => {
       email: formData.get('email'),
       phoneno: formData.get('phoneno'),
       message: formData.get('message'),
-      freeTrial
+      freeTrial // Send freeTrial as 'yes' or 'no'
     })
   });
 
