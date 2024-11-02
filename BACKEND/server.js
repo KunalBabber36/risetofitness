@@ -107,29 +107,26 @@ app.get('/logout', (req, res) => {
 // });
 
 // Route to handle form submission and save to MongoDB
-app.post('/submit', async (req, res) => {
+app.post('/submit', (req, res) => {
+  console.log(req.body); // Check the incoming form data
   try {
-      // Extract form data from the request body
       const { name, email, phoneno, message, freeTrial } = req.body;
-
-      // Check if `freeTrial` is truthy (non-empty string), indicating it was checked
-      const trialStatus = freeTrial ? 'Yes' : 'No';
-
-      // Create a new form detail with the trial status
-      const newFormDetail = new FormDetail({ 
-          name, 
-          email, 
-          phoneno, 
-          message, 
-          freeTrial: trialStatus 
+      const trialStatus = freeTrial ? 'Yes' : 'No'; // Check if `freeTrial` is present
+      const newFormDetail = new FormDetail({
+          name,
+          email,
+          phoneno,
+          message,
+          freeTrial: trialStatus
       });
-
-      await newFormDetail.save();
-      res.send('Form submitted successfully.');
+      newFormDetail.save()
+          .then(() => res.send('Form submitted successfully.'))
+          .catch(err => res.status(500).send('Error saving form data.'));
   } catch (err) {
       res.status(500).send('Error saving form data.');
   }
 });
+
 
 
 
