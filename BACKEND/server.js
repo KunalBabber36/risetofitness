@@ -109,8 +109,8 @@ app.get('/logout', (req, res) => {
 // Route to handle form submission and save to MongoDB
 app.post('/submit', async (req, res) => {
     try {
-        const { name, email, phoneno, message } = req.body;
-        const newFormDetail = new FormDetail({ name, email,phoneno, message });
+        const { name, email, phoneno, message,freeTrial } = req.body;
+        const newFormDetail = new FormDetail({ name, email,phoneno, message,freeTrial });
         await newFormDetail.save();
         res.send('Form submitted successfully.');
     } catch (err) {
@@ -243,6 +243,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                               <p><strong>Email:</strong> ${detail.email}</p>
                               <p><strong>Phone No:</strong> ${detail.phoneno}</p>
                               <p><strong>Message:</strong> ${detail.message}</p>
+                              <p><strong>Message:</strong> ${detail.freeTrial}</p>
                           </div>
                       `).join('')}
                   </div>
