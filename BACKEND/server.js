@@ -167,29 +167,11 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       border-radius: 8px;
                       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                   }
-                  h1 {
+                  h1, h2 {
                       color: #444;
                   }
-                  .tabs_list {
-                      display: flex;
-                      list-style-type: none;
-                      padding: 0;
-                  }
-                  .tabs_list li {
-                      margin-right: 20px;
-                      padding: 10px;
-                      cursor: pointer;
-                      border-bottom: 2px solid transparent;
-                  }
-                  .tabs_list li.active {
-                      border-bottom: 2px solid #007bff;
-                      font-weight: bold;
-                  }
-                  .tab_body {
-                      display: none;
-                  }
-                  .tab_body.active {
-                      display: block;
+                  .section {
+                      margin-bottom: 30px;
                   }
                   .card {
                       background-color: #fafafa;
@@ -198,6 +180,9 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       padding: 15px;
                       margin-bottom: 15px;
                       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                  }
+                  .card strong {
+                      color: #555;
                   }
                   .comment-item {
                       display: flex;
@@ -224,19 +209,24 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                   a:hover {
                       text-decoration: underline;
                   }
+                  #notification {
+                      display: none;
+                      padding: 10px;
+                      margin-bottom: 20px;
+                      background-color: #f0f0f0;
+                      color: #333;
+                      border-left: 5px solid #007bff;
+                  }
               </style>
           </head>
           <body>
               <div class="container">
                   <h1>Admin Dashboard</h1>
 
-                  <ul class="tabs_list">
-                      <li data-tab="formDetails" class="active">Submitted Form Details</li>
-                      <li data-tab="comments">Manage Comments</li>
-                      <li data-tab="plans">Selected Gym Plans</li>
-                  </ul>
+                  <div id="notification"></div>
 
-                  <div class="tab_body active" id="formDetails">
+                  <div class="section">
+                      <h2>Submitted Form Details</h2>
                       ${formDetails.map(detail => `
                           <div class="card">
                               <p><strong>Name:</strong> ${detail.name}</p>
@@ -247,7 +237,8 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       `).join('')}
                   </div>
 
-                  <div class="tab_body" id="comments">
+                  <div class="section">
+                      <h2>Manage Comments</h2>
                       <div id="commentsList">
                           ${comments.map(comment => `
                               <div class="comment-item">
@@ -258,33 +249,32 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       </div>
                   </div>
 
-                  <div class="tab_body" id="plans">
-                      ${plans.map(plan => `
-                          <div class="card">
-                              <p><strong>Plan:</strong> ${plan.planType}</p>
-                              <p><strong>Selected By:</strong> ${plan.selectedBy}</p>
-                              <p><strong>Date:</strong> ${new Date(plan.date).toLocaleString()}</p>
-                          </div>
-                      `).join('')}
+                  <div class="section">
+                      <h2>Selected Gym Plans</h2>
+                      <div id="plansContainer">
+                          ${plans.map(plan => `
+                              <div class="card">
+                                  <p><strong>Plan:</strong> ${plan.planType}</p>
+                                  <p><strong>Selected By:</strong> ${plan.selectedBy}</p>
+                                  <p><strong>Date:</strong> ${new Date(plan.date).toLocaleString()}</p>
+                              </div>
+                          `).join('')}
+                      </div>
                   </div>
 
                   <a href="/logout">Logout</a>
               </div>
 
               <script>
-                  // Tab switching functionality
-                  const tabs = document.querySelectorAll('.tabs_list li');
-                  const tabBodies = document.querySelectorAll('.tab_body');
-
-                  tabs.forEach(tab => {
-                      tab.addEventListener('click', () => {
-                          tabs.forEach(t => t.classList.remove('active'));
-                          tabBodies.forEach(body => body.classList.remove('active'));
-
-                          tab.classList.add('active');
-                          document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
-                      });
-                  });
+                  // Function to show notifications
+                  function showNotification(message) {
+                      const notification = document.getElementById('notification');
+                      notification.textContent = message;
+                      notification.style.display = 'block';
+                      setTimeout(() => {
+                          notification.style.display = 'none';
+                      }, 5000); // Hide after 5 seconds
+                  }
 
                   // Function to delete a comment
                   function deleteComment(commentId) {
@@ -293,6 +283,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                           .then(data => {
                               if (data.message === 'Comment deleted successfully') {
                                   location.reload(); // Refresh the page to update comments
+                                  showNotification('Comment deleted successfully!');
                               } else {
                                   alert('Error deleting comment');
                               }
