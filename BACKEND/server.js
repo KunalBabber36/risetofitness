@@ -111,18 +111,18 @@ app.post('/submit', async (req, res) => {
   console.log(req.body); // Log the incoming request body to check the value of freeTrial
   try {
     const { name, email, phoneno, message, freeTrial } = req.body;
-    const trialValue = freeTrial === 'yes' ? 'yes' : 'no'; // This should work as expected
-    console.log(`Free Trial Value: ${trialValue}`); // Log the trial value
+    
+    // You can directly use freeTrial since it will be either 'yes' or 'no'
+    console.log(`Free Trial Value: ${freeTrial}`); // Log the trial value
 
-    const newFormDetail = new FormDetail({ name, email, phoneno, message, freeTrial: trialValue });
+    const newFormDetail = new FormDetail({ name, email, phoneno, message, freeTrial });
     await newFormDetail.save();
+
     res.send('Form submitted successfully.');
   } catch (err) {
     res.status(500).send('Error saving form data.');
   }
 });
-
-
 
 
 // Protected route for admin page
@@ -243,14 +243,14 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       <li data-tab="plans">Selected Gym Plans</li>
                   </ul>
 
-                  <div class="tab_body active" id="formDetails">
+                <div class="tab_body active" id="formDetails">
   ${formDetails.map(detail => `
     <div class="card">
       <p><strong>Name:</strong> ${detail.name}</p>
       <p><strong>Email:</strong> ${detail.email}</p>
       <p><strong>Phone No:</strong> ${detail.phoneno}</p>
       <p><strong>Message:</strong> ${detail.message}</p>
-      <p><strong>Trial:</strong> ${detail.freeTrial === 'yes' ? 'Yes' : 'No'}</p>
+      <p><strong>Trial:</strong> ${detail.freeTrial}</p> <!-- Will show 'yes' or 'no' -->
     </div>
   `).join('')}
 </div>
@@ -308,29 +308,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                           })
                           .catch(error => console.error('Error deleting comment:', error));
                   }
-                          const form = document.getElementById('contactForm');
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const formData = new FormData(form);
-  const freeTrial = formData.get('freeTrial') ? 'yes' : 'no'; // Set to 'yes' if checked, otherwise 'no'
-
-  const response = await fetch('/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phoneno: formData.get('phoneno'),
-      message: formData.get('message'),
-      freeTrial // Send freeTrial as 'yes' or 'no'
-    })
-  });
-
-  const result = await response.text();
-  console.log(result);
-});
-
               </script>
           </body>
           </html>
