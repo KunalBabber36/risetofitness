@@ -109,20 +109,28 @@ app.get('/logout', (req, res) => {
 // Route to handle form submission and save to MongoDB
 app.post('/submit', async (req, res) => {
   try {
+      // Extract form data from the request body
       const { name, email, phoneno, message, freeTrial } = req.body;
+
+      // Ensure the `freeTrial` is interpreted as "Yes" if the checkbox is checked
+      const trialStatus = freeTrial === 'on' ? 'Yes' : 'No';
+
+      // Create a new form detail with the trial status
       const newFormDetail = new FormDetail({ 
           name, 
           email, 
           phoneno, 
           message, 
-          freeTrial: freeTrial ? 'Yes' : 'No' // Storing "Yes" or "No" based on the checkbox
+          freeTrial: trialStatus 
       });
+
       await newFormDetail.save();
       res.send('Form submitted successfully.');
   } catch (err) {
       res.status(500).send('Error saving form data.');
   }
 });
+
 
 
 // Protected route for admin page
@@ -243,7 +251,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       <li data-tab="plans">Selected Gym Plans</li>
                   </ul>
 
-                 <div class="tab_body active" id="formDetails">
+               <div class="tab_body active" id="formDetails">
     ${formDetails.map(detail => `
         <div class="card">
             <p><strong>Name:</strong> ${detail.name}</p>
@@ -254,6 +262,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
         </div>
     `).join('')}
 </div>
+
 
 
                   <div class="tab_body" id="comments">
