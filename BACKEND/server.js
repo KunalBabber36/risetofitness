@@ -108,15 +108,16 @@ app.get('/logout', (req, res) => {
 
 // Route to handle form submission and save to MongoDB
 app.post('/submit', async (req, res) => {
-    try {
-        const { name, email, phoneno, message } = req.body;
-        const newFormDetail = new FormDetail({ name, email,phoneno, message });
-        await newFormDetail.save();
-        res.send('Form submitted successfully.');
-    } catch (err) {
-        res.status(500).send('Error saving form data.');
-    }
+  try {
+    const { name, email, phoneno, message, freeTrial } = req.body;
+    const newFormDetail = new FormDetail({ name, email, phoneno, message, freeTrial });
+    await newFormDetail.save();
+    res.send('Form submitted successfully.');
+  } catch (err) {
+    res.status(500).send('Error saving form data.');
+  }
 });
+
 
 // Protected route for admin page
 // app.get('/admin', isAuthenticated, async (req, res) => {
@@ -237,15 +238,17 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                   </ul>
 
                   <div class="tab_body active" id="formDetails">
-                      ${formDetails.map(detail => `
-                          <div class="card">
-                              <p><strong>Name:</strong> ${detail.name}</p>
-                              <p><strong>Email:</strong> ${detail.email}</p>
-                              <p><strong>Phone No:</strong> ${detail.phoneno}</p>
-                              <p><strong>Message:</strong> ${detail.message}</p>
-                          </div>
-                      `).join('')}
-                  </div>
+  ${formDetails.map(detail => `
+    <div class="card">
+      <p><strong>Name:</strong> ${detail.name}</p>
+      <p><strong>Email:</strong> ${detail.email}</p>
+      <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+      <p><strong>Message:</strong> ${detail.message}</p>
+      ${detail.freeTrial === 'yes' ? `<p><strong>Free Trial:</strong> Yes</p>` : ''}
+    </div>
+  `).join('')}
+</div>
+
 
                   <div class="tab_body" id="comments">
                       <div id="commentsList">
