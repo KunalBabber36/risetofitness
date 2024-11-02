@@ -238,17 +238,16 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                   </ul>
 
                   <div class="tab_body active" id="formDetails">
-  ${formDetails.map(detail => `
-    <div class="card">
-      <p><strong>Name:</strong> ${detail.name}</p>
-      <p><strong>Email:</strong> ${detail.email}</p>
-      <p><strong>Phone No:</strong> ${detail.phoneno}</p>
-      <p><strong>Message:</strong> ${detail.message}</p>
-      ${detail.freeTrial === 'yes' ? `<p><strong>Free Trial:</strong> Yes</p>` : ''}
-    </div>
-  `).join('')}
-</div>
-
+                      ${formDetails.map(detail => `
+                          <div class="card">
+                              <p><strong>Name:</strong> ${detail.name}</p>
+                              <p><strong>Email:</strong> ${detail.email}</p>
+                              <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+                              <p><strong>Message:</strong> ${detail.message}</p>
+                              <p><strong>Trial:</strong> ${detail.freeTrial}</p>
+                          </div>
+                      `).join('')}
+                  </div>
 
                   <div class="tab_body" id="comments">
                       <div id="commentsList">
