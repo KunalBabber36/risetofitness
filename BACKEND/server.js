@@ -112,8 +112,8 @@ app.post('/submit', async (req, res) => {
       // Extract form data from the request body
       const { name, email, phoneno, message, freeTrial } = req.body;
 
-      // Ensure the `freeTrial` is interpreted as "Yes" if the checkbox is checked
-      const trialStatus = freeTrial === 'on' ? 'Yes' : 'No';
+      // Check if `freeTrial` is truthy (non-empty string), indicating it was checked
+      const trialStatus = freeTrial ? 'Yes' : 'No';
 
       // Create a new form detail with the trial status
       const newFormDetail = new FormDetail({ 
@@ -130,6 +130,7 @@ app.post('/submit', async (req, res) => {
       res.status(500).send('Error saving form data.');
   }
 });
+
 
 
 
