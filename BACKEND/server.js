@@ -308,6 +308,35 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                           })
                           .catch(error => console.error('Error deleting comment:', error));
                   }
+                          const form = document.getElementById('contactForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  
+  // Logging the values before sending
+  console.log("Name:", formData.get('name'));
+  console.log("Email:", formData.get('email'));
+  console.log("Phone No:", formData.get('phoneno'));
+  console.log("Message:", formData.get('message'));
+  console.log("Free Trial:", formData.get('freeTrial')); // This should log 'yes' or 'no'
+
+  const response = await fetch('/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phoneno: formData.get('phoneno'),
+      message: formData.get('message'),
+      freeTrial: formData.get('freeTrial') // Capture freeTrial here
+    })
+  });
+
+  const result = await response.text();
+  console.log(result);
+});
+
               </script>
           </body>
           </html>
