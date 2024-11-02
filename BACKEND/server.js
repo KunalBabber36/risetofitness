@@ -107,13 +107,17 @@ app.get('/logout', (req, res) => {
 // });
 
 // Route to handle form submission and save to MongoDB
+xpress.urlencoded({ extended: true }));
+
 app.post('/submit', async (req, res) => {
   try {
+    console.log(req.body); // Log the incoming request body
+
     // Extract data from the request body
     const { name, email, phoneno, message, freeTrial } = req.body;
     
-    // If freeTrial is undefined, set it to 'no'
-    const trialValue = freeTrial ? 'yes' : 'no';
+    // If freeTrial is undefined or not "yes", set it to "no"
+    const trialValue = freeTrial === 'yes' ? 'yes' : 'no';
 
     // Create a new FormDetail instance with the extracted data
     const newFormDetail = new FormDetail({ name, email, phoneno, message, freeTrial: trialValue });
@@ -312,6 +316,29 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                           })
                           .catch(error => console.error('Error deleting comment:', error));
                   }
+                          const form = document.getElementById('contactForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const freeTrial = formData.get('freeTrial') === 'yes' ? 'yes' : 'no';
+
+  const response = await fetch('/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phoneno: formData.get('phoneno'),
+      message: formData.get('message'),
+      freeTrial
+    })
+  });
+
+  const result = await response.text();
+  console.log(result);
+});
+
               </script>
           </body>
           </html>
