@@ -109,14 +109,24 @@ app.get('/logout', (req, res) => {
 // Route to handle form submission and save to MongoDB
 app.post('/submit', async (req, res) => {
   try {
+    // Extract data from the request body
     const { name, email, phoneno, message, freeTrial } = req.body;
-    const newFormDetail = new FormDetail({ name, email, phoneno, message, freeTrial });
+    
+    // If freeTrial is undefined, set it to 'no'
+    const trialValue = freeTrial ? 'yes' : 'no';
+
+    // Create a new FormDetail instance with the extracted data
+    const newFormDetail = new FormDetail({ name, email, phoneno, message, freeTrial: trialValue });
+
+    // Save the data to the database
     await newFormDetail.save();
+
     res.send('Form submitted successfully.');
   } catch (err) {
     res.status(500).send('Error saving form data.');
   }
 });
+
 
 
 // Protected route for admin page
@@ -238,16 +248,17 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                   </ul>
 
                   <div class="tab_body active" id="formDetails">
-                      ${formDetails.map(detail => `
-                          <div class="card">
-                              <p><strong>Name:</strong> ${detail.name}</p>
-                              <p><strong>Email:</strong> ${detail.email}</p>
-                              <p><strong>Phone No:</strong> ${detail.phoneno}</p>
-                              <p><strong>Message:</strong> ${detail.message}</p>
-                              <p><strong>Trial:</strong> ${detail.freeTrial}</p>
-                          </div>
-                      `).join('')}
-                  </div>
+  ${formDetails.map(detail => `
+    <div class="card">
+      <p><strong>Name:</strong> ${detail.name}</p>
+      <p><strong>Email:</strong> ${detail.email}</p>
+      <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+      <p><strong>Message:</strong> ${detail.message}</p>
+      <p><strong>Trial:</strong> ${detail.freeTrial === 'yes' ? 'Yes' : 'No'}</p>
+    </div>
+  `).join('')}
+</div>
+
 
                   <div class="tab_body" id="comments">
                       <div id="commentsList">
