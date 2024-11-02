@@ -136,87 +136,24 @@ app.post('/submit', async (req, res) => {
 //     `);
 // });
 
-app.get('/admin', isAuthenticated, async (req, res) => {
+// Route for form details page
+app.get('/admin/form-details', isAuthenticated, async (req, res) => {
   try {
-      // Fetch form details
       const formDetails = await FormDetail.find();
-      const comments = await Comment.find();
-      const plans = await Plan.find();
-
-      // Send HTML content with added styling
       res.send(`
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Admin Dashboard</title>
-              <style>
-                  body {
-                      font-family: Arial, sans-serif;
-                      background-color: #f4f4f9;
-                      color: #333;
-                      margin: 0;
-                      padding: 20px;
-                  }
-                  .container {
-                      max-width: 1200px;
-                      margin: auto;
-                      padding: 20px;
-                      background-color: #fff;
-                      border-radius: 8px;
-                      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                  }
-                  h1, h2 {
-                      color: #444;
-                  }
-                  .section {
-                      margin-bottom: 30px;
-                  }
-                  .card {
-                      background-color: #fafafa;
-                      border: 1px solid #ddd;
-                      border-radius: 5px;
-                      padding: 15px;
-                      margin-bottom: 15px;
-                      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-                  }
-                  .card strong {
-                      color: #555;
-                  }
-                  .comment-item {
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                      padding: 10px;
-                      border-bottom: 1px solid #eee;
-                  }
-                  .delete-button {
-                      background-color: #ff4d4d;
-                      color: #fff;
-                      border: none;
-                      padding: 5px 10px;
-                      border-radius: 3px;
-                      cursor: pointer;
-                  }
-                  .delete-button:hover {
-                      background-color: #e60000;
-                  }
-                  a {
-                      text-decoration: none;
-                      color: #007bff;
-                  }
-                  a:hover {
-                      text-decoration: underline;
-                  }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <h1>Admin Dashboard</h1>
-
-                  <div class="section">
-                      <h2>Submitted Form Details</h2>
+          <html>
+              <head>
+                  <title>Form Details</title>
+                  <style>
+                      /* Common styles */
+                      body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; padding: 20px; }
+                      .container { max-width: 800px; margin: auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+                      .card { padding: 15px; border-bottom: 1px solid #ddd; }
+                  </style>
+              </head>
+              <body>
+                  <div class="container">
+                      <h1>Submitted Form Details</h1>
                       ${formDetails.map(detail => `
                           <div class="card">
                               <p><strong>Name:</strong> ${detail.name}</p>
@@ -225,69 +162,98 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                               <p><strong>Message:</strong> ${detail.message}</p>
                           </div>
                       `).join('')}
+                      <a href="/admin">Back to Dashboard</a>
                   </div>
-
-                  <div class="section">
-                      <h2>Manage Comments</h2>
-                      <div id="commentsList">
-                          ${comments.map(comment => `
-                              <div class="comment-item">
-                                  <p><strong>${comment.user}</strong>: ${comment.comment}</p>
-                                  <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
-                              </div>
-                          `).join('')}
-                      </div>
-                  </div>
-
-                  <div class="section">
-                      <h2>Selected Gym Plans</h2>
-                      <div id="plansContainer">
-                          ${plans.map(plan => `
-                              <div class="card">
-                                  <p><strong>Plan:</strong> ${plan.planType}</p>
-                                  <p><strong>Selected By:</strong> ${plan.selectedBy}</p>
-                                  <p><strong>Date:</strong> ${new Date(plan.date).toLocaleString()}</p>
-                              </div>
-                          `).join('')}
-                      </div>
-                  </div>
-
-                  <a href="/logout">Logout</a>
-              </div>
-
-              <script>
-                  // Function to delete a comment
-                  function deleteComment(commentId) {
-                      fetch('/comments/' + commentId, { method: 'DELETE' })
-                          .then(response => response.json())
-                          .then(data => {
-                              if (data.message === 'Comment deleted successfully') {
-                                  location.reload(); // Refresh the page to update comments
-                              } else {
-                                  alert('Error deleting comment');
-                              }
-                          })
-                          .catch(error => console.error('Error deleting comment:', error));
-                  }
-              </script>
-          </body>
+              </body>
           </html>
       `);
   } catch (error) {
-      res.status(500).send('Error loading admin data');
+      res.status(500).send('Error loading form details');
   }
 });
 
-// Route for deleting a comment
-app.delete('/comments/:id', isAuthenticated, async (req, res) => {
+// Route for comments management page
+app.get('/admin/comments', isAuthenticated, async (req, res) => {
   try {
-      const { id } = req.params;
-      await Comment.findByIdAndDelete(id);
-      res.json({ message: 'Comment deleted successfully' });
+      const comments = await Comment.find();
+      res.send(`
+          <html>
+              <head>
+                  <title>Manage Comments</title>
+                  <style>
+                      body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; padding: 20px; }
+                      .container { max-width: 800px; margin: auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+                      .comment-item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #ddd; }
+                      .delete-button { background-color: #ff4d4d; color: #fff; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+                  </style>
+              </head>
+              <body>
+                  <div class="container">
+                      <h1>Manage Comments</h1>
+                      ${comments.map(comment => `
+                          <div class="comment-item">
+                              <p><strong>${comment.user}</strong>: ${comment.comment}</p>
+                              <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
+                          </div>
+                      `).join('')}
+                      <a href="/admin">Back to Dashboard</a>
+                  </div>
+                  <script>
+                      function deleteComment(commentId) {
+                          fetch('/comments/' + commentId, { method: 'DELETE' })
+                              .then(response => response.json())
+                              .then(data => {
+                                  if (data.message === 'Comment deleted successfully') {
+                                      location.reload();
+                                  } else {
+                                      alert('Error deleting comment');
+                                  }
+                              })
+                              .catch(error => console.error('Error deleting comment:', error));
+                      }
+                  </script>
+              </body>
+          </html>
+      `);
   } catch (error) {
-      res.status(500).json({ message: 'Error deleting comment' });
+      res.status(500).send('Error loading comments');
   }
 });
+
+// Route for gym plans page
+app.get('/admin/plans', isAuthenticated, async (req, res) => {
+  try {
+      const plans = await Plan.find();
+      res.send(`
+          <html>
+              <head>
+                  <title>Gym Plans</title>
+                  <style>
+                      body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; padding: 20px; }
+                      .container { max-width: 800px; margin: auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+                      .card { padding: 15px; border-bottom: 1px solid #ddd; }
+                  </style>
+              </head>
+              <body>
+                  <div class="container">
+                      <h1>Selected Gym Plans</h1>
+                      ${plans.map(plan => `
+                          <div class="card">
+                              <p><strong>Plan:</strong> ${plan.planType}</p>
+                              <p><strong>Selected By:</strong> ${plan.selectedBy}</p>
+                              <p><strong>Date:</strong> ${new Date(plan.date).toLocaleString()}</p>
+                          </div>
+                      `).join('')}
+                      <a href="/admin">Back to Dashboard</a>
+                  </div>
+              </body>
+          </html>
+      `);
+  } catch (error) {
+      res.status(500).send('Error loading gym plans');
+  }
+});
+
 
 
 
