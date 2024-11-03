@@ -153,77 +153,141 @@ app.get('/admin', isAuthenticated, async (req, res) => {
               <title>Admin Dashboard</title>
               <style>
                   body {
-                      font-family: Arial, sans-serif;
-                      background-color: #f4f4f9;
-                      color: #333;
-                      margin: 0;
-                      padding: 20px;
-                  }
-                  .container {
-                      max-width: 1200px;
-                      margin: auto;
-                      padding: 20px;
-                      background-color: #fff;
-                      border-radius: 8px;
-                      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                  }
-                  h1 {
-                      color: #444;
-                  }
-                  .tabs_list {
-                      display: flex;
-                      list-style-type: none;
-                      padding: 0;
-                  }
-                  .tabs_list li {
-                      margin-right: 20px;
-                      padding: 10px;
-                      cursor: pointer;
-                      border-bottom: 2px solid transparent;
-                  }
-                  .tabs_list li.active {
-                      border-bottom: 2px solid #007bff;
-                      font-weight: bold;
-                  }
-                  .tab_body {
-                      display: none;
-                  }
-                  .tab_body.active {
-                      display: block;
-                  }
-                  .card {
-                      background-color: #fafafa;
-                      border: 1px solid #ddd;
-                      border-radius: 5px;
-                      padding: 15px;
-                      margin-bottom: 15px;
-                      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-                  }
-                  .comment-item {
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                      padding: 10px;
-                      border-bottom: 1px solid #eee;
-                  }
-                  .delete-button {
-                      background-color: #ff4d4d;
-                      color: #fff;
-                      border: none;
-                      padding: 5px 10px;
-                      border-radius: 3px;
-                      cursor: pointer;
-                  }
-                  .delete-button:hover {
-                      background-color: #e60000;
-                  }
-                  a {
-                      text-decoration: none;
-                      color: #007bff;
-                  }
-                  a:hover {
-                      text-decoration: underline;
-                  }
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #444;
+}
+
+.tabs_list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    overflow-x: auto; /* Enable scrolling for smaller screens */
+}
+
+.tabs_list li {
+    margin-right: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.tabs_list li.active {
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+}
+
+.tab_body {
+    display: none;
+}
+
+.tab_body.active {
+    display: block;
+}
+
+.card {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.comment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #e60000;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .tabs_list {
+        flex-direction: column; /* Stack tabs vertically for smaller screens */
+    }
+
+    .tabs_list li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .comment-item {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start;
+    }
+
+    .delete-button {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .delete-button {
+        padding: 4px 8px;
+    }
+}
+
               </style>
           </head>
           <body>
