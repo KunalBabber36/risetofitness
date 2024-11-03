@@ -207,7 +207,10 @@
   .address a:hover{
     color: var(--secondary-color);
   }
-
+  #freeTrial{
+    margin-left: 30px; 
+    margin-bottom: 20px;
+  }
   @media (max-width: 768px) {
     .contact1 {
       font-size: 40px;
@@ -269,6 +272,9 @@
       margin-left: 11px;
       /* Remove left margin */
       /* Full width on mobile */
+    }
+    #freeTrial{
+      margin-left: 10px;
     }
   }
 
@@ -482,7 +488,7 @@
       <!-- Checkbox for one-day free gym trial -->
       <div class="checkbox-wrapper">
         <input type="checkbox" id="freeTrial" name="freeTrial" value="yes">
-        <label for="freeTrial">Sign up for a one-day free gym trial</label>
+        <label for="freeTrial" style="color: var(--text-light);">One-day free gym trial</label>
       </div>
       
       <button type="submit" class="wpcf7-form-control1 wpcf7-submit has-spinner btn-primary">Submit</button>
