@@ -152,7 +152,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Admin Dashboard</title>
               <style>
-                  body {
+              body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             color: #333;
@@ -166,6 +166,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
         h1 {
             color: #444;
@@ -174,6 +175,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
             display: flex;
             list-style-type: none;
             padding: 0;
+            transition: max-height 0.3s ease;
         }
         .tabs_list li {
             margin-right: 20px;
@@ -233,10 +235,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
             border: 1px solid #444;
             padding: 5px;
             border-radius: 5px;
-        }
-
-        .tabs_list {
-            flex-wrap: wrap;
         }
 
         /* Responsive Styles */
