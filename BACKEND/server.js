@@ -299,7 +299,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
 
 
 
-        <div class="tab_body" id="comments">
+      <div class="tab_body" id="comments">
             <div id="commentsList">
                 ${comments.map(comment => 
                     <div class="comment-item">
@@ -350,7 +350,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
         });
 
         // Function to delete a comment
-      function deleteComment(commentId) {
+         function deleteComment(commentId) {
             fetch('/comments/' + commentId, { method: 'DELETE' })
                 .then(response => response.json())
                 .then(data => {
