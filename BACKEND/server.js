@@ -310,11 +310,15 @@ app.get('/admin', isAuthenticated, async (req, res) => {
               </div>
 
               <script>
-              // Tab switching functionality
+              // Function to toggle the hamburger menu
+        function toggleMenu() {
+            const tabsList = document.querySelector('.tabs_list');
+            tabsList.classList.toggle('show');
+        }
+
+        // Tab switching functionality
         const tabs = document.querySelectorAll('.tabs_list li');
         const tabBodies = document.querySelectorAll('.tab_body');
-        const hamburger = document.querySelector('.hamburger');
-        const tabsList = document.querySelector('.tabs_list');
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -326,28 +330,11 @@ app.get('/admin', isAuthenticated, async (req, res) => {
 
                 // Close menu on tab click for smaller screens
                 if (window.innerWidth <= 768) {
-                    tabsList.classList.remove('show');
+                    document.querySelector('.tabs_list').classList.remove('show');
                 }
             });
         });
-
-        // Hamburger menu toggle function
-        function toggleMenu() {
-            tabsList.classList.toggle('show');
-        }
-                  // Tab switching functionality
-                  const tabs = document.querySelectorAll('.tabs_list li');
-                  const tabBodies = document.querySelectorAll('.tab_body');
-
-                  tabs.forEach(tab => {
-                      tab.addEventListener('click', () => {
-                          tabs.forEach(t => t.classList.remove('active'));
-                          tabBodies.forEach(body => body.classList.remove('active'));
-
-                          tab.classList.add('active');
-                          document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
-                      });
-                  });
+               
 
                   // Function to delete a comment
                   function deleteComment(commentId) {
