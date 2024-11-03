@@ -350,20 +350,18 @@ app.get('/admin', isAuthenticated, async (req, res) => {
         });
 
         // Function to delete a comment
-       function deleteComment(commentId) {
-    fetch('/comments/' + commentId, { method: 'DELETE' })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Comment deleted successfully') {
-                // Remove the deleted comment from the DOM
-                document.querySelector(`.comment-item[data-id="${commentId}"]`).remove();
-            } else {
-                alert('Error deleting comment');
-            }
-        })
-        .catch(error => console.error('Error deleting comment:', error));
-}
-
+      function deleteComment(commentId) {
+            fetch('/comments/' + commentId, { method: 'DELETE' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === 'Comment deleted successfully') {
+                        location.reload(); // Refresh the page to update comments
+                    } else {
+                        alert('Error deleting comment');
+                    }
+                })
+                .catch(error => console.error('Error deleting comment:', error));
+        }
     </script>
 </body>
 </html>
