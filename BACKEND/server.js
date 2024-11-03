@@ -153,140 +153,167 @@ app.get('/admin', isAuthenticated, async (req, res) => {
               <title>Admin Dashboard</title>
               <style>
                   body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-}
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-h1 {
-    color: #444;
-}
+        h1 {
+            color: #444;
+        }
 
-.tabs_list {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    overflow-x: auto; /* Enable scrolling for smaller screens */
-}
+        /* Hamburger Menu */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
 
-.tabs_list li {
-    margin-right: 20px;
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap; /* Prevent text from wrapping */
-}
+        .tabs_list {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            overflow-x: auto;
+            align-items: center;
+        }
 
-.tabs_list li.active {
-    border-bottom: 2px solid #007bff;
-    font-weight: bold;
-}
+        .tabs_list li {
+            margin-right: 20px;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
 
-.tab_body {
-    display: none;
-}
+        .tabs_list li.active {
+            border-bottom: 2px solid #007bff;
+            font-weight: bold;
+        }
 
-.tab_body.active {
-    display: block;
-}
+        .tab_body {
+            display: none;
+        }
 
-.card {
-    background-color: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
+        .tab_body.active {
+            display: block;
+        }
 
-.comment-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-}
+        .card {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
 
-.delete-button {
-    background-color: #ff4d4d;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-}
+        .comment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+        }
 
-.delete-button:hover {
-    background-color: #e60000;
-}
+        .delete-button {
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
 
-a {
-    text-decoration: none;
-    color: #007bff;
-}
+        .delete-button:hover {
+            background-color: #e60000;
+        }
 
-a:hover {
-    text-decoration: underline;
-}
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
+        a:hover {
+            text-decoration: underline;
+        }
 
-    .container {
-        padding: 15px;
-    }
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
 
-    .tabs_list {
-        flex-direction: column; /* Stack tabs vertically for smaller screens */
-    }
+            .container {
+                padding: 15px;
+            }
 
-    .tabs_list li {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
+            .menu-icon {
+                display: block;
+            }
 
-    .comment-item {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: flex-start;
-    }
+            .tabs_list {
+                flex-direction: column;
+                display: none; /* Hidden by default */
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                position: absolute;
+                top: 60px;
+                left: 20px;
+                right: 20px;
+                z-index: 10;
+                padding: 10px;
+            }
 
-    .delete-button {
-        margin-top: 10px;
-    }
-}
+            .tabs_list li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 10px;
-    }
+            .tabs_list.show {
+                display: flex; /* Show menu when toggled */
+            }
 
-    h1 {
-        font-size: 1.5em;
-    }
+            .comment-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-    .card {
-        padding: 10px;
-    }
+            .delete-button {
+                margin-top: 10px;
+            }
+        }
 
-    .delete-button {
-        padding: 4px 8px;
-    }
-}
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .card {
+                padding: 10px;
+            }
+
+            .delete-button {
+                padding: 4px 8px;
+            }
+        }
 
               </style>
           </head>
@@ -294,11 +321,15 @@ a:hover {
               <div class="container">
                   <h1>Admin Dashboard</h1>
 
-                  <ul class="tabs_list">
-                      <li data-tab="formDetails" class="active">Submitted Form Details</li>
-                      <li data-tab="comments">Manage Comments</li>
-                      <li data-tab="plans">Selected Gym Plans</li>
-                  </ul>
+                  
+        <div class="menu-bar">
+            <span class="menu-icon" onclick="toggleMenu()">☰</span>
+            <ul class="tabs_list">
+                <li data-tab="formDetails" class="active">Submitted Form Details</li>
+                <li data-tab="comments">Manage Comments</li>
+                <li data-tab="plans">Selected Gym Plans</li>
+            </ul>
+        </div>
 
                   <div class="tab_body active" id="formDetails">
                       ${formDetails.map(detail => `
@@ -363,6 +394,30 @@ a:hover {
                           })
                           .catch(error => console.error('Error deleting comment:', error));
                   }
+                          // Tab switching functionality
+        const tabs = document.querySelectorAll('.tabs_list li');
+        const tabBodies = document.querySelectorAll('.tab_body');
+        const menuIcon = document.querySelector('.menu-icon');
+        const tabsList = document.querySelector('.tabs_list');
+
+        function toggleMenu() {
+            tabsList.classList.toggle('show');
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabBodies.forEach(body => body.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+                
+                // Hide the menu after a tab is selected (for smaller screens)
+                if (window.innerWidth <= 768) {
+                    tabsList.classList.remove('show');
+                }
+            });
+        });
               </script>
           </body>
           </html>
