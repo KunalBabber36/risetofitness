@@ -146,13 +146,13 @@ app.get('/admin', isAuthenticated, async (req, res) => {
       // Send HTML content with added styling
       res.send(`
           <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Admin Dashboard</title>
-              <style>
-              body {
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             color: #333;
@@ -262,55 +262,56 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                 right: 20px;
             }
         }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <h1>Admin Dashboard</h1>
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-                  <ul class="tabs_list">
-                      <li data-tab="formDetails" class="active">Submitted Form Details</li>
-                      <li data-tab="comments">Manage Comments</li>
-                      <li data-tab="plans">Selected Gym Plans</li>
-                  </ul>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-                  <div class="tab_body active" id="formDetails">
-                      ${formDetails.map(detail => `
-                          <div class="card">
-                              <p><strong>Name:</strong> ${detail.name}</p>
-                              <p><strong>Email:</strong> ${detail.email}</p>
-                              <p><strong>Phone No:</strong> ${detail.phoneno}</p>
-                              <p><strong>Message:</strong> ${detail.message}</p>
-                          </div>
-                      `).join('')}
-                  </div>
+        <ul class="tabs_list">
+            <li data-tab="formDetails" class="active">Submitted Form Details</li>
+            <li data-tab="comments">Manage Comments</li>
+            <li data-tab="plans">Selected Gym Plans</li>
+        </ul>
 
-                  <div class="tab_body" id="comments">
-                      <div id="commentsList">
-                          ${comments.map(comment => `
-                              <div class="comment-item">
-                                  <p><strong>${comment.user}</strong>: ${comment.comment}</p>
-                                  <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
-                              </div>
-                          `).join('')}
-                      </div>
-                  </div>
+        <div class="tab_body active" id="formDetails">
+            ${formDetails.map(detail => `
+                <div class="card">
+                    <p><strong>Name:</strong> ${detail.name}</p>
+                    <p><strong>Email:</strong> ${detail.email}</p>
+                    <p><strong>Phone No:</strong> ${detail.phoneno}</p>
+                    <p><strong>Message:</strong> ${detail.message}</p>
+                </div>
+            `).join('')}
+        </div>
 
-                  <div class="tab_body" id="plans">
-                      ${plans.map(plan => `
-                          <div class="card">
-                              <p><strong>Plan:</strong> ${plan.planType}</p>
-                              <p><strong>Selected By:</strong> ${plan.selectedBy}</p>
-                              <p><strong>Date:</strong> ${new Date(plan.date).toLocaleString()}</p>
-                          </div>
-                      `).join('')}
-                  </div>
+        <div class="tab_body" id="comments">
+            <div id="commentsList">
+                ${comments.map(comment => `
+                    <div class="comment-item">
+                        <p><strong>${comment.user}</strong>: ${comment.comment}</p>
+                        <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
 
-                  <a href="/logout">Logout</a>
-              </div>
+        <div class="tab_body" id="plans">
+            ${plans.map(plan => `
+                <div class="card">
+                    <p><strong>Plan:</strong> ${plan.planType}</p>
+                    <p><strong>Selected By:</strong> ${plan.selectedBy}</p>
+                    <p><strong>Date:</strong> ${new Date(plan.date).toLocaleString()}</p>
+                </div>
+            `).join('')}
+        </div>
 
-              <script>
-              // Function to toggle the hamburger menu
+        <a href="/logout">Logout</a>
+    </div>
+
+    <script>
+        // Function to toggle the hamburger menu
         function toggleMenu() {
             const tabsList = document.querySelector('.tabs_list');
             tabsList.classList.toggle('show');
@@ -334,24 +335,24 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                 }
             });
         });
-               
 
-                  // Function to delete a comment
-                  function deleteComment(commentId) {
-                      fetch('/comments/' + commentId, { method: 'DELETE' })
-                          .then(response => response.json())
-                          .then(data => {
-                              if (data.message === 'Comment deleted successfully') {
-                                  location.reload(); // Refresh the page to update comments
-                              } else {
-                                  alert('Error deleting comment');
-                              }
-                          })
-                          .catch(error => console.error('Error deleting comment:', error));
-                  }
-              </script>
-          </body>
-          </html>
+        // Function to delete a comment
+        function deleteComment(commentId) {
+            fetch('/comments/' + commentId, { method: 'DELETE' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === 'Comment deleted successfully') {
+                        location.reload(); // Refresh the page to update comments
+                    } else {
+                        alert('Error deleting comment');
+                    }
+                })
+                .catch(error => console.error('Error deleting comment:', error));
+        }
+    </script>
+</body>
+</html>
+
       `);
   } catch (error) {
       res.status(500).send('Error loading admin data');
