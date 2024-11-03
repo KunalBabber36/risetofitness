@@ -280,7 +280,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                   <div class="hamburger" onclick="toggleMenu()">☰</div>
 
                   <ul class="tabs_list">
-                      <li data-tab="formDetails">Submitted Form Details</li>
+                      <li data-tab="formDetails" class="active">Submitted Form Details</li>
                       <li data-tab="comments">Manage Comments</li>
                       <li data-tab="plans">Selected Gym Plans</li>
                   </ul>
