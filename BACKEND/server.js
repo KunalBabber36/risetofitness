@@ -300,15 +300,15 @@ app.get('/admin', isAuthenticated, async (req, res) => {
 
 
         <div class="tab_body" id="comments">
-    <div id="commentsList">
-        ${comments.map(comment => `
-            <div class="comment-item" data-id="${comment._id}">
-                <p><strong>${comment.user}</strong>: ${comment.comment}</p>
-                <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
+            <div id="commentsList">
+                ${comments.map(comment => 
+                    <div class="comment-item">
+                        <p><strong>${comment.user}</strong>: ${comment.comment}</p>
+                        <button class="delete-button" onclick="deleteComment('${comment._id}')">Delete</button>
+                    </div>
+                ).join('')}
             </div>
-        `).join('')}
-    </div>
-</div>
+        </div>
 
         <div class="tab_body" id="plans">
             ${plans.map(plan => `
