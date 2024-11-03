@@ -147,8 +147,10 @@ app.post('/submit', async (req, res) => {
 //     `);
 // });
 
+
 app.get('/admin', isAuthenticated, async (req, res) => {
   try {
+    res.send('Success');
       // Fetch form details
       const formDetails = await FormDetail.find();
       const comments = await Comment.find();
@@ -368,6 +370,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
 
       `);
   } catch (error) {
+    console.error('Error:', error);
       res.status(500).send('Error loading admin data');
   }
 });
