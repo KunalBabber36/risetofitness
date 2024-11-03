@@ -163,8 +163,116 @@ app.get('/admin', isAuthenticated, async (req, res) => {
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Admin Dashboard</title>
               <style>
-                  /* Your styles here */
-              </style>
+ body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1 {
+            color: #444;
+        }
+        .tabs_list {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            transition: max-height 0.3s ease;
+        }
+        .tabs_list li {
+            margin-right: 20px;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        .tabs_list li.active {
+            border-bottom: 2px solid #007bff;
+            font-weight: bold;
+        }
+        .tab_body {
+            display: none;
+        }
+        .tab_body.active {
+            display: block;
+        }
+        .card {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .comment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .delete-button {
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            background-color: #e60000;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            border: 1px solid #444;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .tabs_list {
+                display: none;
+                flex-direction: column;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                z-index: 10;
+            }
+            .tabs_list.show {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+        }              </style>
           </head>
           <body>
               <div class="container">
