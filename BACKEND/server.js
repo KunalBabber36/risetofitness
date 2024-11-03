@@ -214,8 +214,44 @@ app.get('/admin', isAuthenticated, async (req, res) => {
               </div>
 
               <script>
-                  // Your JavaScript functions here
-              </script>
+ // Function to toggle the hamburger menu
+        function toggleMenu() {
+            const tabsList = document.querySelector('.tabs_list');
+            tabsList.classList.toggle('show');
+        }
+
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tabs_list li');
+        const tabBodies = document.querySelectorAll('.tab_body');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabBodies.forEach(body => body.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+
+                // Close menu on tab click for smaller screens
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.tabs_list').classList.remove('show');
+                }
+            });
+        });
+
+        // Function to delete a comment
+         function deleteComment(commentId) {
+            fetch('/comments/' + commentId, { method: 'DELETE' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === 'Comment deleted successfully') {
+                        location.reload(); // Refresh the page to update comments
+                    } else {
+                        alert('Error deleting comment');
+                    }
+                })
+                .catch(error => console.error('Error deleting comment:', error));
+        }              </script>
           </body>
           </html>
       `);
