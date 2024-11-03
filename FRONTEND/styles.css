@@ -99,7 +99,7 @@ p{
   border-radius: 2px;
   transition: 0.3s;
   cursor: pointer;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 html,
@@ -588,7 +588,7 @@ nav {
 }
 
 .membership__card:hover {
-  background-color: var(--secondary-color);
+  background-color: #ff0000b0;
 }
 
 .membership__card h4 {
@@ -636,10 +636,19 @@ nav {
   font-weight: 400;
 }
 .membership__card .btn{
-  background-color: #ff0000;
+  background-color: #ff0000f6;
 }
 .membership__card:hover .btn {
   background-color: var(--secondary-color-dark);
+}
+.scrollable-comments {
+  max-height: 300px; /* Adjust this value as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 10px; /* Optional: add padding */
+  margin-top: 10px; /* Optional: add margin */
+}
+.comment {
+  margin-bottom: 10px; /* Space between comments */
 }
 
 
