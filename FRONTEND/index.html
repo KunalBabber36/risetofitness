@@ -33,93 +33,95 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .carousel-container {
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-  cursor: grab;
-}
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+      cursor: grab;
+    }
 
-.carousel-track img{
-  margin-bottom: 1rem;
-  width: 100%;
-  display: flex;
-  overflow-clip-margin: content-box;
-  overflow: clip;
+    .carousel-track img {
+      margin-bottom: 1rem;
+      width: 100%;
+      display: flex;
+      overflow-clip-margin: content-box;
+      overflow: clip;
 
-}
+    }
 
-.carousel-slide {
-  min-width: 100%;
-  object-fit: cover;
-}
+    .carousel-slide {
+      min-width: 100%;
+      object-fit: cover;
+    }
 
-.carousel-indicators {
-  position: absolute;
-  bottom: 1px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-}
+    .carousel-indicators {
+      position: absolute;
+      bottom: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
 
-.dot {
-  height: 8px;
-  width: 8px;
-  background-color: #bbb;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+    .dot {
+      height: 8px;
+      width: 8px;
+      background-color: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-.dot.active {
-  background-color: #333;
-}
-.membership {
-  margin-top: 150px;
-}
-@media (width > 768px)  {
-  .blog {
-    background-color: var(--text-dark);
-  }
-  
-  .blog__container .section__header {
-    color: var(--text-light);
-    margin-top: -130px;
-  }
-  
-  .blog__grid {
-    margin-top: 4rem;
-    display: grid;
-    gap: 1rem;
-  }
-  
-  .blog__card img {
-    margin-bottom: 10px;
-  }
-  
-  .blog__card h4 {
-    max-width: calc(100% - 1rem);
-    font-size: 1.2rem;
-    font-weight: 400;
-    font-family: var(--header-font);
-    color: var(--text-light);
-    transition: 0.3s;
-  }
-  
-  .blog__card:hover h4 {
-    color: var(--secondary-color-dark);
-  }
-  
-  .blog__btn {
-    margin-top: 4rem;
-    text-align: center;
-  }
-}
+    .dot.active {
+      background-color: #333;
+    }
+
+    .membership {
+      margin-top: 150px;
+    }
+
+    @media (width > 768px) {
+      .blog {
+        background-color: var(--text-dark);
+      }
+
+      .blog__container .section__header {
+        color: var(--text-light);
+        margin-top: -130px;
+      }
+
+      .blog__grid {
+        margin-top: 4rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .blog__card img {
+        margin-bottom: 10px;
+      }
+
+      .blog__card h4 {
+        max-width: calc(100% - 1rem);
+        font-size: 1.2rem;
+        font-weight: 400;
+        font-family: var(--header-font);
+        color: var(--text-light);
+        transition: 0.3s;
+      }
+
+      .blog__card:hover h4 {
+        color: var(--secondary-color-dark);
+      }
+
+      .blog__btn {
+        margin-top: 4rem;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
@@ -205,31 +207,30 @@
     <div class="about__header">
       <h2 class="section__header">ABOUT US</h2>
       <p class="section__description">
-        Our mission is to inspire and support individuals in achieving their
-        health and wellness goals, regardless of their fitness level or
-        background.
+        Rise to Fitness is a comprehensive fitness center focused on promoting health and wellness through diverse
+        workout programs. It features modern equipment and provides facilities for weight training, cardio exercises,
+        personal coaching, and group classes like yoga and aerobics.
       </p>
     </div>
     <div class="about__grid">
       <div class="about__card">
-        <h4>WINNER COACHES</h4>
+        <h4>SERVICES OFFERED</h4>
         <p>
-          We pride ourselves on having a team of dedicated and experienced
-          coaches who are committed to helping you succeed.
+          A description of various fitness programs like gym workouts, personal training, yoga, and other fitness
+          regimes.
         </p>
       </div>
       <div class="about__card">
-        <h4>AFFORDABLE PRICE</h4>
+        <h4>FACILITIES AND EQUIPMENT</h4>
         <p>
-          We believe that everyone should have access to high-quality fitness
-          facilities without breaking the bank.
+          Details about the gym’s infrastructure, modern equipment, hygiene standards, and amenities provided to
+          members.
         </p>
       </div>
       <div class="about__card">
-        <h4>MODERN EQUIPMENTS</h4>
+        <h4>CONTACT AND BOOKING INFORMATION</h4>
         <p>
-          Stay ahead of the curve with our state-of-the-art equipment designed
-          to elevate your workout experience.
+          Information on how to get in touch, membership details, and ways to fill the form or schedule a visit.
         </p>
       </div>
     </div>
@@ -382,7 +383,7 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-              <h4>NEIL DEY</h4>
+        <h4>NEIL DEY</h4>
         <p>Yoga Coach</p>
         <div class="trainer__socials">
           <a href="https://www.instagram.com/tribal_yogi/"><i class="ri-instagram-fill"></i></a>
@@ -400,7 +401,7 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-              <h4>HARSH DEWANGAN</h4>
+        <h4>HARSH DEWANGAN</h4>
         <p>Fitness Coach</p>
         <b style="color: var(--text-light);">The cost of growth is pain.</b>
         <div class="trainer__socials">
@@ -419,7 +420,7 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-              <h4>SUNNY JAISWAL</h4>
+        <h4>SUNNY JAISWAL</h4>
         <p>Power Lifting Coach</p>
         <div class="trainer__socials">
           <!-- <a href="#"><i class="ri-facebook-fill"></i></a>
@@ -440,14 +441,15 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-              <h4>SUBHAJEET BHATTACHARJEE</h4>
+        <h4>SUBHAJEET BHATTACHARJEE</h4>
         <p>Fitness Coach </p>
         <b style="color: var(--text-light);">Work hard in silence, let your success be the noise.</b>
-       <div class="trainer__socials">
-           <!-- <a href="#"><i class="ri-facebook-fill"></i></a>
+        <div class="trainer__socials">
+          <!-- <a href="#"><i class="ri-facebook-fill"></i></a>
           <a href="#"><i class="ri-twitter-fill"></i></a>
           <a href="#"><i class="ri-youtube-fill"></i></a> -->
-          <a href="https://www.instagram.com/fitness_jeet8/?igsh=MXMzbXBmNXVzcWp0aA%3D%3D"><i class="ri-instagram-fill"></i></a>
+          <a href="https://www.instagram.com/fitness_jeet8/?igsh=MXMzbXBmNXVzcWp0aA%3D%3D"><i
+              class="ri-instagram-fill"></i></a>
         </div>
       </div>
     </div>
@@ -676,34 +678,34 @@
         </div>
       </div>
     </div>
-</section>
-<section class="blog" id="blog">
-  <div class="section__container blog__container">
-    <h2 class="section__header">GYM UPDATES</h2>
-    <div class="blog__grid">
-      <div class="blog__card">
-        <img src="assets/blog-1.jpg" alt="blog" />
-        <h4>Fueling Your Body for Optimal Performance</h4>
+  </section>
+  <section class="blog" id="blog">
+    <div class="section__container blog__container">
+      <h2 class="section__header">GYM UPDATES</h2>
+      <div class="blog__grid">
+        <div class="blog__card">
+          <img src="assets/blog-1.jpg" alt="blog" />
+          <h4>Fueling Your Body for Optimal Performance</h4>
+        </div>
+        <div class="blog__card">
+          <img src="assets/blog-2.jpg" alt="blog" />
+          <h4>A Guide to Setting and Achieving Fitness Goals</h4>
+        </div>
+        <div class="blog__card">
+          <img src="assets/blog-3.jpg" alt="blog" />
+          <h4>Tips and Techniques for Efficient Exercise</h4>
+        </div>
+        <div class="blog__card">
+          <img src="assets/blog-4.jpg" alt="blog" />
+          <h4>A Beginner's Guide to Starting Your Running Journey</h4>
+        </div>
       </div>
-      <div class="blog__card">
-        <img src="assets/blog-2.jpg" alt="blog" />
-        <h4>A Guide to Setting and Achieving Fitness Goals</h4>
-      </div>
-      <div class="blog__card">
-        <img src="assets/blog-3.jpg" alt="blog" />
-        <h4>Tips and Techniques for Efficient Exercise</h4>
-      </div>
-      <div class="blog__card">
-        <img src="assets/blog-4.jpg" alt="blog" />
-        <h4>A Beginner's Guide to Starting Your Running Journey</h4>
+      <br>
+      <div>
+        <a href="blog.html"><button class="btnn">VIEW ALL</button></a>
       </div>
     </div>
-    <br>
-    <div>
-      <a href="blog.html"><button class="btnn">VIEW ALL</button></a>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- <section class="blog" id="blog">
     <div class="section__container blog__container">
@@ -816,15 +818,15 @@
   <div class="bg_blur1"></div>
   <script>
 
-http://localhost:3000/api/data
-// Example: fetching data from the backend
-fetch('https://r2f.vercel.app/api/data')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    // Do something with the data, like displaying it in the frontend
-  })
-  .catch(error => console.error('Error fetching data:', error));
+    http://localhost:3000/api/data
+    // Example: fetching data from the backend
+    fetch('https://r2f.vercel.app/api/data')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Do something with the data, like displaying it in the frontend
+      })
+      .catch(error => console.error('Error fetching data:', error));
 
 
 
@@ -1005,240 +1007,240 @@ fetch('https://r2f.vercel.app/api/data')
 
     // // Load comments on page load
     // window.onload = loadComments;
-   
+
     // Function to load comments from the database
-async function loadComments() {
-  const response = await fetch('https://r2f.vercel.app/comments');
-  const comments = await response.json();
-  const commentsList = document.getElementById('commentsList');
+    async function loadComments() {
+      const response = await fetch('https://r2f.vercel.app/comments');
+      const comments = await response.json();
+      const commentsList = document.getElementById('commentsList');
 
-  // Clear the comment list
-  commentsList.innerHTML = '<h3>Comments:</h3>';
+      // Clear the comment list
+      commentsList.innerHTML = '<h3>Comments:</h3>';
 
-  // Loop through comments and display them
-  comments.forEach((commentData) => {
-    const commentDiv = document.createElement('div');
-    commentDiv.classList.add('comment');
+      // Loop through comments and display them
+      comments.forEach((commentData) => {
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
 
-    const commentText = document.createElement('span');
-    commentText.innerText = commentData.comment; // Access comment text
-    commentDiv.appendChild(commentText);
+        const commentText = document.createElement('span');
+        commentText.innerText = commentData.comment; // Access comment text
+        commentDiv.appendChild(commentText);
 
-    const commentUser = document.createElement('span');
-    commentUser.classList.add('comment-user');
-    commentUser.innerText = ` - by ${commentData.user}`;
-    commentDiv.appendChild(commentUser);
+        const commentUser = document.createElement('span');
+        commentUser.classList.add('comment-user');
+        commentUser.innerText = ` - by ${commentData.user}`;
+        commentDiv.appendChild(commentUser);
 
-    commentsList.appendChild(commentDiv);
-  });
-}
+        commentsList.appendChild(commentDiv);
+      });
+    }
 
-// Function to add a comment to the database
-async function addComment(commentText, userName) {
-  await fetch('https://r2f.vercel.app/comments', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ user: userName, comment: commentText }),
-  });
-}
+    // Function to add a comment to the database
+    async function addComment(commentText, userName) {
+      await fetch('https://r2f.vercel.app/comments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: userName, comment: commentText }),
+      });
+    }
 
-// Event listener for form submission
-document.getElementById('commentForm').addEventListener('submit', function (event) {
-  event.preventDefault();
+    // Event listener for form submission
+    document.getElementById('commentForm').addEventListener('submit', function (event) {
+      event.preventDefault();
 
-  const commentInput = document.getElementById('commentInput');
-  const userInput = document.getElementById('userNameInput');
-  const commentText = commentInput.value.trim();
-  const userName = userInput.value.trim();
+      const commentInput = document.getElementById('commentInput');
+      const userInput = document.getElementById('userNameInput');
+      const commentText = commentInput.value.trim();
+      const userName = userInput.value.trim();
 
-  if (commentText !== "" && userName !== "") {
-    // Add the comment
-    addComment(commentText, userName).then(() => {
-      loadComments();
+      if (commentText !== "" && userName !== "") {
+        // Add the comment
+        addComment(commentText, userName).then(() => {
+          loadComments();
+        });
+
+        // Clear the textarea
+        commentInput.value = "";
+        userInput.value = "";
+      }
     });
 
-    // Clear the textarea
-    commentInput.value = "";
-    userInput.value = "";
-  }
-});
+    // Load comments on page load
+    window.onload = loadComments;
 
-// Load comments on page load
-window.onload = loadComments;
-
-// Full-screen function
-function openImageInFullScreen(imageElement) {
-  if (imageElement.requestFullscreen) {
-    imageElement.requestFullscreen();
-  } else if (imageElement.mozRequestFullScreen) { // Firefox
-    imageElement.mozRequestFullScreen();
-  } else if (imageElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
-    imageElement.webkitRequestFullscreen();
-  } else if (imageElement.msRequestFullscreen) { // IE/Edge
-    imageElement.msRequestFullscreen();
-  }
-}
-
-// Fetch images from the server
-fetch('https://r2f.vercel.app/images') // Specify full URL for better debugging
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok: ' + response.statusText);
+    // Full-screen function
+    function openImageInFullScreen(imageElement) {
+      if (imageElement.requestFullscreen) {
+        imageElement.requestFullscreen();
+      } else if (imageElement.mozRequestFullScreen) { // Firefox
+        imageElement.mozRequestFullScreen();
+      } else if (imageElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        imageElement.webkitRequestFullscreen();
+      } else if (imageElement.msRequestFullscreen) { // IE/Edge
+        imageElement.msRequestFullscreen();
+      }
     }
-    return response.json();
-  })
-  .then(images => {
-    const gallery = document.getElementById('image-gallery');
-    gallery.innerHTML = ''; // Clear existing gallery content
 
-    images.forEach(image => {
-      // Create an img element for each image
-      const img = document.createElement('img');
-      // Correct image URL (replace backslashes with forward slashes)
-      img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`; 
-      img.alt = image.statement;
-      img.style.width = '200px'; // Optional: Adjust the size of the image
-      img.classList.add('clickable-image'); // Add a class for identifying clickable images
+    // Fetch images from the server
+    fetch('https://r2f.vercel.app/images') // Specify full URL for better debugging
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(images => {
+        const gallery = document.getElementById('image-gallery');
+        gallery.innerHTML = ''; // Clear existing gallery content
 
-      // Add a click event to open the image in full-screen mode
-      img.addEventListener('click', function() {
-        openImageInFullScreen(this);
+        images.forEach(image => {
+          // Create an img element for each image
+          const img = document.createElement('img');
+          // Correct image URL (replace backslashes with forward slashes)
+          img.src = `https://r2f.vercel.app/${image.url.replace(/\\/g, '/')}`;
+          img.alt = image.statement;
+          img.style.width = '200px'; // Optional: Adjust the size of the image
+          img.classList.add('clickable-image'); // Add a class for identifying clickable images
+
+          // Add a click event to open the image in full-screen mode
+          img.addEventListener('click', function () {
+            openImageInFullScreen(this);
+          });
+
+          // Create a div to hold the image and statement
+          const div = document.createElement('div');
+          div.style.marginBottom = '20px'; // Optional: Spacing between image blocks
+          div.classList.add('image-block'); // Updated class name for clarity
+
+          // Create the statement element and add the statement text
+          const statement = document.createElement('p');
+          statement.textContent = image.statement; // Display the statement
+          statement.style.marginBottom = '20px'; // Optional: Spacing between image blocks
+          statement.classList.add('image-statement'); // Updated class name for clarity
+
+          // Append the image and statement to the div
+          div.appendChild(img);
+          div.appendChild(statement);
+
+          // Append the div to the gallery
+          gallery.appendChild(div);
+        });
+      })
+      .catch(err => {
+        console.error('Error fetching images:', err);
+        // alert('Could not load images. Please check the console for details.'); // Alert user
       });
 
-      // Create a div to hold the image and statement
-      const div = document.createElement('div');
-      div.style.marginBottom = '20px'; // Optional: Spacing between image blocks
-      div.classList.add('image-block'); // Updated class name for clarity
+    // Function to open image in full-screen mode (you need to define this)
+    function openImageInFullScreen(imageElement) {
+      if (imageElement.requestFullscreen) {
+        imageElement.requestFullscreen();
+      } else if (imageElement.webkitRequestFullscreen) { // Safari
+        imageElement.webkitRequestFullscreen();
+      } else if (imageElement.msRequestFullscreen) { // IE11
+        imageElement.msRequestFullscreen();
+      }
+    }
+    async function selectPlan(event, planType) {
+      event.preventDefault();
 
-      // Create the statement element and add the statement text
-      const statement = document.createElement('p');
-      statement.textContent = image.statement; // Display the statement
-      statement.style.marginBottom = '20px'; // Optional: Spacing between image blocks
-      statement.classList.add('image-statement'); // Updated class name for clarity
+      const userName = prompt("Please enter your name to sign up:");
 
-      // Append the image and statement to the div
-      div.appendChild(img);
-      div.appendChild(statement);
-
-      // Append the div to the gallery
-      gallery.appendChild(div);
-    });
-  })
-  .catch(err => {
-    console.error('Error fetching images:', err);
-    // alert('Could not load images. Please check the console for details.'); // Alert user
-  });
-
-// Function to open image in full-screen mode (you need to define this)
-function openImageInFullScreen(imageElement) {
-  if (imageElement.requestFullscreen) {
-    imageElement.requestFullscreen();
-  } else if (imageElement.webkitRequestFullscreen) { // Safari
-    imageElement.webkitRequestFullscreen();
-  } else if (imageElement.msRequestFullscreen) { // IE11
-    imageElement.msRequestFullscreen();
-  }
-}
-async function selectPlan(event, planType) {
-    event.preventDefault();
-    
-    const userName = prompt("Please enter your name to sign up:");
-    
-    if (!userName) {
+      if (!userName) {
         alert("Name is required to sign up!");
         return;
-    }
+      }
 
-    // Show immediate feedback to the user
-    alert("Booking your plan, please wait...");
+      // Show immediate feedback to the user
+      alert("Booking your plan, please wait...");
 
-    try {
+      try {
         const response = await fetch('https://r2f.vercel.app/select-plan', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userName, planType })
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userName, planType })
         });
 
         const data = await response.json();
         alert(data.message);
 
-    } catch (error) {
+      } catch (error) {
         console.error("Error:", error);
         alert("There was an error. Please try again.");
+      }
     }
-}
 
-let currentIndex = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const dots = document.querySelectorAll('.dot');
-const track = document.querySelector('.carousel-track');
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const track = document.querySelector('.carousel-track');
 
-function goToSlide(index) {
-    currentIndex = index;
-    updateCarousel();
-}
+    function goToSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+    }
 
-function updateCarousel() {
-    // Move the carousel to the selected slide
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    
-    // Update active dot
-    dots.forEach((dot, index) => {
+    function updateCarousel() {
+      // Move the carousel to the selected slide
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      // Update active dot
+      dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    // Touch and drag/swipe functionality
+    let startPos = 0;
+    let isDragging = false;
+
+    track.addEventListener('mousedown', (e) => {
+      startPos = e.clientX;
+      isDragging = true;
+      track.style.cursor = 'grabbing';
     });
-}
 
-// Touch and drag/swipe functionality
-let startPos = 0;
-let isDragging = false;
+    track.addEventListener('mouseup', () => {
+      isDragging = false;
+      track.style.cursor = 'grab';
+    });
 
-track.addEventListener('mousedown', (e) => {
-    startPos = e.clientX;
-    isDragging = true;
-    track.style.cursor = 'grabbing';
-});
+    track.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const currentPosition = e.clientX;
+      const movedBy = startPos - currentPosition;
 
-track.addEventListener('mouseup', () => {
-    isDragging = false;
-    track.style.cursor = 'grab';
-});
-
-track.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    const currentPosition = e.clientX;
-    const movedBy = startPos - currentPosition;
-
-    if (movedBy > 50) {
+      if (movedBy > 50) {
         // Swipe left
         currentIndex = (currentIndex + 1) % slides.length;
         updateCarousel();
         isDragging = false;
-    } else if (movedBy < -50) {
+      } else if (movedBy < -50) {
         // Swipe right
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         updateCarousel();
         isDragging = false;
-    }
-});
+      }
+    });
 
-// For mobile touch support
-track.addEventListener('touchstart', (e) => startPos = e.touches[0].clientX);
-track.addEventListener('touchmove', (e) => {
-    const currentPosition = e.touches[0].clientX;
-    const movedBy = startPos - currentPosition;
+    // For mobile touch support
+    track.addEventListener('touchstart', (e) => startPos = e.touches[0].clientX);
+    track.addEventListener('touchmove', (e) => {
+      const currentPosition = e.touches[0].clientX;
+      const movedBy = startPos - currentPosition;
 
-    if (movedBy > 50) {
+      if (movedBy > 50) {
         // Swipe left
         currentIndex = (currentIndex + 1) % slides.length;
         updateCarousel();
-    } else if (movedBy < -50) {
+      } else if (movedBy < -50) {
         // Swipe right
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
         updateCarousel();
-    }
-});
+      }
+    });
 
   </script>
   <script src="script.js"></script>
@@ -1265,4 +1267,5 @@ track.addEventListener('touchmove', (e) => {
   <script src="main.js"></script>
 
 </body>
+
 </html>
