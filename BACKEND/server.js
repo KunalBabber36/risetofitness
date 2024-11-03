@@ -285,7 +285,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                       <li data-tab="plans">Selected Gym Plans</li>
                   </ul>
 
-                  <div class="tab_body active" id="formDetails">
+                  <div class="tab_body" id="formDetails">
                       ${formDetails.map(detail => `
                           <div class="card">
                               <p><strong>Name:</strong> ${detail.name}</p>
