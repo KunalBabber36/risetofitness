@@ -159,7 +159,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
             margin: 0;
             padding: 20px;
         }
-
         .container {
             max-width: 1200px;
             margin: auto;
@@ -168,48 +167,30 @@ app.get('/admin', isAuthenticated, async (req, res) => {
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
         h1 {
             color: #444;
         }
-
-        /* Hamburger Menu */
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-
         .tabs_list {
             display: flex;
             list-style-type: none;
             padding: 0;
-            overflow-x: auto;
-            align-items: center;
         }
-
         .tabs_list li {
             margin-right: 20px;
             padding: 10px;
             cursor: pointer;
             border-bottom: 2px solid transparent;
-            white-space: nowrap;
         }
-
         .tabs_list li.active {
             border-bottom: 2px solid #007bff;
             font-weight: bold;
         }
-
         .tab_body {
             display: none;
         }
-
         .tab_body.active {
             display: block;
         }
-
         .card {
             background-color: #fafafa;
             border: 1px solid #ddd;
@@ -218,16 +199,13 @@ app.get('/admin', isAuthenticated, async (req, res) => {
             margin-bottom: 15px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
-
         .comment-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #eee;
-            flex-wrap: wrap;
         }
-
         .delete-button {
             background-color: #ff4d4d;
             color: #fff;
@@ -236,100 +214,67 @@ app.get('/admin', isAuthenticated, async (req, res) => {
             border-radius: 3px;
             cursor: pointer;
         }
-
         .delete-button:hover {
             background-color: #e60000;
         }
-
         a {
             text-decoration: none;
             color: #007bff;
         }
-
         a:hover {
             text-decoration: underline;
         }
 
-        /* Media Queries for Responsiveness */
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            border: 1px solid #444;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .tabs_list {
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
-            .menu-icon {
-                display: block;
-            }
-
             .tabs_list {
+                display: none;
                 flex-direction: column;
-                display: none; /* Hidden by default */
                 background-color: #fff;
                 border: 1px solid #ddd;
                 border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 10px;
                 position: absolute;
                 top: 60px;
-                left: 20px;
                 right: 20px;
                 z-index: 10;
-                padding: 10px;
             }
-
-            .tabs_list li {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-
             .tabs_list.show {
-                display: flex; /* Show menu when toggled */
+                display: flex;
             }
-
-            .comment-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .delete-button {
-                margin-top: 10px;
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
             }
         }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-
-            .card {
-                padding: 10px;
-            }
-
-            .delete-button {
-                padding: 4px 8px;
-            }
-        }
-
               </style>
           </head>
           <body>
               <div class="container">
                   <h1>Admin Dashboard</h1>
-
-                  
-        <div class="menu-bar">
-            <span class="menu-icon" onclick="toggleMenu()">☰</span>
-            <ul class="tabs_list">
-                <li data-tab="formDetails" class="active">Submitted Form Details</li>
-                <li data-tab="comments">Manage Comments</li>
-                <li data-tab="plans">Selected Gym Plans</li>
-            </ul>
-        </div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+                  <ul class="tabs_list">
+                      <li data-tab="formDetails" class="active">Submitted Form Details</li>
+                      <li data-tab="comments">Manage Comments</li>
+                      <li data-tab="plans">Selected Gym Plans</li>
+                  </ul>
 
                   <div class="tab_body active" id="formDetails">
                       ${formDetails.map(detail => `
@@ -367,6 +312,31 @@ app.get('/admin', isAuthenticated, async (req, res) => {
               </div>
 
               <script>
+              // Tab switching functionality
+        const tabs = document.querySelectorAll('.tabs_list li');
+        const tabBodies = document.querySelectorAll('.tab_body');
+        const hamburger = document.querySelector('.hamburger');
+        const tabsList = document.querySelector('.tabs_list');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabBodies.forEach(body => body.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+
+                // Close menu on tab click for smaller screens
+                if (window.innerWidth <= 768) {
+                    tabsList.classList.remove('show');
+                }
+            });
+        });
+
+        // Hamburger menu toggle function
+        function toggleMenu() {
+            tabsList.classList.toggle('show');
+        }
                   // Tab switching functionality
                   const tabs = document.querySelectorAll('.tabs_list li');
                   const tabBodies = document.querySelectorAll('.tab_body');
@@ -394,30 +364,6 @@ app.get('/admin', isAuthenticated, async (req, res) => {
                           })
                           .catch(error => console.error('Error deleting comment:', error));
                   }
-                          // Tab switching functionality
-        const tabs = document.querySelectorAll('.tabs_list li');
-        const tabBodies = document.querySelectorAll('.tab_body');
-        const menuIcon = document.querySelector('.menu-icon');
-        const tabsList = document.querySelector('.tabs_list');
-
-        function toggleMenu() {
-            tabsList.classList.toggle('show');
-        }
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tabBodies.forEach(body => body.classList.remove('active'));
-
-                tab.classList.add('active');
-                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
-                
-                // Hide the menu after a tab is selected (for smaller screens)
-                if (window.innerWidth <= 768) {
-                    tabsList.classList.remove('show');
-                }
-            });
-        });
               </script>
           </body>
           </html>
