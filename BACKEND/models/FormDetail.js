@@ -5,6 +5,7 @@ const formDetailSchema = new mongoose.Schema({
     email: { type: String, required: true },
     phoneno: { type: String, required: true },
     message: { type: String, required: true },
+    freeTrial:{ type: String, required: true },
     submittedAt: { type: Date, default: Date.now }
 });
 
