@@ -1325,9 +1325,6 @@ button:hover {
     justify-content: space-between;
     background-color: rgb(0, 0, 0);
   }
-  .nav__bar ul li a{
-   font-size: 10px;
-  }
   .nav__header {
     padding: 0;
     z-index: 9;
