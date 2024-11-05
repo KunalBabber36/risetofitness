@@ -1325,7 +1325,9 @@ button:hover {
     justify-content: space-between;
     background-color: rgb(0, 0, 0);
   }
-
+  .nav__bar ul li a{
+   font-size: 10px;
+  }
   .nav__header {
     padding: 0;
     z-index: 9;
@@ -2943,4 +2945,10 @@ button:hover {
   .blog{
     margin-top: 130px;
   }
+}
+
+@media (min-width: 768px) and (max-width: 830px) {
+  .nav__bar ul li a{
+    font-size: 10px;
+   }
 }
