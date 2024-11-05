@@ -588,7 +588,7 @@ nav {
 }
 
 .membership__card:hover {
-  background-color: #ff0000b0;
+  background-color: var(--secondary-color);
 }
 
 .membership__card h4 {
@@ -637,6 +637,7 @@ nav {
 }
 .membership__card .btn{
   background-color: #ff0000f6;
+  border: 1px solid white;
 }
 .membership__card:hover .btn {
   background-color: var(--secondary-color-dark);
