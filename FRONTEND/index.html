@@ -83,15 +83,22 @@
     .membership {
       margin-top: 150px;
     }
+
     .scrollable-comments {
-  max-height: 300px; /* Adjust this value as needed */
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding: 10px; /* Optional: add padding */
-  margin-top: 10px; /* Optional: add margin */
-}
-.comment {
-  margin-bottom: 10px; /* Space between comments */
-}
+      max-height: 300px;
+      /* Adjust this value as needed */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      padding: 10px;
+      /* Optional: add padding */
+      margin-top: 10px;
+      /* Optional: add margin */
+    }
+
+    .comment {
+      margin-bottom: 10px;
+      /* Space between comments */
+    }
 
     @media (width > 768px) {
       .blog {
@@ -645,7 +652,7 @@
       <h2 class="section__header">Choose Your Plan</h2>
       <div class="membership__grid">
         <div class="membership__card">
-          <h4>STANDARD</h4>
+          <h4>MONTHLY</h4>
           <ul>
             <li><span><i class="ri-check-line"></i></span> Gym floor access and standard equipment.</li>
             <li><span><i class="ri-check-line"></i></span> Group fitness classes: yoga, workouts.</li>
@@ -655,11 +662,11 @@
             <li><span><i class="ri-check-line"></i></span> Member discounts on merchandise.</li>
           </ul>
           <h3>₹1000<span>/month</span></h3>
-          <a href="#" class="btn" data-plan="STANDARD" onclick="selectPlan(event, 'STANDARD')">Book Now</a>
+          <a href="#" class="btn" data-plan="MONTHLY" onclick="selectPlan(event, 'MONTHLY')">Book Now</a>
         </div>
 
         <div class="membership__card">
-          <h4>PROFESSIONAL</h4>
+          <h4>3 MONTHS</h4>
           <ul>
             <li><span><i class="ri-check-line"></i></span> Standard Membership facilities included.</li>
             <li><span><i class="ri-check-line"></i></span> Priority booking for personal training.</li>
@@ -669,11 +676,11 @@
             <li><span><i class="ri-check-line"></i></span> Discounts on additional services.</li>
           </ul>
           <h3>₹1200<span>/month</span></h3>
-          <a href="#" class="btn" data-plan="PROFESSIONAL" onclick="selectPlan(event, 'PROFESSIONAL')">Book Now</a>
+          <a href="#" class="btn" data-plan="3 MONTHS" onclick="selectPlan(event, '3 MONTHS')">Book Now</a>
         </div>
 
         <div class="membership__card">
-          <h4>ULTIMATE</h4>
+          <h4>6 MONTHS</h4>
           <ul>
             <li><span><i class="ri-check-line"></i></span> Standard and Professional facilities included.</li>
             <li><span><i class="ri-check-line"></i></span> Unlimited access to premium amenities.</li>
@@ -683,7 +690,21 @@
             <li><span><i class="ri-check-line"></i></span> Priority access to guest passes and events.</li>
           </ul>
           <h3>₹1500<span>/month</span></h3>
-          <a href="#" class="btn" data-plan="ULTIMATE" onclick="selectPlan(event, 'ULTIMATE')">Book Now</a>
+          <a href="#" class="btn" data-plan="6 MONTHS" onclick="selectPlan(event, '6 MONTHS')">Book Now</a>
+        </div>
+
+        <div class="membership__card">
+          <h4>12 MONTHS</h4>
+          <ul>
+            <li><span><i class="ri-check-line"></i></span> Standard and Professional facilities included.</li>
+            <li><span><i class="ri-check-line"></i></span> Unlimited access to premium amenities.</li>
+            <li><span><i class="ri-check-line"></i></span> Reserved parking or valet service.</li>
+            <li><span><i class="ri-check-line"></i></span> Complimentary premium fitness classes.</li>
+            <li><span><i class="ri-check-line"></i></span> Customized workout plans.</li>
+            <li><span><i class="ri-check-line"></i></span> Priority access to guest passes and events.</li>
+          </ul>
+          <h3>₹1500<span>/month</span></h3>
+          <a href="#" class="btn" data-plan="12 MONTHS" onclick="selectPlan(event, '12 MONTHS')">Book Now</a>
         </div>
       </div>
     </div>
