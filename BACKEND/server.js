@@ -101,7 +101,7 @@ app.get('/logout', (req, res) => {
 // });
 
 // Route to handle form submission and save to MongoDB
-app.post('https://risetofitness.vercel.app/submit', async (req, res) => {
+app.post('https://risetofitness-kunal-babbers-projects.vercel.app/submit', async (req, res) => {
   try {
     // Extract data from the request body
     const { name, email, phoneno, message, freeTrial } = req.body;
