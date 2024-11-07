@@ -1104,7 +1104,7 @@
 
     // Function to load comments from the database
     async function loadComments() {
-      const response = await fetch('https://risetofitness.vercel.app/comments');
+      const response = await fetch('https://risetofitness2.vercel.app/comments');
       const comments = await response.json();
       const commentsList = document.getElementById('commentsList');
 
@@ -1131,7 +1131,7 @@
 
     // Function to add a comment to the database
     async function addComment(commentText, userName) {
-      await fetch('https://risetofitness.vercel.app/comments', {
+      await fetch('https://risetofitness2.vercel.app/comments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1178,7 +1178,7 @@
     }
 
     // Fetch images from the server
-    fetch('https://risetofitness.vercel.app/images') // Specify full URL for better debugging
+    fetch('https://risetofitness2.vercel.app/images') // Specify full URL for better debugging
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok: ' + response.statusText);
@@ -1193,7 +1193,7 @@
           // Create an img element for each image
           const img = document.createElement('img');
           // Correct image URL (replace backslashes with forward slashes)
-          img.src = `https://risetofitness.vercel.app/${image.url.replace(/\\/g, '/')}`;
+          img.src = `https://risetofitness2.vercel.app/${image.url.replace(/\\/g, '/')}`;
           img.alt = image.statement;
           img.style.width = '200px'; // Optional: Adjust the size of the image
           img.classList.add('clickable-image'); // Add a class for identifying clickable images
@@ -1251,7 +1251,7 @@
       alert("Booking your plan, please wait...");
 
       try {
-        const response = await fetch('https://risetofitness.vercel.app/select-plan', {
+        const response = await fetch('https://risetofitness2.vercel.app/select-plan', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userName, planType })
