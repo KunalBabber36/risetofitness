@@ -1270,6 +1270,12 @@ button:hover {
 .delete-button:hover {
   background-color: #ff1a1a;
 }
+#image-gallery img, #uploaded-images img {
+  max-width: 200px;
+  margin: 10px;
+  display: inline-block;
+  z-index: 1;
+}
 @media (width > 768px) {
   .bg__blur {
     position: absolute;
