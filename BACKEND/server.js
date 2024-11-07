@@ -15,12 +15,6 @@ const FormDetail = require('./models/FormDetail'); // Import model
 const app = express();
 // const port = 3000;
 const port = process.env.PORT || 3000;
-app.use(cors({
-  origin: 'https://risetofitness.vercel.app/', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-auth-token'],
-  credentials: true
-}));
 
 
 // Middleware
@@ -380,17 +374,35 @@ app.get('/admin', isAuthenticated, async (req, res) => {
 
 
 // Middleware
+
+// Enable CORS for frontend domain
+app.use(cors({
+  origin: 'https://risetofitness.vercel.app', // Replace with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-auth-token'],
+  credentials: true
+}));
+
+// Middleware to parse JSON and URL-encoded data
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-app.use(express.static(path.join(__dirname, 'FRONTEND'))); // Serve static files
-app.use('/uploads', express.static('uploads')); // Serve uploaded files
-// Serve static files from the FRONTEND directory
-app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Navigate up one level to BACKEND, then into FRONTEND
 
-// Serve index.html on the root path
+// Serve static files from the frontend folder
+app.use(express.static(path.join(__dirname, '..', 'frontend'))); // Go one level up to the project folder, then into frontend
+
+// Serve uploaded files from the 'uploads' folder
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
+// Serve the index.html file when accessing the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Same navigation as above
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html')); // Corrected path to frontend folder
+});
+
+// Add other routes for your API here
+// For example, an upload route:
+app.post('/upload', (req, res) => {
+  // Handle your file uploads here
+  res.send('File uploaded');
 });
 
 // MongoDB connection
