@@ -398,13 +398,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html')); // Corrected path to frontend folder
 });
 
-// Add other routes for your API here
-// For example, an upload route:
+// Example API route
 app.post('/upload', (req, res) => {
-  // Handle your file uploads here
+  // Handle file uploads here
   res.send('File uploaded');
 });
-
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
