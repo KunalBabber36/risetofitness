@@ -1003,6 +1003,9 @@ nav {
   text-align: center;
 
 }
+.blog__grid div{
+  padding: 10px;
+}
 
 #image-gallery {
   margin-top: 3rem;
