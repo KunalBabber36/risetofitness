@@ -377,7 +377,7 @@ app.get('/admin', isAuthenticated, async (req, res) => {
 
 // Enable CORS for frontend domain
 app.use(cors({
-  origin: 'https://risetofitness.vercel.app', // Replace with your frontend URL
+  origin: 'https://risetofitness2.vercel.app', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-auth-token'],
   credentials: true
