@@ -101,7 +101,7 @@ app.get('/logout', (req, res) => {
 // });
 
 // Route to handle form submission and save to MongoDB
-app.post('/submit', async (req, res) => {
+app.post('https://risetofitness.vercel.app/submit', async (req, res) => {
   try {
     // Extract data from the request body
     const { name, email, phoneno, message, freeTrial } = req.body;
@@ -382,7 +382,6 @@ app.use(cors({
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-auth-token'],
   credentials: true
 }));
-app.use(cors());
 
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json());
