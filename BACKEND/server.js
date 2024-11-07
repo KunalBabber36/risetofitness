@@ -388,21 +388,23 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the frontend folder
-app.use(express.static(path.join(__dirname, '..', 'frontend'))); // Go one level up to the project folder, then into frontend
+app.use(express.static(path.join(__dirname, '..', 'FRONTEND'))); // Go one level up to the project folder, then into frontend
 
 // Serve uploaded files from the 'uploads' folder
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 // Serve the index.html file when accessing the root URL
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html')); // Corrected path to frontend folder
+  res.sendFile(path.join(__dirname, '..', 'FRONTEND', 'index.html')); // Corrected path to frontend folder
 });
 
-// Example API route
+// Add other routes for your API here
+// For example, an upload route:
 app.post('/upload', (req, res) => {
-  // Handle file uploads here
+  // Handle your file uploads here
   res.send('File uploaded');
 });
+
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
