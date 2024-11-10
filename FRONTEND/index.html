@@ -759,7 +759,7 @@
       <h2 class="section__header">GYM UPDATES</h2>
       <div class="blog__grid">
         <div class="blog__card">
-          <div id="image-gallery"></div>
+          <div id="imagesList"></div>
         </div>
         <div class="blog__btn">
         </div>
@@ -1139,7 +1139,7 @@
         return response.json();
       })
       .then(images => {
-        const gallery = document.getElementById('image-gallery');
+        const gallery = document.getElementById('imagesList');
         gallery.innerHTML = ''; // Clear existing gallery content
 
         images.forEach(image => {
